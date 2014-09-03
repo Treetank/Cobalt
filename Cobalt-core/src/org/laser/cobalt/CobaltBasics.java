@@ -18,13 +18,13 @@ public final class CobaltBasics {
 	public static final int LEFT_WALK_LIMIT = 55;
 	public static final int RIGHT_WALK_LIMIT = GAME_SCREEN_WIDTH - LEFT_WALK_LIMIT;
 
-	public static final String WINDOW_TITLE = "Cobalt";
+	public static final String WINDOW_TITLE = "Cobalt - Lil RPG";
 
 	public static final int TERRAIN_WIDTH = 256;
 	public static final int TERRAIN_HEIGHT = 16;
 	public static final int TERRAIN_BASE_Y = 0;
-	
+
 	public static final int MOB_SQUARE_SIZE = 16;
-	
+
 	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 3;
 }
