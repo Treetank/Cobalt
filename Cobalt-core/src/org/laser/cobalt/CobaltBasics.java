@@ -25,6 +25,7 @@ public final class CobaltBasics {
 	public static final int TERRAIN_BASE_Y = 0;
 
 	public static final int MOB_SQUARE_SIZE = 16;
+	// public static final int MOB_SQUARE_SIZE = 32;
 
 	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 3;
 }
