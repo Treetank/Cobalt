@@ -92,6 +92,18 @@ public class GameLevel {
 		hero.moveRight();
 	}
 
+	public void clickEnter() {
+		Exit exitToFollow = null;
+		for (Exit x : exits) {
+			if (hero.getLocation() > x.getLocation() - hero.getWidth() && hero.getLocation() < x.getLocation() + x.getWidth()) {
+				exitToFollow = x;
+			}
+		}
+		if (exitToFollow != null) {
+			gameWorld.changeLevel(exitToFollow.GetDestination());
+		}
+	}
+
 	public void stopMoving() {
 		hero.stop();
 	}
@@ -125,12 +137,6 @@ public class GameLevel {
 			if (hero.getLocation() > m.getLocation() - hero.getWidth() - m.getStats().getStatics().SwingRange()
 					&& hero.getLocation() < m.getLocation() + m.getWidth() + m.getStats().getStatics().SwingRange()) {
 				m.swing(hero);
-			}
-		}
-
-		for (Exit x : exits) {
-			if (hero.getLocation() > x.getLocation() - hero.getWidth() && hero.getLocation() < x.getLocation() + x.getWidth()) {
-				gameWorld.changeLevel(x.GetDestination());
 			}
 		}
 	}

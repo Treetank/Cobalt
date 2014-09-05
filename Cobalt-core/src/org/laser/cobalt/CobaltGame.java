@@ -1,9 +1,12 @@
 package org.laser.cobalt;
 
+import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameworld.GameRenderer;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
+import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.screens.WorldScreen;
 
@@ -35,6 +38,9 @@ public class CobaltGame extends Game {
 
 		// restore persistent game data
 		world = GameSaver.loadWorld();
+
+		// load super hero for testing
+		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0)));
 
 		// create a new world with restored data
 		gameWorld = new GameWorld(world);

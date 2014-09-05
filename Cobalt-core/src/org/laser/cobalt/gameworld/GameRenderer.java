@@ -48,7 +48,6 @@ public class GameRenderer {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		drawTerrain();
-		drawUI();
 
 		batcher.begin();
 		batcher.enableBlending();
@@ -125,6 +124,7 @@ public class GameRenderer {
 			}
 		}
 		batcher.end();
+		drawUI();
 	}
 
 	public void drawUI() {
@@ -132,11 +132,21 @@ public class GameRenderer {
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
+		for (Exit x : gameWorld.getLevel().getExit()) {
+			if (isNear(x.getX(), x.getWidth(), gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getWidth())) {
+				DrawEnterButton();
+			}
+		}
 		shapeRenderer.end();
 		batcher.begin();
 		batcher.enableBlending();
 		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 15);
 		font.draw(batcher, stats.Exp() + "", 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 25);
+		for (Exit x : gameWorld.getLevel().getExit()) {
+			if (isNear(x.getX(), x.getWidth(), gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getWidth())) {
+				font.draw(batcher, "ENTER", CobaltBasics.GAME_SCREEN_WIDTH - 50, CobaltBasics.GAME_SCREEN_HEIGHT - 10);
+			}
+		}
 		batcher.end();
 	}
 
@@ -186,5 +196,19 @@ public class GameRenderer {
 		shapeRenderer.circle(x1 + 2 * w, y2 - 2 * w, w);
 		shapeRenderer.circle(x2 - 2 * w, y1 + 2 * w, w);
 		shapeRenderer.circle(x2 - 2 * w, y2 - 2 * w, w);
+	}
+
+	public void DrawEnterButton() {
+		shapeRenderer.setColor(200, 200, 200, 1);
+		RoundRectangle(CobaltBasics.GAME_SCREEN_WIDTH - 64, CobaltBasics.GAME_SCREEN_HEIGHT - 32, CobaltBasics.GAME_SCREEN_WIDTH,
+				CobaltBasics.GAME_SCREEN_HEIGHT, 2);
+		shapeRenderer.rect(CobaltBasics.GAME_SCREEN_WIDTH - 62, CobaltBasics.GAME_SCREEN_HEIGHT - 30, 60, 28);
+	}
+
+	public boolean isNear(float x1, float width1, float x2, float width2) {
+		if (x1 > x2 - width1 && x1 < x2 + width2) {
+			return true;
+		}
+		return false;
 	}
 }

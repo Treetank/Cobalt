@@ -8,15 +8,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class WorldScreen implements Screen {
-	
+
 	private GameWorld world;
 	private GameRenderer renderer;
-	
-	public WorldScreen (GameWorld gameWorld, GameRenderer renderer) {
+
+	public WorldScreen(GameWorld gameWorld, GameRenderer renderer) {
 		this.world = gameWorld;
 		this.renderer = renderer;
-		
-		Gdx.input.setInputProcessor(new InputHandler(world.getLevel()));
+
+		Gdx.input.setInputProcessor(new InputHandler(world));
 	}
 
 	@Override
@@ -28,37 +28,37 @@ public class WorldScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void pause() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void resume() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -39,11 +39,11 @@ public class GameWorld {
 
 	public void setLevel(LevelIndex level) {
 		switch (level) {
-		case IMP_PATH:
-			this.level = new SecondLevel(this);
-			break;
 		case STARTING_PATH:
 			this.level = new FirstLevel(this);
+			break;
+		case IMP_PATH:
+			this.level = new SecondLevel(this);
 			break;
 		case CREEPER_PATH:
 			this.level = new ThirdLevel(this);
