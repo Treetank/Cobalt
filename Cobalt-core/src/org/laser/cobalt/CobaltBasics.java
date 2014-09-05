@@ -20,12 +20,15 @@ public final class CobaltBasics {
 
 	public static final String WINDOW_TITLE = "Cobalt - Lil RPG";
 
+	public static final int TERRAIN_TEXTURE_START_X = 0;
+	public static final int TERRAIN_TEXTURE_START_Y = 0;
 	public static final int TERRAIN_WIDTH = 256;
 	public static final int TERRAIN_HEIGHT = 16;
 	public static final int TERRAIN_BASE_Y = 0;
 
-	public static final int MOB_SQUARE_SIZE = 16;
-	// public static final int MOB_SQUARE_SIZE = 32;
+	public static final int MOB_TEXTURE_START_X = 0;
+	public static final int MOB_TEXTURE_START_Y = 32;
+	public static final int MOB_SQUARE_SIZE = 32;
 
 	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 3;
 }

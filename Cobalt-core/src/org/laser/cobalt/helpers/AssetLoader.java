@@ -12,7 +12,7 @@ public class AssetLoader {
 
 	public static Texture texture, fontTexture;
 
-	public static TextureRegion grass, ice, hero, slime, imp, heroAttack, explosion, scratch, sign;
+	public static TextureRegion grass, ice, hero, slime, creeper, imp, heroAttack, explosion, scratch, sign;
 
 	public static BitmapFont font;
 
@@ -33,25 +33,26 @@ public class AssetLoader {
 		grass = loadTerrain(0, 0);
 		ice = loadTerrain(0, 1);
 
-		hero = loadTexture(0, 2, 1);
-		slime = loadTexture(0, 3, 1);
-		explosion = loadTexture(1, 2, 1);
-		sign = loadTexture(1, 3, 1);
-		scratch = loadTexture(2, 2, 1);
-		imp = loadTexture(2, 3, 1);
-		heroAttack = loadTexture(3, 2, 1);
+		hero = loadTexture(0, 0, 1);
+		heroAttack = loadTexture(1, 0, 1);
+		slime = loadTexture(2, 0, 1);
+		creeper = loadTexture(3, 0, 1);
+		imp = loadTexture(4, 0, 1);
+		explosion = loadTexture(5, 0, 1);
+		scratch = loadTexture(6, 0, 1);
+		sign = loadTexture(7, 0, 1);
 
 		font = new BitmapFont(Gdx.files.internal("fonts/Aharoni2.fnt"), new TextureRegion(fontTexture), false);
 	}
 
 	private static TextureRegion loadTexture(int xPos, int yPos, int size) {
-		return new TextureRegion(texture, xPos * CobaltBasics.MOB_SQUARE_SIZE, yPos * CobaltBasics.MOB_SQUARE_SIZE, size * CobaltBasics.MOB_SQUARE_SIZE, size
-				* CobaltBasics.MOB_SQUARE_SIZE);
+		return new TextureRegion(texture, CobaltBasics.MOB_TEXTURE_START_X + xPos * CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_TEXTURE_START_Y + yPos
+				* CobaltBasics.MOB_SQUARE_SIZE, size * CobaltBasics.MOB_SQUARE_SIZE, size * CobaltBasics.MOB_SQUARE_SIZE);
 	}
 
 	private static TextureRegion loadTerrain(int xPos, int yPos) {
-		return new TextureRegion(texture, xPos * CobaltBasics.TERRAIN_WIDTH, yPos * CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.TERRAIN_WIDTH,
-				CobaltBasics.TERRAIN_HEIGHT);
+		return new TextureRegion(texture, CobaltBasics.TERRAIN_TEXTURE_START_X + xPos * CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_TEXTURE_START_Y + yPos
+				* CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_HEIGHT);
 	}
 
 	public static void dispose() {
