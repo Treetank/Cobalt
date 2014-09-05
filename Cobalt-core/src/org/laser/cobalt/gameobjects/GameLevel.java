@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.types.World;
 
@@ -97,17 +97,17 @@ public class GameLevel {
 	}
 
 	public void rotateTerrain() {
-		if (terrain1.getX() < -300)
+		if (terrain1.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
 			terrain1.move(terrain3.getLocation() + terrain3.getWidth() - 1);
-		if (terrain1.getX() > 300)
+		if (terrain1.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
 			terrain1.move(terrain2.getLocation() - terrain1.getWidth() + 1);
-		if (terrain2.getX() < -300)
+		if (terrain2.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
 			terrain2.move(terrain1.getLocation() + terrain1.getWidth() - 1);
-		if (terrain2.getX() > 300)
+		if (terrain2.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
 			terrain2.move(terrain3.getLocation() - terrain2.getWidth() + 1);
-		if (terrain3.getX() < -300)
+		if (terrain3.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
 			terrain3.move(terrain2.getLocation() + terrain2.getWidth() - 1);
-		if (terrain3.getX() > 300)
+		if (terrain3.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
 			terrain3.move(terrain1.getLocation() - terrain3.getWidth() + 1);
 	}
 
@@ -170,7 +170,7 @@ public class GameLevel {
 	public TextureIndex getTerrainTexture() {
 		return terrainTexture;
 	}
-	
+
 	public LevelIndex getLevelIndex() {
 		return levelIndex;
 	}
