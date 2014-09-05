@@ -20,7 +20,7 @@ public class AssetLoader {
 		texture = new Texture(Gdx.files.internal("textures/texture.png"));
 		texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-		fontTexture = new Texture(Gdx.files.internal("textures/Aharoni2.png"), true); // true
+		fontTexture = new Texture(Gdx.files.internal("textures/aharoni2.png"), true); // true
 		// enables
 		// mipmaps
 		fontTexture.setFilter(TextureFilter.MipMapLinearLinear, TextureFilter.Linear); // linear
@@ -42,7 +42,7 @@ public class AssetLoader {
 		scratch = loadTexture(6, 0, 1);
 		sign = loadTexture(7, 0, 1);
 
-		font = new BitmapFont(Gdx.files.internal("textures/Aharoni2.fnt"), new TextureRegion(fontTexture), false);
+		font = new BitmapFont(Gdx.files.internal("textures/aharoni2.fnt"), new TextureRegion(fontTexture), false);
 	}
 
 	private static TextureRegion loadTexture(int xPos, int yPos, int size) {
