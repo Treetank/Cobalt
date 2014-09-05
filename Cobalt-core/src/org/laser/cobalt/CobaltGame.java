@@ -18,24 +18,31 @@ public class CobaltGame extends Game {
 
 	@Override
 	public void create() {
+		// setup hardware screen metrics
 		DeviceInfo.screenWidth = Gdx.graphics.getWidth();
 		DeviceInfo.screenHeight = Gdx.graphics.getHeight();
 		DeviceInfo.screenMidX = DeviceInfo.screenWidth / 2;
 		DeviceInfo.screenMidY = DeviceInfo.screenHeight / 2;
+
+		// setup game resolution metrics
 		DeviceInfo.gameWidth = CobaltBasics.GAME_SCREEN_WIDTH;
-//		DeviceInfo.gameHeight = DeviceInfo.screenHeight / (DeviceInfo.screenWidth / DeviceInfo.gameWidth);
 		DeviceInfo.gameHeight = CobaltBasics.GAME_SCREEN_HEIGHT;
 		DeviceInfo.gameMidY = DeviceInfo.gameHeight / 2;
 		DeviceInfo.gameMidX = DeviceInfo.gameWidth / 2;
 
+		// load all assets
 		AssetLoader.load();
 
+		// restore persistent game data
 		world = GameSaver.loadWorld();
 
+		// create a new world with restored data
 		gameWorld = new GameWorld(world);
 
+		// attatch a new renderer to our game world
 		renderer = new GameRenderer(gameWorld);
 
+		// start the game screen engine
 		setScreen(new WorldScreen(gameWorld, renderer));
 	}
 
