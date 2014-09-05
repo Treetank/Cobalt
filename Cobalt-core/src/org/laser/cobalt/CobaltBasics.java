@@ -22,18 +22,24 @@ public final class CobaltBasics {
 	public static final int GAME_SCREEN_HEIGHT = 320;
 
 	// how far left and right the hero can walk before scrolling the terrain
-	public static final int LEFT_WALK_LIMIT = 55;
+	public static final int LEFT_WALK_LIMIT = 200;
 	public static final int RIGHT_WALK_LIMIT = GAME_SCREEN_WIDTH - LEFT_WALK_LIMIT;
 
 	// x,y of the starting of the types of textures in our texture map
 	public static final int TERRAIN_TEXTURE_START_X = 0;
 	public static final int TERRAIN_TEXTURE_START_Y = 0;
 	public static final int MOB_TEXTURE_START_X = 0;
-	public static final int MOB_TEXTURE_START_Y = 32;
+	public static final int MOB_TEXTURE_START_Y = 16;
+	public static final int STOREFRONT_TEXTURE_START_X = 0;
+	public static final int STOREFRONT_TEXTURE_START_Y = 48;
 
 	// height and width of terrains
 	public static final int TERRAIN_WIDTH = 256;
 	public static final int TERRAIN_HEIGHT = 16;
+
+	// height and width of storefronts
+	public static final int STOREFRONT_WIDTH = 480;
+	public static final int STOREFRONT_HEIGHT = 128;
 
 	// height from bottom of viewport to start drawing the terrain
 	public static final int TERRAIN_BASE_Y = 0;

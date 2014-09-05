@@ -22,24 +22,22 @@ public class AssetLoader {
 
 	public static TextureRegion sign, house;
 
+	public static TextureRegion storefront;
+
 	public static BitmapFont font;
 
 	public static void load() {
 		texture = new Texture(Gdx.files.internal("textures/texture.png"));
 		texture.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
-		fontTexture = new Texture(Gdx.files.internal("textures/aharoni2.png"), true); // true
-		// enables
-		// mipmaps
-		fontTexture.setFilter(TextureFilter.MipMapLinearLinear, TextureFilter.Linear); // linear
-																						// filtering
-																						// in
-																						// nearest
-																						// mipmap
-																						// image
+		// true enables mipmaps
+		fontTexture = new Texture(Gdx.files.internal("textures/aharoni2.png"), true);
+
+		// linear filtering in nearest mipmap image
+		fontTexture.setFilter(TextureFilter.MipMapLinearLinear, TextureFilter.Linear);
 
 		grass = loadTerrain(0, 0);
-		ice = loadTerrain(0, 1);
+		ice = loadTerrain(1, 0);
 
 		hero = loadTexture(0, 0, 1);
 		heroAttack = loadTexture(1, 0, 1);
@@ -49,7 +47,9 @@ public class AssetLoader {
 		explosion = loadTexture(5, 0, 1);
 		scratch = loadTexture(6, 0, 1);
 		sign = loadTexture(7, 0, 1);
-		house = loadTexture(0, 1, 1);
+		house = loadTexture(8, 0, 1);
+
+		storefront = loadStorefront(0, 0);
 
 		font = new BitmapFont(Gdx.files.internal("textures/aharoni2.fnt"), new TextureRegion(fontTexture), false);
 	}
@@ -62,6 +62,11 @@ public class AssetLoader {
 	private static TextureRegion loadTerrain(int xPos, int yPos) {
 		return new TextureRegion(texture, CobaltBasics.TERRAIN_TEXTURE_START_X + xPos * CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_TEXTURE_START_Y + yPos
 				* CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_HEIGHT);
+	}
+
+	private static TextureRegion loadStorefront(int xPos, int yPos) {
+		return new TextureRegion(texture, CobaltBasics.STOREFRONT_TEXTURE_START_X + xPos * CobaltBasics.STOREFRONT_WIDTH,
+				CobaltBasics.STOREFRONT_TEXTURE_START_Y + yPos * CobaltBasics.STOREFRONT_HEIGHT, CobaltBasics.STOREFRONT_WIDTH, CobaltBasics.STOREFRONT_HEIGHT);
 	}
 
 	public static void dispose() {

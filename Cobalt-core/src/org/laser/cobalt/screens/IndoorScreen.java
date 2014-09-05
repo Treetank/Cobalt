@@ -1,8 +1,8 @@
 package org.laser.cobalt.screens;
 
 import org.laser.cobalt.gameworld.GameWorld;
-import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
-import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
+import org.laser.cobalt.helpers.inputhandlers.IndoorInputHandler;
+import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -10,13 +10,13 @@ import com.badlogic.gdx.Screen;
 public class IndoorScreen implements Screen {
 
 	private GameWorld world;
-	private GameWorldRenderer renderer;
+	private IndoorWorldRenderer renderer;
 
 	public IndoorScreen(GameWorld gameWorld) {
 		this.world = gameWorld;
-		this.renderer = new GameWorldRenderer(gameWorld);
+		this.renderer = new IndoorWorldRenderer(gameWorld);
 
-		Gdx.input.setInputProcessor(new WorldInputHandler(world));
+		Gdx.input.setInputProcessor(new IndoorInputHandler(world));
 	}
 
 	@Override
