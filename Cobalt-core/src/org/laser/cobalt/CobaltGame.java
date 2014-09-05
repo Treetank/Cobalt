@@ -1,7 +1,6 @@
 package org.laser.cobalt;
 
 import org.laser.cobalt.gameobjects.Hero;
-import org.laser.cobalt.gameworld.GameRenderer;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
@@ -16,7 +15,6 @@ import com.badlogic.gdx.Gdx;
 public class CobaltGame extends Game {
 
 	private GameWorld gameWorld;
-	private GameRenderer renderer;
 	private World world;
 
 	@Override
@@ -45,11 +43,8 @@ public class CobaltGame extends Game {
 		// create a new world with restored data
 		gameWorld = new GameWorld(world);
 
-		// attatch a new renderer to our game world
-		renderer = new GameRenderer(gameWorld);
-
 		// start the game screen engine
-		setScreen(new WorldScreen(gameWorld, renderer));
+		setScreen(new WorldScreen(gameWorld));
 	}
 
 	@Override

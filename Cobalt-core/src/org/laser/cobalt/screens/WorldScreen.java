@@ -12,9 +12,9 @@ public class WorldScreen implements Screen {
 	private GameWorld world;
 	private GameRenderer renderer;
 
-	public WorldScreen(GameWorld gameWorld, GameRenderer renderer) {
+	public WorldScreen(GameWorld gameWorld) {
 		this.world = gameWorld;
-		this.renderer = renderer;
+		this.renderer = new GameRenderer(gameWorld);
 
 		Gdx.input.setInputProcessor(new InputHandler(world));
 	}
