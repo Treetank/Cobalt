@@ -1,6 +1,6 @@
 package org.laser.cobalt.screens;
 
-import org.laser.cobalt.gameworld.GameRenderer;
+import org.laser.cobalt.gameworld.GameWorldRenderer;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.InputHandler;
 
@@ -10,11 +10,11 @@ import com.badlogic.gdx.Screen;
 public class WorldScreen implements Screen {
 
 	private GameWorld world;
-	private GameRenderer renderer;
+	private GameWorldRenderer renderer;
 
 	public WorldScreen(GameWorld gameWorld) {
 		this.world = gameWorld;
-		this.renderer = new GameRenderer(gameWorld);
+		this.renderer = new GameWorldRenderer(gameWorld);
 
 		Gdx.input.setInputProcessor(new InputHandler(world));
 	}

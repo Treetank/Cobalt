@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class GameRenderer {
+public class GameWorldRenderer {
 
 	private GameWorld gameWorld;
 
@@ -26,7 +26,7 @@ public class GameRenderer {
 	private SpriteBatch batcher;
 	private BitmapFont font;
 
-	public GameRenderer(GameWorld gameWorld) {
+	public GameWorldRenderer(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
 
 		cam = new OrthographicCamera();
