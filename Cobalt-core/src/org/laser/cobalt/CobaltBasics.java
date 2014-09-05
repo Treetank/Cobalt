@@ -3,11 +3,11 @@ package org.laser.cobalt;
 public final class CobaltBasics {
 
 	public static enum TextureIndex {
-		GRASS, ICE, HERO, SLIME, IMP, HERO_ATTACKING, EXPLOSION, SCRATCH, SIGN
+		GRASS, ICE, HERO, SLIME, IMP, CREEPER, HERO_ATTACKING, EXPLOSION, SCRATCH, SIGN
 	};
 
 	public static enum LevelIndex {
-		STARTING_PATH, IMP_PATH
+		STARTING_PATH, IMP_PATH, CREEPER_PATH
 	};
 
 	public static final int DESKTOP_VIEWPORT_WIDTH = 480;

@@ -6,6 +6,7 @@ import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -96,6 +97,9 @@ public class GameRenderer {
 				break;
 			case IMP:
 				tempRegion = AssetLoader.imp;
+				break;
+			case CREEPER:
+				tempRegion = AssetLoader.creeper;
 				break;
 			default:
 				tempRegion = AssetLoader.slime;

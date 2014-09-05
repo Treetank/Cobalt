@@ -40,6 +40,9 @@ public class GameSaver {
 		case IMP_PATH:
 			jWorld.levelIndex = 2;
 			break;
+		case CREEPER_PATH:
+			jWorld.levelIndex = 3;
+			break;
 		default:
 			jWorld.levelIndex = 1;
 			break;
@@ -67,6 +70,9 @@ public class GameSaver {
 				break;
 			case 2:
 				world.setLevel(LevelIndex.IMP_PATH);
+				break;
+			case 3:
+				world.setLevel(LevelIndex.CREEPER_PATH);
 				break;
 			default:
 				world.setLevel(LevelIndex.STARTING_PATH);
