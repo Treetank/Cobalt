@@ -10,16 +10,14 @@ import org.laser.cobalt.gameworld.GameWorld;
 public class SecondLevel extends GameLevel {
 
 	public SecondLevel(GameWorld GameWorld) {
-		super(500.0f, false, GameWorld, TextureIndex.ICE);
+		super(1500.0f, false, GameWorld, TextureIndex.ICE);
 		levelIndex = LevelIndex.IMP_PATH;
 		AddMob(new Imp(100));
-		AddMob(new Imp(155));
-		AddMob(new Imp(200));
-		AddMob(new Imp(250));
-		AddMob(new Imp(300));
-		AddMob(new Imp(350));
-		AddMob(new Imp(450));
+		AddMob(new Imp(355));
+		AddMob(new Imp(700));
+		AddMob(new Imp(1050));
+		AddMob(new Imp(1300));
 
-		AddExit(new Exit(475, TextureIndex.SIGN, LevelIndex.STARTING_PATH));
+		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.STARTING_PATH));
 	}
 }
