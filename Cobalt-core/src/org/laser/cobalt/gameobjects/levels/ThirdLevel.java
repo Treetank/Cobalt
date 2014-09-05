@@ -20,6 +20,7 @@ public class ThirdLevel extends GameLevel {
 		AddMob(new Creeper(1050));
 		AddMob(new Creeper(1350));
 
+		AddExit(new Exit(10, TextureIndex.HOUSE, LevelIndex.IMP_PATH));
 		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.STARTING_PATH));
 	}
 }

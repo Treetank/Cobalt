@@ -3,7 +3,7 @@ package org.laser.cobalt;
 public final class CobaltBasics {
 
 	public static enum TextureIndex {
-		GRASS, ICE, HERO, SLIME, IMP, CREEPER, HERO_ATTACKING, EXPLOSION, SCRATCH, SIGN
+		GRASS, ICE, HERO, SLIME, IMP, CREEPER, HERO_ATTACKING, EXPLOSION, SCRATCH, SIGN, HOUSE
 	};
 
 	public static enum LevelIndex {

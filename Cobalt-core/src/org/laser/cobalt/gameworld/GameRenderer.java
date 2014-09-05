@@ -58,6 +58,9 @@ public class GameRenderer {
 			case SIGN:
 				tempRegion = AssetLoader.sign;
 				break;
+			case HOUSE:
+				tempRegion = AssetLoader.house;
+				break;
 			default:
 				tempRegion = AssetLoader.sign;
 				break;

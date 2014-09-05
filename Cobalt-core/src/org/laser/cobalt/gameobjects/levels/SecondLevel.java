@@ -18,6 +18,7 @@ public class SecondLevel extends GameLevel {
 		AddMob(new Imp(1050));
 		AddMob(new Imp(1300));
 
+		AddExit(new Exit(10, TextureIndex.HOUSE, LevelIndex.STARTING_PATH));
 		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.CREEPER_PATH));
 	}
 }

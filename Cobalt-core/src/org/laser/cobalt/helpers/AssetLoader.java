@@ -12,7 +12,15 @@ public class AssetLoader {
 
 	public static Texture texture, fontTexture;
 
-	public static TextureRegion grass, ice, hero, slime, creeper, imp, heroAttack, explosion, scratch, sign;
+	public static TextureRegion grass, ice;
+
+	public static TextureRegion hero, heroAttack;
+
+	public static TextureRegion slime, creeper, imp;
+
+	public static TextureRegion explosion, scratch;
+
+	public static TextureRegion sign, house;
 
 	public static BitmapFont font;
 
@@ -41,6 +49,7 @@ public class AssetLoader {
 		explosion = loadTexture(5, 0, 1);
 		scratch = loadTexture(6, 0, 1);
 		sign = loadTexture(7, 0, 1);
+		house = loadTexture(0, 1, 1);
 
 		font = new BitmapFont(Gdx.files.internal("textures/aharoni2.fnt"), new TextureRegion(fontTexture), false);
 	}

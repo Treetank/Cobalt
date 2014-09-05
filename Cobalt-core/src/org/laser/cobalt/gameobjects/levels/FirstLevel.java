@@ -20,6 +20,7 @@ public class FirstLevel extends GameLevel {
 		AddMob(new Slime(1050));
 		AddMob(new Slime(1350));
 
+		AddExit(new Exit(10, TextureIndex.HOUSE, LevelIndex.CREEPER_PATH));
 		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.IMP_PATH));
 	}
 }

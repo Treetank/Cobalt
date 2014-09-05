@@ -58,6 +58,6 @@ public class GameWorld {
 		setLevel(level);
 		world.setLevel(level);
 		world.setLevelPosition(0);
-		world.getHero().move(0);
+		world.getHero().move(50);
 	}
 }
