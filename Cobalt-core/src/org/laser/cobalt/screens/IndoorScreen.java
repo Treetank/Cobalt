@@ -7,12 +7,12 @@ import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
-public class WorldScreen implements Screen {
+public class IndoorScreen implements Screen {
 
 	private GameWorld world;
 	private GameWorldRenderer renderer;
 
-	public WorldScreen(GameWorld gameWorld) {
+	public IndoorScreen(GameWorld gameWorld) {
 		this.world = gameWorld;
 		this.renderer = new GameWorldRenderer(gameWorld);
 

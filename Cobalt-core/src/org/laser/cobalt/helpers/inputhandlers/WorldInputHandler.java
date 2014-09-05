@@ -1,4 +1,4 @@
-package org.laser.cobalt.helpers;
+package org.laser.cobalt.helpers.inputhandlers;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.DeviceInfo;
@@ -6,11 +6,11 @@ import org.laser.cobalt.gameworld.GameWorld;
 
 import com.badlogic.gdx.InputProcessor;
 
-public class InputHandler implements InputProcessor {
+public class WorldInputHandler implements InputProcessor {
 
 	private GameWorld gameWorld;
 
-	public InputHandler(GameWorld gameWorld) {
+	public WorldInputHandler(GameWorld gameWorld) {
 		this.gameWorld = gameWorld;
 	}
 

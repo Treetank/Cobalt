@@ -1,9 +1,10 @@
-package org.laser.cobalt.gameworld;
+package org.laser.cobalt.helpers.renderers;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Mob;
+import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;
 
