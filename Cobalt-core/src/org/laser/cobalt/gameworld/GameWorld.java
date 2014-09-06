@@ -1,7 +1,7 @@
 package org.laser.cobalt.gameworld;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.GameLevel;
+import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.helpers.types.World;
 
 public class GameWorld {

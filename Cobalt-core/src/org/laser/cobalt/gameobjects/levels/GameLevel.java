@@ -1,4 +1,4 @@
-package org.laser.cobalt.gameobjects;
+package org.laser.cobalt.gameobjects.levels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,11 @@ import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.DeviceInfo;
+import org.laser.cobalt.gameobjects.Drawable;
+import org.laser.cobalt.gameobjects.Exit;
+import org.laser.cobalt.gameobjects.Hero;
+import org.laser.cobalt.gameobjects.Mob;
+import org.laser.cobalt.gameobjects.Terrain;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.types.World;
 

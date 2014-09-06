@@ -3,11 +3,10 @@ package org.laser.cobalt.gameobjects.levels;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.Exit;
-import org.laser.cobalt.gameobjects.GameLevel;
 import org.laser.cobalt.gameobjects.enemies.Imp;
 import org.laser.cobalt.gameworld.OutdoorGameWorld;
 
-public class SecondLevel extends GameLevel {
+public class SecondLevel extends OutdoorGameLevel {
 
 	public SecondLevel(OutdoorGameWorld GameWorld) {
 		super(1500.0f, false, GameWorld, TextureIndex.ICE);
