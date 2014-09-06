@@ -4,7 +4,7 @@ import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Mob;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;
 
@@ -20,14 +20,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class IndoorWorldRenderer {
 
-	private GameWorld gameWorld;
+	private OutdoorGameWorld gameWorld;
 
 	private OrthographicCamera cam;
 	private ShapeRenderer shapeRenderer;
 	private SpriteBatch batcher;
 	private BitmapFont font;
 
-	public IndoorWorldRenderer(GameWorld gameWorld) {
+	public IndoorWorldRenderer(OutdoorGameWorld gameWorld) {
 		this.gameWorld = gameWorld;
 
 		cam = new OrthographicCamera();

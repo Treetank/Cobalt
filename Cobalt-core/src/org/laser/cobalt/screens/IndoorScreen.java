@@ -1,7 +1,7 @@
 package org.laser.cobalt.screens;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.inputhandlers.IndoorInputHandler;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
 
@@ -10,12 +10,12 @@ import com.badlogic.gdx.Screen;
 
 public class IndoorScreen implements Screen {
 
-	private GameWorld world;
+	private OutdoorGameWorld world;
 	private IndoorWorldRenderer renderer;
 	private float worldPosition, heroPosition;
 	private LevelIndex previousLevel;
 
-	public IndoorScreen(GameWorld gameWorld, float worldPosition, float heroX, LevelIndex previousLevel) {
+	public IndoorScreen(OutdoorGameWorld gameWorld, float worldPosition, float heroX, LevelIndex previousLevel) {
 		this.world = gameWorld;
 		this.renderer = new IndoorWorldRenderer(gameWorld);
 		this.worldPosition = worldPosition;

@@ -1,7 +1,7 @@
 package org.laser.cobalt;
 
 import org.laser.cobalt.gameobjects.Hero;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
 import org.laser.cobalt.helpers.types.MobStats;
@@ -14,7 +14,7 @@ import com.badlogic.gdx.Gdx;
 
 public class CobaltGame extends Game {
 
-	private GameWorld gameWorld;
+	private OutdoorGameWorld gameWorld;
 	private World world;
 
 	@Override
@@ -41,7 +41,7 @@ public class CobaltGame extends Game {
 		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0)));
 
 		// create a new world with restored data
-		gameWorld = new GameWorld(world);
+		gameWorld = new OutdoorGameWorld(world);
 
 		// start the game screen engine
 		setScreen(new WorldScreen(gameWorld));

@@ -1,6 +1,6 @@
 package org.laser.cobalt.screens;
 
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 
@@ -9,10 +9,10 @@ import com.badlogic.gdx.Screen;
 
 public class WorldScreen implements Screen {
 
-	private GameWorld world;
+	private OutdoorGameWorld world;
 	private GameWorldRenderer renderer;
 
-	public WorldScreen(GameWorld gameWorld) {
+	public WorldScreen(OutdoorGameWorld gameWorld) {
 		this.world = gameWorld;
 		this.renderer = new GameWorldRenderer(gameWorld);
 

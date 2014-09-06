@@ -5,11 +5,11 @@ import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.GameLevel;
 import org.laser.cobalt.gameobjects.enemies.Imp;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 
 public class SecondLevel extends GameLevel {
 
-	public SecondLevel(GameWorld GameWorld) {
+	public SecondLevel(OutdoorGameWorld GameWorld) {
 		super(1500.0f, false, GameWorld, TextureIndex.ICE);
 		levelIndex = LevelIndex.IMP_PATH;
 		AddMob(new Imp(100));

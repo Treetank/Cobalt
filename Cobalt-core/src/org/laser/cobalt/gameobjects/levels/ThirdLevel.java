@@ -5,11 +5,11 @@ import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.GameLevel;
 import org.laser.cobalt.gameobjects.enemies.Creeper;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 
 public class ThirdLevel extends GameLevel {
 
-	public ThirdLevel(GameWorld gameWorld) {
+	public ThirdLevel(OutdoorGameWorld gameWorld) {
 		super(1500.0f, false, gameWorld, TextureIndex.GRASS);
 		levelIndex = LevelIndex.CREEPER_PATH;
 		AddMob(new Creeper(100));

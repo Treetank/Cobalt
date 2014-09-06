@@ -2,15 +2,15 @@ package org.laser.cobalt.helpers.inputhandlers;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.DeviceInfo;
-import org.laser.cobalt.gameworld.GameWorld;
+import org.laser.cobalt.gameworld.OutdoorGameWorld;
 
 import com.badlogic.gdx.InputProcessor;
 
 public class WorldInputHandler implements InputProcessor {
 
-	private GameWorld gameWorld;
+	private OutdoorGameWorld gameWorld;
 
-	public WorldInputHandler(GameWorld gameWorld) {
+	public WorldInputHandler(OutdoorGameWorld gameWorld) {
 		this.gameWorld = gameWorld;
 	}
 
