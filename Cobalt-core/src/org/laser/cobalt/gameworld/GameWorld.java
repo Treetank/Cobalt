@@ -48,6 +48,9 @@ public class GameWorld {
 		case CREEPER_PATH:
 			this.level = new ThirdLevel(this);
 			break;
+		case HOSPITAL:
+			this.level = new ThirdLevel(this);
+			break;
 		default:
 			this.level = new FirstLevel(this);
 			break;
