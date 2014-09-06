@@ -14,7 +14,8 @@ public class GameSaver {
 
 	public static class JsonWorld {
 		public float heroHp, heroDamage, heroExp, heroMaxHp, heroLevel, heroSwingSpeed, heroMoveSpeed, heroSwingRange;
-		public float heroX, levelIndex, levelPosition;
+		public float heroX, levelPosition;
+		public LevelIndex levelIndex;
 	}
 
 	public static void saveWorld(World world) {
@@ -33,20 +34,7 @@ public class GameSaver {
 
 		jWorld.levelPosition = world.getLevelPosition();
 
-		switch (world.getLevel()) {
-		case STARTING_PATH:
-			jWorld.levelIndex = 1;
-			break;
-		case IMP_PATH:
-			jWorld.levelIndex = 2;
-			break;
-		case CREEPER_PATH:
-			jWorld.levelIndex = 3;
-			break;
-		default:
-			jWorld.levelIndex = 1;
-			break;
-		}
+		jWorld.levelIndex = world.getLevel();
 
 		Json json = new Json();
 		writeFile("game.sav", json.toJson(jWorld));
@@ -64,20 +52,7 @@ public class GameSaver {
 
 			world.setLevelPosition(jWorld.levelPosition);
 
-			switch ((int) jWorld.levelIndex) {
-			case 1:
-				world.setLevel(LevelIndex.STARTING_PATH);
-				break;
-			case 2:
-				world.setLevel(LevelIndex.IMP_PATH);
-				break;
-			case 3:
-				world.setLevel(LevelIndex.CREEPER_PATH);
-				break;
-			default:
-				world.setLevel(LevelIndex.STARTING_PATH);
-				break;
-			}
+			world.setLevel(jWorld.levelIndex);
 		}
 		return world;
 	}
