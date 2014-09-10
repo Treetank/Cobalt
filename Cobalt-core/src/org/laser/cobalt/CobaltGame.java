@@ -23,7 +23,7 @@ public class CobaltGame extends Game {
 	private GameWorld gameWorld;
 	private World world;
 	private IRenderer renderer;
-	private GameLevel gameLevel;
+	private GameLevel gameLevel, lastOutdoorLevel;
 
 	@Override
 	public void create() {
@@ -70,15 +70,22 @@ public class CobaltGame extends Game {
 		return renderer;
 	}
 
-	public void SetLevel(LevelIndex levelIndex) {
-		gameLevel = LevelFactory.LevelCreator(this, levelIndex);
+	public void setLevel(LevelIndex levelIndex) {
+		GameLevel tempLevel = LevelFactory.LevelCreator(this, levelIndex);
+		if (tempLevel.isIndoor()) {
+			goIndoors();
+			gameLevel = tempLevel;
+		} else {
+			goOutdoors();
+			gameLevel = tempLevel;
+		}
 	}
 
 	public void ChangeLevel(LevelIndex levelIndex) {
 		if (levelIndex == null) {
 			levelIndex = gameLevel.getLevelIndex();
 		}
-		SetLevel(levelIndex);
+		setLevel(levelIndex);
 		world.setLevel(levelIndex);
 		world.setLevelPosition(0);
 		world.getHero().move(50);
@@ -91,6 +98,14 @@ public class CobaltGame extends Game {
 	public void update(float delta) {
 		gameLevel.update(delta);
 		gameWorld.update(delta);
+	}
+
+	private void goIndoors() {
+		lastOutdoorLevel = gameLevel;
+	}
+
+	private void goOutdoors() {
+		gameLevel = lastOutdoorLevel;
 	}
 
 	@Override

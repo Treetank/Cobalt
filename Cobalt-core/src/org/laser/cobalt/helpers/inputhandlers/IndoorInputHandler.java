@@ -1,8 +1,6 @@
 package org.laser.cobalt.helpers.inputhandlers;
 
-import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltGame;
-import org.laser.cobalt.DeviceInfo;
 
 import com.badlogic.gdx.InputProcessor;
 
@@ -34,19 +32,12 @@ public class IndoorInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		if (screenY <= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.VIEWPORT_LOWER_BOUNDS) {
-			game.getLevel().clickEnter();
-		} else if (screenX > DeviceInfo.screenMidX)
-			game.getLevel().moveRight();
-		else
-			game.getLevel().moveLeft();
-		return true;
+		return false;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		game.getLevel().stopMoving();
-		return true;
+		return false;
 	}
 
 	@Override

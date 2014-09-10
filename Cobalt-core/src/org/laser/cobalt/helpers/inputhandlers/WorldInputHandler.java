@@ -3,6 +3,7 @@ package org.laser.cobalt.helpers.inputhandlers;
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
+import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
 
 import com.badlogic.gdx.InputProcessor;
 
@@ -34,18 +35,20 @@ public class WorldInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
 		if (screenY <= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.VIEWPORT_LOWER_BOUNDS) {
-			game.getLevel().clickEnter();
+			level.clickEnter();
 		} else if (screenX > DeviceInfo.screenMidX)
-			game.getLevel().moveRight();
+			level.moveRight();
 		else
-			game.getLevel().moveLeft();
+			level.moveLeft();
 		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		game.getLevel().stopMoving();
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+		level.stopMoving();
 		return true;
 	}
 

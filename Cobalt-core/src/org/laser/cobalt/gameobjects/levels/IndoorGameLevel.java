@@ -5,9 +5,17 @@ import org.laser.cobalt.CobaltGame;
 
 public class IndoorGameLevel extends GameLevel {
 
-	public IndoorGameLevel(float length, boolean loopable, CobaltGame game, TextureIndex texture) {
-		super(length, loopable, game, texture);
-		// TODO Auto-generated constructor stub
+	public IndoorGameLevel(CobaltGame game, TextureIndex texture) {
+		super(game, texture);
+	}
+
+	@Override
+	public boolean isIndoor() {
+		return true;
+	}
+
+	@Override
+	public void update(float delta) {
 	}
 
 }

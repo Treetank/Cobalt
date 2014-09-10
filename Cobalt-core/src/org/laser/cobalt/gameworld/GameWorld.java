@@ -11,7 +11,7 @@ public class GameWorld {
 	public GameWorld(CobaltGame game) {
 		this.game = game;
 		this.world = game.getWorld();
-		game.SetLevel(world.getLevel());
+		game.setLevel(world.getLevel());
 	}
 
 	public void update(float delta) {

@@ -6,6 +6,7 @@ import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.Mob;
+import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;
@@ -51,6 +52,7 @@ public class GameWorldRenderer implements IRenderer {
 	}
 
 	public void render(float delta) {
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
 		Hero hero = game.getWorld().getHero();
 
 		TextureRegion tempRegion = null;
@@ -62,7 +64,7 @@ public class GameWorldRenderer implements IRenderer {
 		batcher.begin();
 		batcher.enableBlending();
 
-		for (Exit x : game.getLevel().getExit()) {
+		for (Exit x : level.getExit()) {
 			switch (x.getTexture()) {
 			case SIGN:
 				tempRegion = AssetLoader.sign;
@@ -102,7 +104,7 @@ public class GameWorldRenderer implements IRenderer {
 			}
 			batcher.draw(tempRegion, hero.getX(), hero.getY());
 		}
-		for (Mob m : game.getLevel().getEnemies()) {
+		for (Mob m : level.getEnemies()) {
 			switch (m.getTexture()) {
 			case SLIME:
 				tempRegion = AssetLoader.slime;
@@ -138,13 +140,15 @@ public class GameWorldRenderer implements IRenderer {
 	}
 
 	public void drawUI() {
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+
 		Hero hero = game.getWorld().getHero();
 
 		MobStats stats = gameWorld.getWorld().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
-		for (Exit x : game.getLevel().getExit()) {
+		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				DrawEnterButton();
 			}
@@ -154,7 +158,7 @@ public class GameWorldRenderer implements IRenderer {
 		batcher.enableBlending();
 		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 15);
 		font.draw(batcher, stats.Exp() + "", 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 25);
-		for (Exit x : game.getLevel().getExit()) {
+		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				font.draw(batcher, "ENTER", CobaltBasics.GAME_SCREEN_WIDTH - 50, CobaltBasics.GAME_SCREEN_HEIGHT - 10);
 			}
@@ -163,6 +167,7 @@ public class GameWorldRenderer implements IRenderer {
 	}
 
 	public void drawTerrain() {
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
 		TextureRegion tempRegion = null;
 
 		shapeRenderer.begin(ShapeType.Filled);
@@ -187,9 +192,9 @@ public class GameWorldRenderer implements IRenderer {
 			break;
 
 		}
-		batcher.draw(tempRegion, game.getLevel().getTerrain1().getX(), game.getLevel().getTerrain1().getY());
-		batcher.draw(tempRegion, game.getLevel().getTerrain2().getX(), game.getLevel().getTerrain2().getY());
-		batcher.draw(tempRegion, game.getLevel().getTerrain3().getX(), game.getLevel().getTerrain3().getY());
+		batcher.draw(tempRegion, level.getTerrain1().getX(), level.getTerrain1().getY());
+		batcher.draw(tempRegion, level.getTerrain2().getX(), level.getTerrain2().getY());
+		batcher.draw(tempRegion, level.getTerrain3().getX(), level.getTerrain3().getY());
 
 		batcher.end();
 	}
