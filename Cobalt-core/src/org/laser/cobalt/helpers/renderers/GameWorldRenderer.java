@@ -4,6 +4,7 @@ import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
+import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
@@ -50,6 +51,8 @@ public class GameWorldRenderer implements IRenderer {
 	}
 
 	public void render(float delta) {
+		Hero hero = game.getWorld().getHero();
+
 		TextureRegion tempRegion = null;
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -73,7 +76,7 @@ public class GameWorldRenderer implements IRenderer {
 			}
 			batcher.draw(tempRegion, x.getX(), x.getY());
 		}
-		switch (game.getLevel().getHero().getTexture()) {
+		switch (hero.getTexture()) {
 		case HERO:
 			tempRegion = AssetLoader.hero;
 			break;
@@ -84,9 +87,9 @@ public class GameWorldRenderer implements IRenderer {
 			tempRegion = AssetLoader.hero;
 			break;
 		}
-		batcher.draw(tempRegion, game.getLevel().getHero().getX(), game.getLevel().getHero().getY());
-		if (game.getLevel().getHero().takingDamage()) {
-			switch (game.getLevel().getHero().takingDamageImage()) {
+		batcher.draw(tempRegion, hero.getX(), hero.getY());
+		if (hero.takingDamage()) {
+			switch (hero.takingDamageImage()) {
 			case EXPLOSION:
 				tempRegion = AssetLoader.explosion;
 				break;
@@ -97,7 +100,7 @@ public class GameWorldRenderer implements IRenderer {
 				tempRegion = AssetLoader.explosion;
 				break;
 			}
-			batcher.draw(tempRegion, game.getLevel().getHero().getX(), game.getLevel().getHero().getY());
+			batcher.draw(tempRegion, hero.getX(), hero.getY());
 		}
 		for (Mob m : game.getLevel().getEnemies()) {
 			switch (m.getTexture()) {
@@ -135,12 +138,14 @@ public class GameWorldRenderer implements IRenderer {
 	}
 
 	public void drawUI() {
+		Hero hero = game.getWorld().getHero();
+
 		MobStats stats = gameWorld.getWorld().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : game.getLevel().getExit()) {
-			if (isNear(x.getX(), x.getWidth(), game.getLevel().getHero().getX(), game.getLevel().getHero().getWidth())) {
+			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				DrawEnterButton();
 			}
 		}
@@ -150,7 +155,7 @@ public class GameWorldRenderer implements IRenderer {
 		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 15);
 		font.draw(batcher, stats.Exp() + "", 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 25);
 		for (Exit x : game.getLevel().getExit()) {
-			if (isNear(x.getX(), x.getWidth(), game.getLevel().getHero().getX(), game.getLevel().getHero().getWidth())) {
+			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				font.draw(batcher, "ENTER", CobaltBasics.GAME_SCREEN_WIDTH - 50, CobaltBasics.GAME_SCREEN_HEIGHT - 10);
 			}
 		}

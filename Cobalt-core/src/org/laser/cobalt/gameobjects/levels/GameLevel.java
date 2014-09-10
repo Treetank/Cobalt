@@ -28,7 +28,6 @@ public class GameLevel {
 	protected TextureIndex terrainTexture;
 	protected LevelIndex levelIndex;
 
-	protected Hero hero;
 	protected World world;
 
 	public GameLevel(float length, boolean loopable, CobaltGame game, TextureIndex texture) {
@@ -37,7 +36,6 @@ public class GameLevel {
 		this.game = game;
 		this.world = game.getWorld();
 		this.gameWorld = game.getGameWorld();
-		this.hero = world.getHero();
 		this.terrainTexture = texture;
 
 		terrain1 = new Terrain(0, texture);
@@ -49,6 +47,7 @@ public class GameLevel {
 	}
 
 	public void update(float delta) {
+		Hero hero = game.getWorld().getHero();
 		hero.move(hero.getLocation() + hero.getVelocity());
 
 		if ((hero.getCenterX() < CobaltBasics.LEFT_WALK_LIMIT && hero.getVelocity() < 0)
@@ -93,14 +92,15 @@ public class GameLevel {
 	}
 
 	public void moveLeft() {
-		hero.moveLeft();
+		game.getWorld().getHero().moveLeft();
 	}
 
 	public void moveRight() {
-		hero.moveRight();
+		game.getWorld().getHero().moveRight();
 	}
 
 	public void clickEnter() {
+		Hero hero = game.getWorld().getHero();
 		Exit exitToFollow = null;
 		for (Exit x : exits) {
 			if (hero.getLocation() > x.getLocation() - hero.getWidth() && hero.getLocation() < x.getLocation() + x.getWidth()) {
@@ -113,7 +113,7 @@ public class GameLevel {
 	}
 
 	public void stopMoving() {
-		hero.stop();
+		game.getWorld().getHero().stop();
 	}
 
 	public void rotateTerrain() {
@@ -132,6 +132,7 @@ public class GameLevel {
 	}
 
 	public void checkCollisions() {
+		Hero hero = game.getWorld().getHero();
 		for (Mob m : enemies) {
 			if (hero.getLocation() > m.getLocation() - hero.getWidth() && hero.getLocation() <= m.getLocation()) {
 				hero.move(m.getLocation() - hero.getWidth());
@@ -147,10 +148,6 @@ public class GameLevel {
 				m.swing(hero);
 			}
 		}
-	}
-
-	public Hero getHero() {
-		return hero;
 	}
 
 	public Drawable getTerrain1() {
