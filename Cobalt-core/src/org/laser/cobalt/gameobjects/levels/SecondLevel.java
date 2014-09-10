@@ -2,14 +2,14 @@ package org.laser.cobalt.gameobjects.levels;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.enemies.Imp;
-import org.laser.cobalt.gameworld.OutdoorGameWorld;
 
 public class SecondLevel extends OutdoorGameLevel {
 
-	public SecondLevel(OutdoorGameWorld GameWorld) {
-		super(1500.0f, false, GameWorld, TextureIndex.ICE);
+	public SecondLevel(CobaltGame game) {
+		super(1500.0f, false, game, TextureIndex.ICE);
 		levelIndex = LevelIndex.IMP_PATH;
 		AddMob(new Imp(100));
 		AddMob(new Imp(355));

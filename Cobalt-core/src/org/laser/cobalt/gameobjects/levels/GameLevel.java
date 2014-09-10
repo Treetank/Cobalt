@@ -6,6 +6,7 @@ import java.util.List;
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Drawable;
 import org.laser.cobalt.gameobjects.Exit;
@@ -17,6 +18,7 @@ import org.laser.cobalt.helpers.types.World;
 
 public class GameLevel {
 
+	protected CobaltGame game;
 	protected float length;
 	protected boolean loopable;
 	protected Terrain terrain1, terrain2, terrain3;
@@ -29,12 +31,13 @@ public class GameLevel {
 	protected Hero hero;
 	protected World world;
 
-	public GameLevel(float length, boolean loopable, GameWorld world, TextureIndex texture) {
+	public GameLevel(float length, boolean loopable, CobaltGame game, TextureIndex texture) {
 		this.length = length;
 		this.loopable = loopable;
-		this.gameWorld = world;
-		this.hero = world.getWorld().getHero();
-		this.world = world.getWorld();
+		this.game = game;
+		this.world = game.getWorld();
+		this.gameWorld = game.getGameWorld();
+		this.hero = world.getHero();
 		this.terrainTexture = texture;
 
 		terrain1 = new Terrain(0, texture);
@@ -105,7 +108,7 @@ public class GameLevel {
 			}
 		}
 		if (exitToFollow != null) {
-			gameWorld.changeLevel(exitToFollow.GetDestination());
+			game.ChangeLevel(exitToFollow.GetDestination());
 		}
 	}
 

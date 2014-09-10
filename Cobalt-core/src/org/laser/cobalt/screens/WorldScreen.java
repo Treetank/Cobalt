@@ -1,27 +1,27 @@
 package org.laser.cobalt.screens;
 
-import org.laser.cobalt.gameworld.OutdoorGameWorld;
+import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
-import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
+import org.laser.cobalt.interfaces.IRenderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 public class WorldScreen implements Screen {
 
-	private OutdoorGameWorld world;
-	private GameWorldRenderer renderer;
+	private CobaltGame game;
+	private IRenderer renderer;
 
-	public WorldScreen(OutdoorGameWorld gameWorld) {
-		this.world = gameWorld;
-		this.renderer = new GameWorldRenderer(gameWorld);
+	public WorldScreen(CobaltGame game) {
+		this.game = game;
+		this.renderer = game.getRenderer();
 
-		Gdx.input.setInputProcessor(new WorldInputHandler(world));
+		Gdx.input.setInputProcessor(new WorldInputHandler(game));
 	}
 
 	@Override
 	public void render(float delta) {
-		world.update(delta);
+		game.update(delta);
 		renderer.render(delta);
 	}
 

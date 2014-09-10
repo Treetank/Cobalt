@@ -1,12 +1,14 @@
 package org.laser.cobalt.helpers.renderers;
 
 import org.laser.cobalt.CobaltBasics;
+import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Mob;
-import org.laser.cobalt.gameworld.OutdoorGameWorld;
+import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.interfaces.IRenderer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -18,17 +20,21 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class IndoorWorldRenderer {
+public class IndoorWorldRenderer implements IRenderer {
 
-	private OutdoorGameWorld gameWorld;
+	private CobaltGame game;
+
+	private GameWorld gameWorld;
 
 	private OrthographicCamera cam;
 	private ShapeRenderer shapeRenderer;
 	private SpriteBatch batcher;
 	private BitmapFont font;
 
-	public IndoorWorldRenderer(OutdoorGameWorld gameWorld) {
-		this.gameWorld = gameWorld;
+	public IndoorWorldRenderer(CobaltGame game) {
+		this.game = game;
+
+		this.gameWorld = game.getGameWorld();
 
 		cam = new OrthographicCamera();
 		shapeRenderer = new ShapeRenderer();
@@ -53,7 +59,7 @@ public class IndoorWorldRenderer {
 		batcher.begin();
 		batcher.enableBlending();
 
-		for (Exit x : gameWorld.getLevel().getExit()) {
+		for (Exit x : game.getLevel().getExit()) {
 			switch (x.getTexture()) {
 			case SIGN:
 				tempRegion = AssetLoader.sign;
@@ -67,7 +73,7 @@ public class IndoorWorldRenderer {
 			}
 			batcher.draw(tempRegion, x.getX(), x.getY());
 		}
-		switch (gameWorld.getLevel().getHero().getTexture()) {
+		switch (game.getLevel().getHero().getTexture()) {
 		case HERO:
 			tempRegion = AssetLoader.hero;
 			break;
@@ -78,9 +84,9 @@ public class IndoorWorldRenderer {
 			tempRegion = AssetLoader.hero;
 			break;
 		}
-		batcher.draw(tempRegion, gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getY());
-		if (gameWorld.getLevel().getHero().takingDamage()) {
-			switch (gameWorld.getLevel().getHero().takingDamageImage()) {
+		batcher.draw(tempRegion, game.getLevel().getHero().getX(), game.getLevel().getHero().getY());
+		if (game.getLevel().getHero().takingDamage()) {
+			switch (game.getLevel().getHero().takingDamageImage()) {
 			case EXPLOSION:
 				tempRegion = AssetLoader.explosion;
 				break;
@@ -91,9 +97,9 @@ public class IndoorWorldRenderer {
 				tempRegion = AssetLoader.explosion;
 				break;
 			}
-			batcher.draw(tempRegion, gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getY());
+			batcher.draw(tempRegion, game.getLevel().getHero().getX(), game.getLevel().getHero().getY());
 		}
-		for (Mob m : gameWorld.getLevel().getEnemies()) {
+		for (Mob m : game.getLevel().getEnemies()) {
 			switch (m.getTexture()) {
 			case SLIME:
 				tempRegion = AssetLoader.slime;
@@ -133,8 +139,8 @@ public class IndoorWorldRenderer {
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
-		for (Exit x : gameWorld.getLevel().getExit()) {
-			if (isNear(x.getX(), x.getWidth(), gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getWidth())) {
+		for (Exit x : game.getLevel().getExit()) {
+			if (isNear(x.getX(), x.getWidth(), game.getLevel().getHero().getX(), game.getLevel().getHero().getWidth())) {
 				DrawEnterButton();
 			}
 		}
@@ -143,8 +149,8 @@ public class IndoorWorldRenderer {
 		batcher.enableBlending();
 		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 15);
 		font.draw(batcher, stats.Exp() + "", 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 25);
-		for (Exit x : gameWorld.getLevel().getExit()) {
-			if (isNear(x.getX(), x.getWidth(), gameWorld.getLevel().getHero().getX(), gameWorld.getLevel().getHero().getWidth())) {
+		for (Exit x : game.getLevel().getExit()) {
+			if (isNear(x.getX(), x.getWidth(), game.getLevel().getHero().getX(), game.getLevel().getHero().getWidth())) {
 				font.draw(batcher, "ENTER", CobaltBasics.GAME_SCREEN_WIDTH - 50, CobaltBasics.GAME_SCREEN_HEIGHT - 10);
 			}
 		}
@@ -164,7 +170,7 @@ public class IndoorWorldRenderer {
 
 		batcher.begin();
 		batcher.disableBlending();
-		switch (gameWorld.getLevel().getTerrainTexture()) {
+		switch (game.getLevel().getTerrainTexture()) {
 		case GRASS:
 			tempRegion = AssetLoader.grass;
 			break;
@@ -176,9 +182,9 @@ public class IndoorWorldRenderer {
 			break;
 
 		}
-		batcher.draw(tempRegion, gameWorld.getLevel().getTerrain1().getX(), gameWorld.getLevel().getTerrain1().getY());
-		batcher.draw(tempRegion, gameWorld.getLevel().getTerrain2().getX(), gameWorld.getLevel().getTerrain2().getY());
-		batcher.draw(tempRegion, gameWorld.getLevel().getTerrain3().getX(), gameWorld.getLevel().getTerrain3().getY());
+		batcher.draw(tempRegion, game.getLevel().getTerrain1().getX(), game.getLevel().getTerrain1().getY());
+		batcher.draw(tempRegion, game.getLevel().getTerrain2().getX(), game.getLevel().getTerrain2().getY());
+		batcher.draw(tempRegion, game.getLevel().getTerrain3().getX(), game.getLevel().getTerrain3().getY());
 
 		batcher.end();
 	}

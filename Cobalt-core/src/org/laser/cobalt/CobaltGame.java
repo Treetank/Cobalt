@@ -1,12 +1,18 @@
 package org.laser.cobalt;
 
+import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameobjects.Hero;
+import org.laser.cobalt.gameobjects.LevelFactory;
+import org.laser.cobalt.gameobjects.levels.GameLevel;
+import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
+import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
+import org.laser.cobalt.interfaces.IRenderer;
 import org.laser.cobalt.screens.WorldScreen;
 
 import com.badlogic.gdx.Game;
@@ -14,8 +20,10 @@ import com.badlogic.gdx.Gdx;
 
 public class CobaltGame extends Game {
 
-	private OutdoorGameWorld gameWorld;
+	private GameWorld gameWorld;
 	private World world;
+	private IRenderer renderer;
+	private GameLevel gameLevel;
 
 	@Override
 	public void create() {
@@ -41,10 +49,48 @@ public class CobaltGame extends Game {
 		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0)));
 
 		// create a new world with restored data
-		gameWorld = new OutdoorGameWorld(world);
+		gameWorld = new OutdoorGameWorld(this);
+
+		// create a renderer for the outdoors
+		renderer = new GameWorldRenderer(this);
 
 		// start the game screen engine
-		setScreen(new WorldScreen(gameWorld));
+		setScreen(new WorldScreen(this));
+	}
+
+	public GameWorld getGameWorld() {
+		return gameWorld;
+	}
+
+	public World getWorld() {
+		return world;
+	}
+
+	public IRenderer getRenderer() {
+		return renderer;
+	}
+
+	public void SetLevel(LevelIndex levelIndex) {
+		gameLevel = LevelFactory.LevelCreator(this, levelIndex);
+	}
+
+	public void ChangeLevel(LevelIndex levelIndex) {
+		if (levelIndex == null) {
+			levelIndex = gameLevel.getLevelIndex();
+		}
+		SetLevel(levelIndex);
+		world.setLevel(levelIndex);
+		world.setLevelPosition(0);
+		world.getHero().move(50);
+	}
+
+	public GameLevel getLevel() {
+		return gameLevel;
+	}
+
+	public void update(float delta) {
+		gameLevel.update(delta);
+		gameWorld.update(delta);
 	}
 
 	@Override

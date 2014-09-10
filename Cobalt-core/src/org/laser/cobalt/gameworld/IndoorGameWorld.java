@@ -1,10 +1,10 @@
 package org.laser.cobalt.gameworld;
 
-import org.laser.cobalt.helpers.types.World;
+import org.laser.cobalt.CobaltGame;
 
 public class IndoorGameWorld extends GameWorld {
 
-	public IndoorGameWorld(World world) {
-		super(world);
+	public IndoorGameWorld(CobaltGame game) {
+		super(game);
 	}
 }
