@@ -27,7 +27,7 @@ public class CobaltGame extends Game {
 
 	@Override
 	public void create() {
-		// setup hardware screen metrics
+		// setup hardware screen metrics and test mobile git
 		DeviceInfo.screenWidth = Gdx.graphics.getWidth();
 		DeviceInfo.screenHeight = Gdx.graphics.getHeight();
 		DeviceInfo.screenMidX = DeviceInfo.screenWidth / 2;
