@@ -14,8 +14,15 @@ public class Hospital extends IndoorGameLevel {
 	@Override
 	public void doOption(int option) {
 		switch (option) {
-			case 1: break;
+			case 1: 
+				// game.getworld().gethero().heal()
+				break;
 			default: break;
 		}
+	}
+	
+	@Override
+	public void setupText() {
+		greeting = "Welcome to hospital";
 	}
 }
