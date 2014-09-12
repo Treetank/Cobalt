@@ -3,7 +3,7 @@ package org.laser.cobalt.gameobjects.levels;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
 
-public class IndoorGameLevel extends GameLevel {
+public abstract class IndoorGameLevel extends GameLevel {
 
 	public IndoorGameLevel(CobaltGame game, TextureIndex texture) {
 		super(game, texture);
@@ -18,4 +18,9 @@ public class IndoorGameLevel extends GameLevel {
 	public void update(float delta) {
 	}
 
+	public void clickExit() {
+		game.goOutdoors();
+	}
+
+	public abstract void doOption(int option);
 }

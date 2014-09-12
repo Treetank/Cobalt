@@ -27,7 +27,7 @@ public class CobaltGame extends Game {
 
 	@Override
 	public void create() {
-		// setup hardware screen metrics and test mobile git
+		// setup hardware screen metrics
 		DeviceInfo.screenWidth = Gdx.graphics.getWidth();
 		DeviceInfo.screenHeight = Gdx.graphics.getHeight();
 		DeviceInfo.screenMidX = DeviceInfo.screenWidth / 2;
@@ -74,11 +74,8 @@ public class CobaltGame extends Game {
 		GameLevel tempLevel = LevelFactory.LevelCreator(this, levelIndex);
 		if (tempLevel.isIndoor()) {
 			goIndoors();
-			gameLevel = tempLevel;
-		} else {
-			goOutdoors();
-			gameLevel = tempLevel;
 		}
+		gameLevel = tempLevel;
 	}
 
 	public void ChangeLevel(LevelIndex levelIndex) {
@@ -104,7 +101,7 @@ public class CobaltGame extends Game {
 		lastOutdoorLevel = gameLevel;
 	}
 
-	private void goOutdoors() {
+	public void goOutdoors() {
 		gameLevel = lastOutdoorLevel;
 	}
 
