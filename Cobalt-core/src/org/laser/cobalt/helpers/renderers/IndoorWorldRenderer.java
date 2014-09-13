@@ -7,7 +7,9 @@ public class IndoorWorldRenderer implements IRenderer {
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
-
+		// blank screen
+		// draw image
+		// draw text from level
 	}
 
 }

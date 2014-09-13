@@ -16,7 +16,7 @@ public class IndoorScreen implements Screen {
 		this.game = game;
 		this.renderer = game.getRenderer();
 
-		Gdx.input.setInputProcessor(new WorldInputHandler(game));
+		Gdx.input.setInputProcessor(new IndoorInputHandler(game));
 	}
 
 	@Override

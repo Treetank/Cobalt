@@ -99,10 +99,18 @@ public class CobaltGame extends Game {
 
 	private void goIndoors() {
 		lastOutdoorLevel = gameLevel;
+		// save level position
+		// save hero x
+		// set renderer= new indoorrenderer(this);
+		// setscreen(new indoorscreen);
 	}
 
 	public void goOutdoors() {
 		gameLevel = lastOutdoorLevel;
+		// restore level position
+		// restore hero x
+		// set renderer = new outdoorrenderer(this);
+		// setscreen(new worldscreen);
 	}
 
 	@Override
