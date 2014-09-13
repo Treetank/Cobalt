@@ -6,6 +6,7 @@ import org.laser.cobalt.CobaltGame;
 public abstract class IndoorGameLevel extends GameLevel {
 	
 	protected String greeting;
+	protected String[] optionText;
 
 	public IndoorGameLevel(CobaltGame game, TextureIndex texture) {
 		super(game, texture);
@@ -27,6 +28,10 @@ public abstract class IndoorGameLevel extends GameLevel {
 	
 	public String getGreeting() {
 		return greeting;
+	}
+	
+	public String[] getOptions() {
+		return optionText;
 	}
 
 	public abstract void doOption(int option);
