@@ -14,6 +14,7 @@ public class GameSaver {
 
 	public static class JsonWorld {
 		public float heroHp, heroDamage, heroExp, heroMaxHp, heroLevel, heroSwingSpeed, heroMoveSpeed, heroSwingRange;
+		public float heroStr, heroAgi, heroInt, heroSta, heroVit;
 		public float heroX, levelPosition;
 		public LevelIndex levelIndex;
 	}
@@ -29,6 +30,11 @@ public class GameSaver {
 		jWorld.heroSwingSpeed = world.getHero().getStats().getStatics().SwingSpeed();
 		jWorld.heroMoveSpeed = world.getHero().getStats().getStatics().MoveSpeed();
 		jWorld.heroSwingRange = world.getHero().getStats().getStatics().SwingRange();
+		jWorld.heroStr = world.getHero().getStats().getBaseStrength();
+		jWorld.heroAgi = world.getHero().getStats().getBaseAgility();
+		jWorld.heroInt = world.getHero().getStats().getBaseIntellect();
+		jWorld.heroSta = world.getHero().getStats().getBaseStamina();
+		jWorld.heroVit = world.getHero().getStats().getBaseVitality();
 
 		jWorld.heroX = world.getHero().getX() + world.getLevelPosition();
 
@@ -48,7 +54,8 @@ public class GameSaver {
 			JsonWorld jWorld = json.fromJson(JsonWorld.class, save);
 
 			world.loadHero(new Hero(jWorld.heroX, new MobStats(new StaticMobStats(jWorld.heroMaxHp, jWorld.heroLevel, jWorld.heroSwingSpeed,
-					jWorld.heroMoveSpeed, jWorld.heroSwingRange), jWorld.heroHp, jWorld.heroDamage, jWorld.heroExp)));
+					jWorld.heroMoveSpeed, jWorld.heroSwingRange), jWorld.heroHp, jWorld.heroDamage, jWorld.heroExp, jWorld.heroStr, jWorld.heroAgi,
+					jWorld.heroInt, jWorld.heroSta, jWorld.heroVit)));
 
 			world.setLevelPosition(jWorld.levelPosition);
 

@@ -49,7 +49,7 @@ public class CobaltGame extends Game {
 		world = GameSaver.loadWorld();
 
 		// load super hero for testing
-		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0)));
+		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, 1000, 1000, 1000, 1000, 1000)));
 
 		// create a new world with restored data
 		gameWorld = new OutdoorGameWorld(this);
