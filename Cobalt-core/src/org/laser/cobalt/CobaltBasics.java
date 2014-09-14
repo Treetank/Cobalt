@@ -3,11 +3,21 @@ package org.laser.cobalt;
 public final class CobaltBasics {
 
 	public static enum TextureIndex {
-		GRASS, ICE, HERO, SLIME, IMP, CREEPER, HERO_ATTACKING, EXPLOSION, SCRATCH, SIGN, HOUSE, IN_HOSPITAL
+		GRASS, ICE, // Terrains
+		HERO, HERO_ATTACKING, // Hero images
+		SLIME, IMP, CREEPER, // monster images
+		EXPLOSION, SCRATCH, // damage overlays
+		SIGN, HOUSE, // path markings
+		IN_HOSPITAL, // indoor screens
+		SWORD, // weapon images
+		LIGHT_CHEST_PLATE // armor images
 	};
 
 	public static enum LevelIndex {
-		STARTING_PATH, IMP_PATH, CREEPER_PATH, HOSPITAL
+		STARTING_PATH, // FirstLevel
+		IMP_PATH, // SecondLevel
+		CREEPER_PATH, // ThirdLevel
+		HOSPITAL // Hospital
 	};
 
 	// height and width of the desktop client window
@@ -40,6 +50,12 @@ public final class CobaltBasics {
 	// height and width of storefronts
 	public static final int STOREFRONT_WIDTH = 480;
 	public static final int STOREFRONT_HEIGHT = 128;
+
+	// height and width of equipables
+	public static final int WEAPON_WIDTH = 8;
+	public static final int WEAPON_HEIGHT = 8;
+	public static final int ARMOR_WIDTH = 8;
+	public static final int ARMOR_HEIGHT = 8;
 
 	// height from bottom of viewport to start drawing the terrain
 	public static final int TERRAIN_BASE_Y = 0;
