@@ -55,4 +55,5 @@ public final class CobaltBasics {
 	public static final int STOREFRONT_OPTION_HEIGHT = 40;
 	public static final int STOREFRONT_OPTION_WIDTH = 180;
 	public static final int STOREFRONT_OPTION_GAP = 10;
+	public static final int FONT_HEIGHT_OFFSET = 25;
 }

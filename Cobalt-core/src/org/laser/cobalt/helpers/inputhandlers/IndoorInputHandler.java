@@ -1,5 +1,6 @@
 package org.laser.cobalt.helpers.inputhandlers;
 
+import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 
@@ -38,8 +39,14 @@ public class IndoorInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		if (screenY > 200) {
-			IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
+		IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
+		if (optionOneClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+			level.doOption(0);
+		} else if (optionTwoClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+			level.doOption(1);
+		} else if (optionThreeClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+			level.doOption(2);
+		} else if (optionExitClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
 			level.clickExit();
 		}
 		return true;
@@ -63,4 +70,28 @@ public class IndoorInputHandler implements InputProcessor {
 		return false;
 	}
 
+	public boolean optionOneClicked(int x, int y) {
+		return (x > 5 && x < CobaltBasics.STOREFRONT_OPTION_WIDTH + 5
+				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT && y < CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2 + CobaltBasics.STOREFRONT_OPTION_GAP * 2);
+	}
+
+	public boolean optionTwoClicked(int x, int y) {
+		return (x > 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP
+				&& x < 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP
+				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT && y < CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2 + CobaltBasics.STOREFRONT_OPTION_GAP * 2);
+	}
+
+	public boolean optionThreeClicked(int x, int y) {
+		return (x > 5 && x < CobaltBasics.STOREFRONT_OPTION_WIDTH + 5 && y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP && y < CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.STOREFRONT_OPTION_HEIGHT);
+	}
+
+	public boolean optionExitClicked(int x, int y) {
+		return (x > 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP
+				&& x < 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP
+				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP && y < CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.STOREFRONT_OPTION_HEIGHT);
+	}
 }
