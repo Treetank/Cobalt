@@ -49,4 +49,10 @@ public final class CobaltBasics {
 
 	// y coordinate for the bottom of the view port
 	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 3;
+
+	// storefront metrics
+	public static final int STOREFRONT_GREETING_WINDOW_BOTTOM = GAME_SCREEN_HEIGHT - 75;
+	public static final int STOREFRONT_OPTION_HEIGHT = 40;
+	public static final int STOREFRONT_OPTION_WIDTH = 180;
+	public static final int STOREFRONT_OPTION_GAP = 10;
 }

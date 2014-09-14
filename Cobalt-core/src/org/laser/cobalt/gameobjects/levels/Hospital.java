@@ -25,7 +25,7 @@ public class Hospital extends IndoorGameLevel {
 	@Override
 	public void setupText() {
 		optionText = new String[1];
-		greeting = "Welcome to hospital";
-		optionText[0] = "Heal";
+		greeting = "WELCOME TO HOSPITAL";
+		optionText[0] = "HEAL";
 	}
 }

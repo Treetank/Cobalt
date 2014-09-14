@@ -37,6 +37,7 @@ public class CobaltRenderer {
 	}
 
 	public void RoundRectangle(float x1, float y1, float x2, float y2, float w) {
+		shapeRenderer.setColor(200, 200, 200, 1);
 		shapeRenderer.circle(x1 + w, y1 + w, w);
 		shapeRenderer.circle(x1 + w, y2 - w, w);
 		shapeRenderer.circle(x2 - w, y1 + w, w);

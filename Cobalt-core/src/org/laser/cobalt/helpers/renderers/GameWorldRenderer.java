@@ -118,7 +118,6 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		MobStats stats = gameWorld.getWorld().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
@@ -172,7 +171,6 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 	}
 
 	public void DrawEnterButton() {
-		shapeRenderer.setColor(200, 200, 200, 1);
 		RoundRectangle(CobaltBasics.GAME_SCREEN_WIDTH - 64, CobaltBasics.GAME_SCREEN_HEIGHT - 32, CobaltBasics.GAME_SCREEN_WIDTH,
 				CobaltBasics.GAME_SCREEN_HEIGHT, 2);
 		shapeRenderer.rect(CobaltBasics.GAME_SCREEN_WIDTH - 62, CobaltBasics.GAME_SCREEN_HEIGHT - 30, 60, 28);

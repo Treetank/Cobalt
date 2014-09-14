@@ -41,9 +41,39 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 		batcher.end();
 
 		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.setColor(200, 200, 200, 1);
-		RoundRectangle(5, CobaltBasics.STOREFRONT_HEIGHT + 5, CobaltBasics.GAME_SCREEN_WIDTH - 5, CobaltBasics.GAME_SCREEN_HEIGHT - 5, 2);
+		drawGreeting();
+		drawOptionOne();
+		drawOptionTwo();
+		drawOptionThree();
+		drawOptionFour();
 		shapeRenderer.end();
 	}
 
+	public void drawGreeting() {
+		RoundRectangle(5, CobaltBasics.STOREFRONT_GREETING_WINDOW_BOTTOM, CobaltBasics.GAME_SCREEN_WIDTH - 5, CobaltBasics.GAME_SCREEN_HEIGHT - 5, 2);
+	}
+
+	public void drawOptionOne() {
+		RoundRectangle(5, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT,
+				5 + CobaltBasics.STOREFRONT_OPTION_WIDTH, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2
+						+ CobaltBasics.STOREFRONT_OPTION_GAP * 2, 2);
+	}
+
+	public void drawOptionTwo() {
+		RoundRectangle(5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2
+				+ CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2
+				+ CobaltBasics.STOREFRONT_OPTION_GAP * 2, 2);
+	}
+
+	public void drawOptionThree() {
+		RoundRectangle(5, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH,
+				CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 2);
+	}
+
+	public void drawOptionFour() {
+		RoundRectangle(5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT
+				+ CobaltBasics.STOREFRONT_OPTION_GAP, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP,
+				CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 2);
+	}
 }
