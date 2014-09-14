@@ -2,6 +2,7 @@ package org.laser.cobalt.helpers;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameobjects.Hero;
+import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
@@ -54,8 +55,8 @@ public class GameSaver {
 			JsonWorld jWorld = json.fromJson(JsonWorld.class, save);
 
 			world.loadHero(new Hero(jWorld.heroX, new MobStats(new StaticMobStats(jWorld.heroMaxHp, jWorld.heroLevel, jWorld.heroSwingSpeed,
-					jWorld.heroMoveSpeed, jWorld.heroSwingRange), jWorld.heroHp, jWorld.heroDamage, jWorld.heroExp, jWorld.heroStr, jWorld.heroAgi,
-					jWorld.heroInt, jWorld.heroSta, jWorld.heroVit)));
+					jWorld.heroMoveSpeed, jWorld.heroSwingRange), jWorld.heroHp, jWorld.heroDamage, jWorld.heroExp, new CombatStats(jWorld.heroStr,
+					jWorld.heroAgi, jWorld.heroInt, jWorld.heroSta, jWorld.heroVit))));
 
 			world.setLevelPosition(jWorld.levelPosition);
 

@@ -4,124 +4,115 @@ public class MobStats {
 
 	private float hp, damage, exp;
 	private StaticMobStats statics;
-	private float strength, agility, intellect, stamina, vitality;
-	private float bonusStrength, bonusAgility, bonusIntellect, bonusStamina, bonusVitality;
+	private CombatStats baseStats, bonusStats;
 
-	public MobStats(StaticMobStats statics, float hp, float damage, float exp, float strength, float agility, float intellect, float stamina, float vitality) {
+	public MobStats(StaticMobStats statics, float hp, float damage, float exp, CombatStats combatStats) {
 		this.statics = statics;
 		this.hp = hp;
 		this.damage = damage;
 		this.exp = exp;
-		this.strength = strength;
-		this.agility = agility;
-		this.intellect = intellect;
-		this.stamina = stamina;
-		this.vitality = vitality;
-		bonusStrength = 0;
-		bonusAgility = 0;
-		bonusIntellect = 0;
-		bonusStamina = 0;
-		bonusVitality = 0;
+		baseStats = combatStats;
+		bonusStats = new CombatStats(0, 0, 0, 0, 0);
 	}
 
 	public float getBaseStrength() {
-		return strength;
+		return baseStats.getStrength();
 	}
 
 	public float getBaseAgility() {
-		return agility;
+		return baseStats.getAgility();
 	}
 
 	public float getBaseIntellect() {
-		return intellect;
+		return baseStats.getIntellect();
 	}
 
 	public float getBaseStamina() {
-		return stamina;
+		return baseStats.getStamina();
 	}
 
 	public float getBaseVitality() {
-		return vitality;
+		return baseStats.getVitality();
 	}
 
 	public float getStrength() {
-		return strength + bonusStrength;
+		return baseStats.getStrength() + bonusStats.getStrength();
 	}
 
 	public float getAgility() {
-		return agility + bonusAgility;
+		return baseStats.getAgility() + bonusStats.getAgility();
 	}
 
 	public float getIntellect() {
-		return intellect + bonusIntellect;
+		return baseStats.getIntellect() + bonusStats.getIntellect();
 	}
 
 	public float getStamina() {
-		return stamina + bonusStamina;
+		return baseStats.getStamina() + bonusStats.getStamina();
 	}
 
 	public float getVitality() {
-		return vitality + bonusVitality;
+		return baseStats.getVitality() + bonusStats.getVitality();
 	}
 
 	public void setStrength(float strength) {
-		this.strength = strength;
+		baseStats.setStrength(strength);
 	}
 
 	public void setAgility(float agility) {
-		this.agility = agility;
+		baseStats.setAgility(agility);
 	}
 
 	public void setIntellect(float intellect) {
-		this.intellect = intellect;
+		baseStats.setIntellect(intellect);
 	}
 
 	public void setStamina(float stamina) {
-		this.stamina = stamina;
+		baseStats.setStamina(stamina);
 	}
 
 	public void setVitality(float vitality) {
-		this.vitality = vitality;
+		baseStats.setVitality(vitality);
 	}
 
 	public float getBonusStrength() {
-		return bonusStrength;
+		return bonusStats.getStrength();
 	}
 
 	public void setBonusStrength(float bonusStrength) {
-		this.bonusStrength = bonusStrength;
+		bonusStats.setStrength(bonusStrength);
 	}
 
 	public float getBonusAgility() {
-		return bonusAgility;
+		return bonusStats.getAgility();
 	}
 
 	public void setBonusAgility(float bonusAgility) {
-		this.bonusAgility = bonusAgility;
+		bonusStats.setAgility(bonusAgility);
 	}
 
 	public float getBonusIntellect() {
-		return bonusIntellect;
+		return bonusStats.getIntellect();
 	}
 
 	public void setBonusIntellect(float bonusIntellect) {
-		this.bonusIntellect = bonusIntellect;
+		bonusStats.setIntellect(bonusIntellect);
 	}
 
 	public float getBonusStamina() {
-		return bonusStamina;
+		return bonusStats.getStamina();
 	}
 
 	public void setBonusStamina(float bonusStamina) {
-		this.bonusStamina = bonusStamina;
+		bonusStats.setStamina(bonusStamina);
 	}
 
 	public float getBonusVitality() {
-		return bonusVitality;
+		return bonusStats.getVitality();
 	}
 
 	public void setBonusVitality(float bonusVitality) {
-		this.bonusVitality = bonusVitality;
+		bonusStats.setVitality(bonusVitality);
 	}
 
 	public float Hp() {
