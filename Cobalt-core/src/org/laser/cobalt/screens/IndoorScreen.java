@@ -1,7 +1,7 @@
 package org.laser.cobalt.screens;
 
 import org.laser.cobalt.CobaltGame;
-import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
+import org.laser.cobalt.helpers.inputhandlers.IndoorInputHandler;
 import org.laser.cobalt.interfaces.IRenderer;
 
 import com.badlogic.gdx.Gdx;

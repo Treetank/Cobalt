@@ -10,17 +10,18 @@ public class Hospital extends IndoorGameLevel {
 		super(game, TextureIndex.IN_HOSPITAL);
 		levelIndex = LevelIndex.HOSPITAL;
 	}
-	
+
 	@Override
 	public void doOption(int option) {
 		switch (option) {
-			case 1: 
-				// game.getworld().gethero().heal()
-				break;
-			default: break;
+		case 1:
+			game.getWorld().getHero().getStats().heal(-1);
+			break;
+		default:
+			break;
 		}
 	}
-	
+
 	@Override
 	public void setupText() {
 		greeting = "Welcome to hospital";

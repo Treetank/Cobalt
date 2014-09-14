@@ -1,7 +1,7 @@
 package org.laser.cobalt.helpers.types;
 
 public class MobStats {
-	
+
 	private float hp, damage, exp;
 	private StaticMobStats statics;
 
@@ -23,7 +23,7 @@ public class MobStats {
 	public float Exp() {
 		return exp;
 	};
-	
+
 	public boolean takeDamage(float damage) {
 		hp -= damage;
 		if (hp < 0) {
@@ -31,28 +31,31 @@ public class MobStats {
 		}
 		return hp == 0;
 	}
-	
-	public void heal (float healing) {
-		hp += healing;
-		if (hp > statics.MaxHp()) {
+
+	public void heal(float healing) {
+		if (healing < 0) {
 			hp = statics.MaxHp();
+		} else {
+			hp += healing;
+			if (hp > statics.MaxHp()) {
+				hp = statics.MaxHp();
+			}
 		}
 	}
-	
+
 	public void setDamage(float damage) {
 		this.damage = damage;
 	}
-	
-	public void addExp (float exp) {
+
+	public void addExp(float exp) {
 		this.exp += exp;
 	}
-	
+
 	public StaticMobStats getStatics() {
 		return statics;
 	}
-	
+
 	public void setStatics(StaticMobStats statics) {
 		this.statics = statics;
 	}
 }
-

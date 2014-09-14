@@ -9,10 +9,12 @@ import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
+import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.interfaces.IRenderer;
+import org.laser.cobalt.screens.IndoorScreen;
 import org.laser.cobalt.screens.WorldScreen;
 
 import com.badlogic.gdx.Game;
@@ -24,6 +26,7 @@ public class CobaltGame extends Game {
 	private World world;
 	private IRenderer renderer;
 	private GameLevel gameLevel, lastOutdoorLevel;
+	private float saveOutdoorPosition, saveOutdoorX;
 
 	@Override
 	public void create() {
@@ -99,23 +102,27 @@ public class CobaltGame extends Game {
 
 	private void goIndoors() {
 		lastOutdoorLevel = gameLevel;
-		// save level position
-		// save hero x
-		// set renderer= new indoorrenderer(this);
-		// setscreen(new indoorscreen);
+		saveOutdoorPosition = world.getLevelPosition();
+		saveOutdoorX = world.getHero().getX();
+		renderer = new IndoorWorldRenderer(this);
+		setScreen(new IndoorScreen(this));
 	}
 
 	public void goOutdoors() {
 		gameLevel = lastOutdoorLevel;
-		// restore level position
-		// restore hero x
-		// set renderer = new outdoorrenderer(this);
-		// setscreen(new worldscreen);
+		world.setLevelPosition(saveOutdoorPosition);
+		world.getHero().move(saveOutdoorPosition + saveOutdoorX);
+		world.setLevel(gameLevel.getLevelIndex());
+		renderer = new GameWorldRenderer(this);
+		setScreen(new WorldScreen(this));
 	}
 
 	@Override
 	public void dispose() {
 		super.dispose();
+		if (gameLevel.isIndoor()) {
+			goOutdoors();
+		}
 		GameSaver.saveWorld(world);
 		AssetLoader.dispose();
 	}

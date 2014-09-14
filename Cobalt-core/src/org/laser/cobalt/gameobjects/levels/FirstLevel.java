@@ -21,5 +21,6 @@ public class FirstLevel extends OutdoorGameLevel {
 
 		AddExit(new Exit(10, TextureIndex.HOUSE, LevelIndex.CREEPER_PATH));
 		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.IMP_PATH));
+		AddExit(new Exit(750, TextureIndex.HOUSE, LevelIndex.HOSPITAL));
 	}
 }
