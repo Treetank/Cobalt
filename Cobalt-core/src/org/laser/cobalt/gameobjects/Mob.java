@@ -12,6 +12,8 @@ public class Mob extends Drawable {
 	protected TextureIndex beingHitImage;
 	protected TextureCollection textureCollection;
 	protected MobStats stats;
+	protected Armor chestArmor;
+	protected Weapon weapon;
 
 	public Mob(float x, TextureCollection tc, MobStats ms) {
 		super(new ImageProperties (x, CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_SQUARE_SIZE), tc.Base());
@@ -19,6 +21,8 @@ public class Mob extends Drawable {
 		stats = ms;
 		swingTimer = 0;
 		beingHitTimer = 0;
+		chestArmor = null;
+		weapon = null;
 	}
 
 	public void update(float position, float delta) {
