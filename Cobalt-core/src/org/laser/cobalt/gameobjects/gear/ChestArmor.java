@@ -6,12 +6,12 @@ import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.ImageProperties;
 
-public class ChestArmor extends Equipable {
+public abstract class ChestArmor extends Equipable {
 
 	protected final float armorValue;
 
-	public ChestArmor(TextureIndex texture, CombatStats stats, float armorValue) {
-		super(new ImageProperties(0, 0, CobaltBasics.ARMOR_HEIGHT, CobaltBasics.ARMOR_WIDTH), texture, stats);
+	public ChestArmor(TextureIndex texture, CombatStats stats, int level, float armorValue) {
+		super(new ImageProperties(0, 0, CobaltBasics.ARMOR_HEIGHT, CobaltBasics.ARMOR_WIDTH), texture, stats, level);
 		this.armorValue = armorValue;
 	}
 

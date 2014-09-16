@@ -4,16 +4,22 @@ import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.ImageProperties;
 
-public class Equipable extends Drawable {
+public abstract class Equipable extends Drawable {
 
 	protected final CombatStats stats;
+	protected int level;
 
-	public Equipable(ImageProperties ip, TextureIndex texture, CombatStats stats) {
+	public Equipable(ImageProperties ip, TextureIndex texture, CombatStats stats, int level) {
 		super(ip, texture);
 		this.stats = stats;
+		this.level = level;
 	}
 
 	public CombatStats getStats() {
 		return stats;
 	}
+	
+	public int getLevel() {return level;}
+	
+	public abstract void levelUp();
 }
