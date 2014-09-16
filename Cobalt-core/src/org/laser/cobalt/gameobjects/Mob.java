@@ -70,6 +70,12 @@ public class Mob extends Drawable {
 	public TextureIndex takingDamageImage() {
 		return beingHitImage;
 	}
+	
+	public void equip (Equipable item) {
+		// remove bonus stats from previous item
+		// insert item into appropriate slot
+		// apply bonus stats of new item
+	}
 
 	public MobStats getStats() {
 		return stats;
