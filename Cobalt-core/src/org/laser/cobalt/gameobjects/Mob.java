@@ -58,6 +58,10 @@ public class Mob extends Drawable {
 			return 0;
 		}
 	}
+	
+	public float takeHit(float damage Damage damageType, TextureIndex texture) {
+		return takeHit(damage,texture);
+	}
 
 	public void die() {
 	}

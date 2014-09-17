@@ -19,6 +19,10 @@ public final class CobaltBasics {
 		CREEPER_PATH, // ThirdLevel
 		HOSPITAL // Hospital
 	};
+	
+	public static enum Damage {
+		PHYSICAL, FIRE, WATER, EARTH, LIGHTNING
+	}
 
 	// height and width of the desktop client window
 	public static final int DESKTOP_VIEWPORT_WIDTH = 480;
