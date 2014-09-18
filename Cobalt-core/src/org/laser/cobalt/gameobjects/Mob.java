@@ -1,7 +1,10 @@
 package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics;
+import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.gameobjects.gear.ChestArmor;
+import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
@@ -12,11 +15,11 @@ public class Mob extends Drawable {
 	protected TextureIndex beingHitImage;
 	protected TextureCollection textureCollection;
 	protected MobStats stats;
-	protected Armor chestArmor;
+	protected ChestArmor chestArmor;
 	protected Weapon weapon;
 
 	public Mob(float x, TextureCollection tc, MobStats ms) {
-		super(new ImageProperties (x, CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_SQUARE_SIZE), tc.Base());
+		super(new ImageProperties(x, CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_SQUARE_SIZE), tc.Base());
 		textureCollection = tc;
 		stats = ms;
 		swingTimer = 0;
@@ -58,9 +61,9 @@ public class Mob extends Drawable {
 			return 0;
 		}
 	}
-	
-	public float takeHit(float damage Damage damageType, TextureIndex texture) {
-		return takeHit(damage,texture);
+
+	public float takeHit(float damage, Damage damageType, TextureIndex texture) {
+		return takeHit(damage, texture);
 	}
 
 	public void die() {
@@ -78,8 +81,8 @@ public class Mob extends Drawable {
 	public TextureIndex takingDamageImage() {
 		return beingHitImage;
 	}
-	
-	public void equip (Equipable item) {
+
+	public void equip(Equipable item) {
 		// remove bonus stats from previous item
 		// insert item into appropriate slot
 		// apply bonus stats of new item

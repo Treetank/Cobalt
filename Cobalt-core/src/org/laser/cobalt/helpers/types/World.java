@@ -2,6 +2,7 @@ package org.laser.cobalt.helpers.types;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameobjects.Hero;
+import org.laser.cobalt.gameobjects.Inventory;
 
 public class World {
 
@@ -40,6 +41,8 @@ public class World {
 	public void setLevel(LevelIndex level) {
 		this.level = level;
 	}
-	
-	public Inventory getInventory() {return inventory;}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
 }
