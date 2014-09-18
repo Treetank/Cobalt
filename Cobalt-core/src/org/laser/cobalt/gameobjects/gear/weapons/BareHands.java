@@ -6,7 +6,7 @@ import org.laser.cobalt.helpers.types.CombatStats;
 public class BareHands extends Weapon {
 
 	public BareHands() {
-		super(null, new CombatStats(0, 0, 0, 0, 0), 1, 1, 1);
+		super(null, new CombatStats(0, 0, 0, 0, 0), 1, 1);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -14,6 +14,11 @@ public class BareHands extends Weapon {
 	public void levelUp() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Oveeride
+	protected void setupDamage() {
+		
 	}
 
 }
