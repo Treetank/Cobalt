@@ -13,10 +13,30 @@ public class DamageArray {
 	}
 	
 	public void addDamage(Damage damageType, float amount){
-		
+		switch (damageType) {
+			case PHYSICAL: modifyPhysical(amount);
+			break;
+			default:
+			break;
+		}
 	}
 	
 	private void modifyPhysical(float amount){
 		
+	}
+	
+	public float getDamage(Damage damageType) {
+		switch (damageType) {
+			case PHYSICAL: return getPhysical();
+			default: return getAlldamage();
+		}
+	}
+	
+	private float getPhysical() {
+		return physical;
+	}
+	
+	private float getAllDamage() {
+		return getPhysical();
 	}
 }

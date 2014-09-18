@@ -8,9 +8,10 @@ import org.laser.cobalt.helpers.types.ImageProperties;
 
 public abstract class Weapon extends Equipable {
 
-	protected final float baseDamage, attackSpeed;
+	protected final float attackSpeed;
+	protected final DamageArray baseDamage;
 
-	public Weapon(TextureIndex texture, CombatStats stats, int level, float damage, float speed) {
+	public Weapon(TextureIndex texture, CombatStats stats, int level, DamageArray damage, float speed) {
 		super(new ImageProperties(0, 0, CobaltBasics.WEAPON_HEIGHT, CobaltBasics.WEAPON_WIDTH), texture, stats, level);
 		this.baseDamage = damage;
 		this.attackSpeed = speed;
