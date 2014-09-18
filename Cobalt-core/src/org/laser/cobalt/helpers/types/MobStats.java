@@ -115,6 +115,22 @@ public class MobStats {
 		bonusStats.setVitality(bonusVitality);
 	}
 
+	public void addToBonusStats(CombatStats stats) {
+		bonusStats.setStrength(bonusStats.getStrength() + stats.getStrength());
+		bonusStats.setAgility(bonusStats.getAgility() + stats.getAgility());
+		bonusStats.setIntellect(bonusStats.getIntellect() + stats.getIntellect());
+		bonusStats.setStamina(bonusStats.getStamina() + stats.getStamina());
+		bonusStats.setVitality(bonusStats.getVitality() + stats.getVitality());
+	}
+
+	public void removeBonusStats(CombatStats stats) {
+		bonusStats.setStrength(bonusStats.getStrength() - stats.getStrength());
+		bonusStats.setAgility(bonusStats.getAgility() - stats.getAgility());
+		bonusStats.setIntellect(bonusStats.getIntellect() - stats.getIntellect());
+		bonusStats.setStamina(bonusStats.getStamina() - stats.getStamina());
+		bonusStats.setVitality(bonusStats.getVitality() - stats.getVitality());
+	}
+
 	public float Hp() {
 		return hp;
 	};

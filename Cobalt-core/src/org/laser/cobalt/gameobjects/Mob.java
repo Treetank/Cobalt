@@ -5,6 +5,8 @@ import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.gameobjects.gear.Weapon;
+import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
+import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
@@ -24,8 +26,8 @@ public class Mob extends Drawable {
 		stats = ms;
 		swingTimer = 0;
 		beingHitTimer = 0;
-		chestArmor = null;
-		weapon = null;
+		equip(new NoChestArmor());
+		equip(new BareHands());
 	}
 
 	public void update(float position, float delta) {
@@ -83,9 +85,18 @@ public class Mob extends Drawable {
 	}
 
 	public void equip(Equipable item) {
-		// remove bonus stats from previous item
-		// insert item into appropriate slot
-		// apply bonus stats of new item
+		if (item instanceof Weapon) {
+			unEquip(weapon);
+			weapon = (Weapon) item;
+		} else if (item instanceof ChestArmor) {
+			unEquip(chestArmor);
+			chestArmor = (ChestArmor) item;
+		}
+		stats.addToBonusStats(item.getStats());
+	}
+
+	public void unEquip(Equipable item) {
+		stats.removeBonusStats(item.getStats());
 	}
 
 	public MobStats getStats() {
