@@ -102,4 +102,8 @@ public class Mob extends Drawable {
 	public MobStats getStats() {
 		return stats;
 	}
+	
+	protected void swingHit () {
+		
+	}
 }
