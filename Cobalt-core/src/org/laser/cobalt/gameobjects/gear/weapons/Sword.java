@@ -16,7 +16,7 @@ public class Sword extends Weapon {
 	}
 	
 	@Override
-	protected void setupDamage() {
-		
+	protected DamageArray setupDamage() {
+		return null;
 	}
 }

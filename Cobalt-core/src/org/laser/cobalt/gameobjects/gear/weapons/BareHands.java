@@ -17,8 +17,8 @@ public class BareHands extends Weapon {
 	}
 	
 	@Oveeride
-	protected void setupDamage() {
-		
+	protected DamageArray setupDamage() {
+		return null;
 	}
 
 }

@@ -49,7 +49,9 @@ public class Mob extends Drawable {
 	public void swing(Mob mob) {
 		if (!(swingTimer > 0)) {
 			swingTimer = stats.getStatics().SwingSpeed();
-			stats.addExp(mob.takeHit(stats.Damage(), textureCollection.Damage()));
+			if (swingHit(mob)) {
+				stats.addExp(mob.takeHit(stats.Damage(), textureCollection.Damage()));
+				}
 			texture = textureCollection.Swinging();
 		}
 	}
@@ -103,7 +105,7 @@ public class Mob extends Drawable {
 		return stats;
 	}
 	
-	protected void swingHit () {
-		
+	protected boolean swingHit (Mob mob) {
+		return true;
 	}
 }
