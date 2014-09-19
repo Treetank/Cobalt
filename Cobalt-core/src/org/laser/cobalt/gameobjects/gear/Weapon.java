@@ -4,6 +4,7 @@ import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.DamageArray;
 import org.laser.cobalt.helpers.types.ImageProperties;
 
 public abstract class Weapon extends Equipable {
@@ -17,7 +18,7 @@ public abstract class Weapon extends Equipable {
 		this.attackSpeed = speed;
 	}
 
-	public float getBaseDamage() {
+	public DamageArray getBaseDamage() {
 		return baseDamage;
 	}
 

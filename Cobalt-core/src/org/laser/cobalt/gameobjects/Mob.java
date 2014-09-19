@@ -51,7 +51,7 @@ public class Mob extends Drawable {
 			swingTimer = stats.getStatics().SwingSpeed();
 			if (swingHit(mob)) {
 				stats.addExp(mob.takeHit(stats.Damage(), textureCollection.Damage()));
-				}
+			}
 			texture = textureCollection.Swinging();
 		}
 	}
@@ -98,14 +98,16 @@ public class Mob extends Drawable {
 	}
 
 	public void unEquip(Equipable item) {
-		stats.removeBonusStats(item.getStats());
+		if (item != null) {
+			stats.removeBonusStats(item.getStats());
+		}
 	}
 
 	public MobStats getStats() {
 		return stats;
 	}
-	
-	protected boolean swingHit (Mob mob) {
+
+	protected boolean swingHit(Mob mob) {
 		return true;
 	}
 }

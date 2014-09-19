@@ -1,5 +1,7 @@
 package org.laser.cobalt.helpers.types;
 
+import org.laser.cobalt.CobaltBasics.Damage;
+
 public class DamageArray {
 
 	protected float physical, fire, water, earth, lightning;
@@ -11,31 +13,34 @@ public class DamageArray {
 		earth = 0;
 		lightning = 0;
 	}
-	
-	public void addDamage(Damage damageType, float amount){
+
+	public void addDamage(Damage damageType, float amount) {
 		switch (damageType) {
-			case PHYSICAL: modifyPhysical(amount);
+		case PHYSICAL:
+			modifyPhysical(amount);
 			break;
-			default:
+		default:
 			break;
 		}
 	}
-	
-	private void modifyPhysical(float amount){
-		
+
+	private void modifyPhysical(float amount) {
+
 	}
-	
+
 	public float getDamage(Damage damageType) {
 		switch (damageType) {
-			case PHYSICAL: return getPhysical();
-			default: return getAlldamage();
+		case PHYSICAL:
+			return getPhysical();
+		default:
+			return getAllDamage();
 		}
 	}
-	
+
 	private float getPhysical() {
 		return physical;
 	}
-	
+
 	private float getAllDamage() {
 		return getPhysical();
 	}

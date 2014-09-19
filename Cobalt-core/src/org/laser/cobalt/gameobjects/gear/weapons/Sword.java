@@ -3,6 +3,7 @@ package org.laser.cobalt.gameobjects.gear.weapons;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.DamageArray;
 
 public class Sword extends Weapon {
 
@@ -11,10 +12,11 @@ public class Sword extends Weapon {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	public void levelUp() {
-		
+
 	}
-	
+
 	@Override
 	protected DamageArray setupDamage() {
 		return null;

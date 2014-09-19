@@ -2,6 +2,7 @@ package org.laser.cobalt.gameobjects.gear.weapons;
 
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.DamageArray;
 
 public class BareHands extends Weapon {
 
@@ -15,8 +16,8 @@ public class BareHands extends Weapon {
 		// TODO Auto-generated method stub
 
 	}
-	
-	@Oveeride
+
+	@Override
 	protected DamageArray setupDamage() {
 		return null;
 	}
