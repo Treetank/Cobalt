@@ -7,6 +7,7 @@ public class Inventory {
 
 	private Sword sword;
 	private LightPlate lightPlate;
+	private int gold, redGems, blueGems, diamonds;
 
 	public Inventory() {
 		sword = null;
@@ -16,7 +17,22 @@ public class Inventory {
 	public void addItem(Equipable item) {
 
 	}
+	
+	public void addCurrency(int g, int r, int b, int d) {
+		gold += g;
+		redGems += r;
+		blueGems += b;
+		diamonds += d;
+	}
+	
+	public int getGold () {return gold;}
+	
+	public int getRedGems () {return redGems;}
+	
+	public int getBlueGems() {return blueGems;}
 
+	public int getDiamonds() {return diamonds;}
+	
 	public Sword getSword() {
 		return sword;
 	}
