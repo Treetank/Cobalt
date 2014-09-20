@@ -1,10 +1,44 @@
 package org.laser.cobalt.helpers.types;
 
+import com.badlogic.gdx.utils.Json;
+
 public class CombatStats {
 
-	protected float strength, agility, intellect, stamina, vitality;
+	protected int strength, agility, intellect, stamina, vitality;
 
-	public CombatStats(float strength, float agility, float intellect, float stamina, float vitality) {
+	private class CombatStatsData {
+		private final int strength, agility, intellect, stamina, vitality;
+
+		public CombatStatsData(int strength, int agility, int intellect, int stamina, int vitality) {
+			this.strength = strength;
+			this.agility = agility;
+			this.intellect = intellect;
+			this.stamina = stamina;
+			this.vitality = vitality;
+		}
+
+		public int getVitality() {
+			return vitality;
+		}
+
+		public int getStamina() {
+			return stamina;
+		}
+
+		public int getIntellect() {
+			return intellect;
+		}
+
+		public int getAgility() {
+			return agility;
+		}
+
+		public int getStrength() {
+			return strength;
+		}
+	}
+
+	public CombatStats(int strength, int agility, int intellect, int stamina, int vitality) {
 		this.strength = strength;
 		this.agility = agility;
 		this.intellect = intellect;
@@ -12,43 +46,59 @@ public class CombatStats {
 		this.vitality = vitality;
 	}
 
-	public float getStrength() {
+	public String save() {
+		CombatStatsData data = new CombatStatsData(getStrength(), getAgility(), getIntellect(), getStamina(), getVitality());
+		Json json = new Json();
+		return json.toJson(data);
+	}
+
+	public void load(String loadString) {
+		Json json = new Json();
+		CombatStatsData data = json.fromJson(CombatStatsData.class, loadString);
+		setStrength(data.getStrength());
+		setAgility(data.getAgility());
+		setIntellect(data.getIntellect());
+		setStamina(data.getStamina());
+		setVitality(data.getVitality());
+	}
+
+	public int getStrength() {
 		return strength;
 	}
 
-	public void setStrength(float strength) {
+	public void setStrength(int strength) {
 		this.strength = strength;
 	}
 
-	public float getAgility() {
+	public int getAgility() {
 		return agility;
 	}
 
-	public void setAgility(float agility) {
+	public void setAgility(int agility) {
 		this.agility = agility;
 	}
 
-	public float getIntellect() {
+	public int getIntellect() {
 		return intellect;
 	}
 
-	public void setIntellect(float intellect) {
+	public void setIntellect(int intellect) {
 		this.intellect = intellect;
 	}
 
-	public float getStamina() {
+	public int getStamina() {
 		return stamina;
 	}
 
-	public void setStamina(float stamina) {
+	public void setStamina(int stamina) {
 		this.stamina = stamina;
 	}
 
-	public float getVitality() {
+	public int getVitality() {
 		return vitality;
 	}
 
-	public void setVitality(float vitality) {
+	public void setVitality(int vitality) {
 		this.vitality = vitality;
 	}
 

@@ -1,12 +1,48 @@
 package org.laser.cobalt.helpers.types;
 
+import com.badlogic.gdx.utils.Json;
+
 public class MobStats {
 
-	private float hp, damage, exp;
+	private int hp, damage, exp;
 	private StaticMobStats statics;
 	private CombatStats baseStats, bonusStats;
 
-	public MobStats(StaticMobStats statics, float hp, float damage, float exp, CombatStats combatStats) {
+	private class MobStatsData {
+
+		private final int hp, damage, exp;
+		private final String staticsJson, combatJson;
+
+		public MobStatsData(int hp, int damage, int exp, String staticsJson, String combatJson) {
+			this.hp = hp;
+			this.damage = damage;
+			this.exp = exp;
+			this.staticsJson = staticsJson;
+			this.combatJson = combatJson;
+		}
+
+		public String getCombatJson() {
+			return combatJson;
+		}
+
+		public String getStaticsJson() {
+			return staticsJson;
+		}
+
+		public int getExp() {
+			return exp;
+		}
+
+		public int getDamage() {
+			return damage;
+		}
+
+		public int getHp() {
+			return hp;
+		}
+	}
+
+	public MobStats(StaticMobStats statics, int hp, int damage, int exp, CombatStats combatStats) {
 		this.statics = statics;
 		this.hp = hp;
 		this.damage = damage;
@@ -15,103 +51,119 @@ public class MobStats {
 		bonusStats = new CombatStats(0, 0, 0, 0, 0);
 	}
 
-	public float getBaseStrength() {
+	public String save() {
+		MobStatsData data = new MobStatsData(Hp(), Damage(), Exp(), statics.save(), baseStats.save());
+		Json json = new Json();
+		return json.toJson(data);
+	}
+
+	public void load(String loadString) {
+		Json json = new Json();
+		MobStatsData data = json.fromJson(MobStatsData.class, loadString);
+		this.hp = data.getHp();
+		this.damage = data.getDamage();
+		this.exp = data.getExp();
+		this.statics = StaticMobStats.load(data.getStaticsJson());
+		baseStats.load(data.getCombatJson());
+	}
+
+	public int getBaseStrength() {
 		return baseStats.getStrength();
 	}
 
-	public float getBaseAgility() {
+	public int getBaseAgility() {
 		return baseStats.getAgility();
 	}
 
-	public float getBaseIntellect() {
+	public int getBaseIntellect() {
 		return baseStats.getIntellect();
 	}
 
-	public float getBaseStamina() {
+	public int getBaseStamina() {
 		return baseStats.getStamina();
 	}
 
-	public float getBaseVitality() {
+	public int getBaseVitality() {
 		return baseStats.getVitality();
 	}
 
-	public float getStrength() {
+	public int getStrength() {
 		return baseStats.getStrength() + bonusStats.getStrength();
 	}
 
-	public float getAgility() {
+	public int getAgility() {
 		return baseStats.getAgility() + bonusStats.getAgility();
 	}
 
-	public float getIntellect() {
+	public int getIntellect() {
 		return baseStats.getIntellect() + bonusStats.getIntellect();
 	}
 
-	public float getStamina() {
+	public int getStamina() {
 		return baseStats.getStamina() + bonusStats.getStamina();
 	}
 
-	public float getVitality() {
+	public int getVitality() {
 		return baseStats.getVitality() + bonusStats.getVitality();
 	}
 
-	public void setStrength(float strength) {
+	public void setStrength(int strength) {
 		baseStats.setStrength(strength);
 	}
 
-	public void setAgility(float agility) {
+	public void setAgility(int agility) {
 		baseStats.setAgility(agility);
 	}
 
-	public void setIntellect(float intellect) {
+	public void setIntellect(int intellect) {
 		baseStats.setIntellect(intellect);
 	}
 
-	public void setStamina(float stamina) {
+	public void setStamina(int stamina) {
 		baseStats.setStamina(stamina);
 	}
 
-	public void setVitality(float vitality) {
+	public void setVitality(int vitality) {
 		baseStats.setVitality(vitality);
 	}
 
-	public float getBonusStrength() {
+	public int getBonusStrength() {
 		return bonusStats.getStrength();
 	}
 
-	public void setBonusStrength(float bonusStrength) {
+	public void setBonusStrength(int bonusStrength) {
 		bonusStats.setStrength(bonusStrength);
 	}
 
-	public float getBonusAgility() {
+	public int getBonusAgility() {
 		return bonusStats.getAgility();
 	}
 
-	public void setBonusAgility(float bonusAgility) {
+	public void setBonusAgility(int bonusAgility) {
 		bonusStats.setAgility(bonusAgility);
 	}
 
-	public float getBonusIntellect() {
+	public int getBonusIntellect() {
 		return bonusStats.getIntellect();
 	}
 
-	public void setBonusIntellect(float bonusIntellect) {
+	public void setBonusIntellect(int bonusIntellect) {
 		bonusStats.setIntellect(bonusIntellect);
 	}
 
-	public float getBonusStamina() {
+	public int getBonusStamina() {
 		return bonusStats.getStamina();
 	}
 
-	public void setBonusStamina(float bonusStamina) {
+	public void setBonusStamina(int bonusStamina) {
 		bonusStats.setStamina(bonusStamina);
 	}
 
-	public float getBonusVitality() {
+	public int getBonusVitality() {
 		return bonusStats.getVitality();
 	}
 
-	public void setBonusVitality(float bonusVitality) {
+	public void setBonusVitality(int bonusVitality) {
 		bonusStats.setVitality(bonusVitality);
 	}
 
@@ -131,19 +183,19 @@ public class MobStats {
 		bonusStats.setVitality(bonusStats.getVitality() - stats.getVitality());
 	}
 
-	public float Hp() {
+	public int Hp() {
 		return hp;
 	};
 
-	public float Damage() {
+	public int Damage() {
 		return damage;
 	};
 
-	public float Exp() {
+	public int Exp() {
 		return exp;
 	};
 
-	public boolean takeDamage(float damage) {
+	public boolean takeDamage(int damage) {
 		hp -= damage;
 		if (hp < 0) {
 			hp = 0;
@@ -151,7 +203,7 @@ public class MobStats {
 		return hp == 0;
 	}
 
-	public void heal(float healing) {
+	public void heal(int healing) {
 		if (healing < 0) {
 			hp = statics.MaxHp();
 		} else {
@@ -162,11 +214,11 @@ public class MobStats {
 		}
 	}
 
-	public void setDamage(float damage) {
+	public void setDamage(int damage) {
 		this.damage = damage;
 	}
 
-	public void addExp(float exp) {
+	public void addExp(int exp) {
 		this.exp += exp;
 	}
 

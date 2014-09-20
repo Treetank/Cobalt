@@ -57,7 +57,7 @@ public abstract class Mob extends Drawable {
 		}
 	}
 
-	public Reward takeHit(float damage, TextureIndex hitImage) {
+	public Reward takeHit(int damage, TextureIndex hitImage) {
 		beingHitImage = hitImage;
 		beingHitTimer = 0.5f;
 		if (stats.takeDamage(damage)) {
@@ -67,7 +67,7 @@ public abstract class Mob extends Drawable {
 		}
 	}
 
-	public Reward takeHit(float damage, Damage damageType, TextureIndex texture) {
+	public Reward takeHit(int damage, Damage damageType, TextureIndex texture) {
 		return takeHit(damage, texture);
 	}
 

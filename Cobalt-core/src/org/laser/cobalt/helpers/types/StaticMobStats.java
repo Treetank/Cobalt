@@ -1,10 +1,46 @@
 package org.laser.cobalt.helpers.types;
 
+import com.badlogic.gdx.utils.Json;
+
 public final class StaticMobStats {
 
-	private final float maxHp, swingSpeed, moveSpeed, level, range;
+	private final int maxHp, level, range;
+	private final float swingSpeed, moveSpeed;
 
-	public StaticMobStats(float maxHp, float level, float swingSpeed, float moveSpeed, float range) {
+	private class StaticMobStatsData {
+		private final int maxHp, level, range;
+		private final float swingSpeed, moveSpeed;
+
+		public StaticMobStatsData(int maxHp, int level, int range, float swingSpeed, float moveSpeed) {
+			this.maxHp = maxHp;
+			this.level = level;
+			this.range = range;
+			this.swingSpeed = swingSpeed;
+			this.moveSpeed = moveSpeed;
+		}
+
+		public float getMoveSpeed() {
+			return moveSpeed;
+		}
+
+		public float getSwingSpeed() {
+			return swingSpeed;
+		}
+
+		public int getRange() {
+			return range;
+		}
+
+		public int getLevel() {
+			return level;
+		}
+
+		public int getMaxHp() {
+			return maxHp;
+		}
+	}
+
+	public StaticMobStats(int maxHp, int level, float swingSpeed, float moveSpeed, int range) {
 		this.maxHp = maxHp;
 		this.level = level;
 		this.swingSpeed = swingSpeed;
@@ -12,11 +48,24 @@ public final class StaticMobStats {
 		this.range = range;
 	}
 
-	public float MaxHp() {
+	public String save() {
+		StaticMobStatsData data = new StaticMobStatsData(MaxHp(), Level(), SwingRange(), SwingSpeed(), MoveSpeed());
+		Json json = new Json();
+		return json.toJson(data);
+	}
+
+	public static StaticMobStats load(String loadString) {
+		Json json = new Json();
+		StaticMobStatsData data = json.fromJson(StaticMobStatsData.class, loadString);
+		StaticMobStats retVal = new StaticMobStats(data.getMaxHp(), data.getLevel(), data.getSwingSpeed(), data.getMoveSpeed(), data.getRange());
+		return retVal;
+	}
+
+	public int MaxHp() {
 		return maxHp;
 	};
 
-	public float Level() {
+	public int Level() {
 		return level;
 	};
 
@@ -27,8 +76,8 @@ public final class StaticMobStats {
 	public float MoveSpeed() {
 		return moveSpeed;
 	};
-	
-	public float SwingRange() {
+
+	public int SwingRange() {
 		return range;
 	}
 }

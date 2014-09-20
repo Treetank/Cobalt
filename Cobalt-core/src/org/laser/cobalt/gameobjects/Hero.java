@@ -5,7 +5,27 @@ import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
+import com.badlogic.gdx.utils.Json;
+
 public class Hero extends Mob {
+
+	private class HeroData {
+		private final float x;
+		private final String statsJson;
+
+		public HeroData(float x, String statsJson) {
+			this.x = x;
+			this.statsJson = statsJson;
+		}
+
+		public float getX() {
+			return x;
+		}
+
+		public String getStatsJson() {
+			return statsJson;
+		}
+	}
 
 	private float velocity;
 	private Inventory inventory;
@@ -13,6 +33,19 @@ public class Hero extends Mob {
 	public Hero(float x, MobStats ms) {
 		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
 		inventory = new Inventory();
+	}
+
+	public String save() {
+		HeroData data = new HeroData(getX(), stats.save());
+		Json json = new Json();
+		return json.toJson(data);
+	}
+
+	public void load(String loadString) {
+		Json json = new Json();
+		HeroData data = json.fromJson(HeroData.class, loadString);
+		move(data.getX());
+		stats.load(data.getStatsJson());
 	}
 
 	public float getVelocity() {

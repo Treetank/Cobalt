@@ -14,8 +14,9 @@ import com.badlogic.gdx.utils.Json;
 public class GameSaver {
 
 	public static class JsonWorld {
-		public float heroHp, heroDamage, heroExp, heroMaxHp, heroLevel, heroSwingSpeed, heroMoveSpeed, heroSwingRange;
-		public float heroStr, heroAgi, heroInt, heroSta, heroVit;
+		public float heroSwingSpeed, heroMoveSpeed;
+		public int heroHp, heroDamage, heroExp, heroMaxHp, heroLevel, heroSwingRange;
+		public int heroStr, heroAgi, heroInt, heroSta, heroVit;
 		public int gold, redGems, blueGems, diamonds;
 		public float heroX, levelPosition;
 		public LevelIndex levelIndex;
