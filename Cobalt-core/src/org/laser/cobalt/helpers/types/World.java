@@ -10,6 +10,16 @@ public class World {
 	private float levelPosition;
 	private LevelIndex level;
 
+	private class WorldData {
+		private final float levelPosition;
+		private final LevelIndex level;
+		private final String heroJson;
+		
+		public WorldData(float levelPosition, LevelIndex level, String heroJson) {
+			
+		}
+	}
+	
 	public World() {
 		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new CombatStats(1, 1, 1, 1, 1)));
 		levelPosition = 0;

@@ -12,8 +12,9 @@ public class Hero extends Mob {
 	private class HeroData {
 		private final float x;
 		private final String statsJson;
+		private final String inventoryJson;
 
-		public HeroData(float x, String statsJson) {
+		public HeroData(float x, String statsJson, String inventoryJson) {
 			this.x = x;
 			this.statsJson = statsJson;
 		}
