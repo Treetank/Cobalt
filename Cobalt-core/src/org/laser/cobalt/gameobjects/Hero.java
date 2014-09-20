@@ -17,6 +17,7 @@ public class Hero extends Mob {
 		public HeroData(float x, String statsJson, String inventoryJson) {
 			this.x = x;
 			this.statsJson = statsJson;
+			this.inventoryJson = inventoryJson;
 		}
 
 		public float getX() {
@@ -25,6 +26,10 @@ public class Hero extends Mob {
 
 		public String getStatsJson() {
 			return statsJson;
+		}
+		
+		public String getInventoryJson() {
+			return inventoryJson;
 		}
 	}
 
@@ -37,7 +42,7 @@ public class Hero extends Mob {
 	}
 
 	public String save() {
-		HeroData data = new HeroData(getX(), stats.save());
+		HeroData data = new HeroData(getX(), stats.save(), inventory.save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -47,6 +52,7 @@ public class Hero extends Mob {
 		HeroData data = json.fromJson(HeroData.class, loadString);
 		move(data.getX());
 		stats.load(data.getStatsJson());
+		inventory.load(data.getInventoryJson());
 	}
 
 	public float getVelocity() {
