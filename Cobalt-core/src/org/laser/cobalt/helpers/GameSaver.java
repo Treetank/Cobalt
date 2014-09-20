@@ -16,6 +16,7 @@ public class GameSaver {
 	public static class JsonWorld {
 		public float heroHp, heroDamage, heroExp, heroMaxHp, heroLevel, heroSwingSpeed, heroMoveSpeed, heroSwingRange;
 		public float heroStr, heroAgi, heroInt, heroSta, heroVit;
+		public int gold, redGems, blueGems, diamonds;
 		public float heroX, levelPosition;
 		public LevelIndex levelIndex;
 	}
@@ -43,6 +44,11 @@ public class GameSaver {
 
 		jWorld.levelIndex = world.getLevel();
 
+		jWorld.gold = world.getHero().getInventory().getGold();
+		jWorld.redGems = world.getHero().getInventory().getRedGems();
+		jWorld.blueGems = world.getHero().getInventory().getBlueGems();
+		jWorld.diamonds = world.getHero().getInventory().getDiamonds();
+
 		Json json = new Json();
 		writeFile("game.sav", json.toJson(jWorld));
 	}
@@ -61,6 +67,8 @@ public class GameSaver {
 			world.setLevelPosition(jWorld.levelPosition);
 
 			world.setLevel(jWorld.levelIndex);
+
+			world.getHero().getInventory().addCurrency(jWorld.gold, jWorld.redGems, jWorld.blueGems, jWorld.diamonds);
 		}
 		return world;
 	}

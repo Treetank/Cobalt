@@ -16,12 +16,7 @@ public class Hospital extends IndoorGameLevel {
 		switch (option) {
 		case 0:
 			game.getWorld().getHero().getStats().heal(-1);
-			break;
-		case 1:
-			game.getWorld().getHero().getStats().heal(5);
-			break;
-		case 2:
-			game.getWorld().getHero().getStats().heal(1);
+			game.getWorld().getHero().getInventory().addCurrency(-10, 0, 0, 0);
 			break;
 		default:
 			break;
@@ -30,10 +25,8 @@ public class Hospital extends IndoorGameLevel {
 
 	@Override
 	public void setupText() {
-		optionText = new String[3];
-		greeting = "WELCOME TO HOSPITAL";
+		optionText = new String[1];
+		greeting = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";
 		optionText[0] = "HEAL";
-		optionText[1] = "DIE";
-		optionText[2] = "GO HOME AND DIE";
 	}
 }

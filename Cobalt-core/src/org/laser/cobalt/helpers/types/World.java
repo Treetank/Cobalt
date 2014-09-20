@@ -9,12 +9,11 @@ public class World {
 	private Hero hero;
 	private float levelPosition;
 	private LevelIndex level;
-	private Inventory inventory;
 
 	public World() {
 		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new CombatStats(1, 1, 1, 1, 1)));
 		levelPosition = 0;
-		inventory = new Inventory();
+		hero.setInventory(new Inventory());
 		setLevel(LevelIndex.STARTING_PATH);
 	}
 
@@ -43,6 +42,6 @@ public class World {
 	}
 
 	public Inventory getInventory() {
-		return inventory;
+		return hero.getInventory();
 	}
 }

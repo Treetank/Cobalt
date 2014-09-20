@@ -9,9 +9,10 @@ import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
-public class Mob extends Drawable {
+public abstract class Mob extends Drawable {
 
 	protected float swingTimer, beingHitTimer;
 	protected TextureIndex beingHitImage;
@@ -50,23 +51,23 @@ public class Mob extends Drawable {
 		if (!(swingTimer > 0)) {
 			swingTimer = stats.getStatics().SwingSpeed();
 			if (swingHit(mob)) {
-				stats.addExp(mob.takeHit(stats.Damage(), textureCollection.Damage()));
+				receiveReward(mob.takeHit(stats.Damage(), textureCollection.Damage()));
 			}
 			texture = textureCollection.Swinging();
 		}
 	}
 
-	public float takeHit(float damage, TextureIndex hitImage) {
+	public Reward takeHit(float damage, TextureIndex hitImage) {
 		beingHitImage = hitImage;
 		beingHitTimer = 0.5f;
 		if (stats.takeDamage(damage)) {
-			return stats.Exp();
+			return generateReward();
 		} else {
-			return 0;
+			return null;
 		}
 	}
 
-	public float takeHit(float damage, Damage damageType, TextureIndex texture) {
+	public Reward takeHit(float damage, Damage damageType, TextureIndex texture) {
 		return takeHit(damage, texture);
 	}
 
@@ -110,4 +111,8 @@ public class Mob extends Drawable {
 	protected boolean swingHit(Mob mob) {
 		return true;
 	}
+
+	public abstract void receiveReward(Reward reward);
+
+	protected abstract Reward generateReward();
 }

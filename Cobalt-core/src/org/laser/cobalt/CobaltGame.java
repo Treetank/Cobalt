@@ -1,7 +1,6 @@
 package org.laser.cobalt;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.LevelFactory;
 import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
@@ -10,9 +9,6 @@ import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
-import org.laser.cobalt.helpers.types.CombatStats;
-import org.laser.cobalt.helpers.types.MobStats;
-import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.interfaces.IRenderer;
 import org.laser.cobalt.screens.IndoorScreen;
@@ -50,8 +46,13 @@ public class CobaltGame extends Game {
 		world = GameSaver.loadWorld();
 
 		// load super hero for testing
-		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new CombatStats(1000, 1000,
-				1000, 1000, 1000))));
+		/**
+		 * world.loadHero(new Hero(world.getHero().getX(), new MobStats(new
+		 * StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new
+		 * CombatStats(1000, 1000, 1000, 1000, 1000))));
+		 * world.getHero().equip(new Sword(1)); world.getHero().equip(new
+		 * LightPlate(1));
+		 **/
 
 		// create a new world with restored data
 		gameWorld = new OutdoorGameWorld(this);

@@ -1,10 +1,11 @@
 package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
-public class Npc extends Mob{
-	
+public abstract class Npc extends Mob {
+
 	protected float respawnSpeed, respawnTimer;
 
 	public Npc(float x, TextureCollection tc, MobStats ms) {
@@ -12,7 +13,7 @@ public class Npc extends Mob{
 		respawnSpeed = 5;
 		respawnTimer = 0;
 	}
-	
+
 	@Override
 	public void update(float position, float delta) {
 		super.update(position, delta);
@@ -23,10 +24,15 @@ public class Npc extends Mob{
 			}
 		}
 	}
-	
+
 	@Override
 	public void die() {
 		respawnTimer = respawnSpeed;
 		move(-500);
+	}
+
+	@Override
+	public void receiveReward(Reward reward) {
+
 	}
 }
