@@ -16,8 +16,16 @@ public class World {
 		private final String heroJson;
 		
 		public WorldData(float levelPosition, LevelIndex level, String heroJson) {
-			
+			this.levelPosition = levelPosition;
+			this.level = level;
+			this.heroJson = heroJson;
 		}
+		
+		public float getLevelPosition() {return levelPosition;}
+		
+		public LevelIndex getLevel() {return level;}
+		
+		public String getHeroJson() {return heroJson;}
 	}
 	
 	public World() {
@@ -26,7 +34,21 @@ public class World {
 		hero.setInventory(new Inventory());
 		setLevel(LevelIndex.STARTING_PATH);
 	}
+	
+	public String save(){
+		WorldData data = new WorldData(getLevelPosition(),getLevel(),getHero().save);
+		Json json = new Json;
+		return json.toJson(data);
+	}
 
+	public void load(String loadString) {
+		Json json = new Json();
+		WorldData data = json.fromJson(WorldData.class,loadString);
+		setLevelPosition(data.getLevelPosition());
+		setLevel(data.getLevel());
+		getHero().load(data.getHeroJson());
+	}
+	
 	public Hero getHero() {
 		return hero;
 	}

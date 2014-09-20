@@ -10,6 +10,13 @@ public abstract class Equipable extends Drawable {
 	protected int level;
 	
 	private class EquipableData {
+		private final int level;
+		
+		public EquipableData (int level) {
+			this.level = level;
+		}
+		
+		public int getLevel() {return level;}
 		
 	}
 
@@ -18,6 +25,14 @@ public abstract class Equipable extends Drawable {
 		this.stats = stats;
 		this.level = level;
 	}
+	
+	public String save() {
+		EquipableData data = new EquipableData(level);
+		Json json = new Json();
+		return json.toJson(data);
+	}
+	
+	public abstract void load(String loadString);
 
 	public CombatStats getStats() {
 		return stats;
