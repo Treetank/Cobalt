@@ -12,6 +12,7 @@ public abstract class Weapon extends Equipable {
 	protected final float attackSpeed;
 	protected final DamageArray baseDamage;
 
+
 	public Weapon(TextureIndex texture, CombatStats stats, int level, float speed) {
 		super(new ImageProperties(0, 0, CobaltBasics.WEAPON_HEIGHT, CobaltBasics.WEAPON_WIDTH), texture, stats, level);
 		baseDamage = setupDamage();

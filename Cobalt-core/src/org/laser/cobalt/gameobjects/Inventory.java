@@ -44,13 +44,21 @@ public class Inventory {
 	}
 	
 	public void load(String loadString) {
-		Json json = new Json()
-		InventoryData data = json.fromJson(InventoryData.class, loadString)
+		Json json = new Json();
+		InventoryData data = json.fromJson(InventoryData.class, loadString);
+		resetCurrency();
 		addCurrency(data.getGold(), data.getRedGems(), data.getBlueGems(), data.getDiamonds());
 	}
 
 	public void addItem(Equipable item) {
 
+	}
+	
+	public void resetCurrency() {
+		gold = 0;
+		redGems = 0;
+		blueGems = 0;
+		diamonds = 0;
 	}
 
 	public void addCurrency(int g, int r, int b, int d) {

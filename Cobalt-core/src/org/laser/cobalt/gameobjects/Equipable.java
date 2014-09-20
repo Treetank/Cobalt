@@ -8,6 +8,10 @@ public abstract class Equipable extends Drawable {
 
 	protected final CombatStats stats;
 	protected int level;
+	
+	private class EquipableData {
+		
+	}
 
 	public Equipable(ImageProperties ip, TextureIndex texture, CombatStats stats, int level) {
 		super(ip, texture);
