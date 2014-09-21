@@ -35,4 +35,5 @@ public abstract class Npc extends Mob {
 	public void receiveReward(Reward reward) {
 
 	}
+
 }

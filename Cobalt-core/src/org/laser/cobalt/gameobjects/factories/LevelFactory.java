@@ -1,4 +1,4 @@
-package org.laser.cobalt.gameobjects;
+package org.laser.cobalt.gameobjects.factories;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltGame;

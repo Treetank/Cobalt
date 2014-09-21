@@ -1,6 +1,7 @@
-package org.laser.cobalt.gameobjects;
+package org.laser.cobalt.gameobjects.factories;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
+import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;

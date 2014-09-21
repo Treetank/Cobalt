@@ -1,7 +1,7 @@
 package org.laser.cobalt;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.LevelFactory;
+import org.laser.cobalt.gameobjects.factories.LevelFactory;
 import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.gameworld.OutdoorGameWorld;

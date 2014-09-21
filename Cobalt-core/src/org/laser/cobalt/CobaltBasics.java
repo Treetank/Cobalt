@@ -29,6 +29,10 @@ public final class CobaltBasics {
 		BARE_HANDS, SWORD // weapons
 	}
 
+	public static enum EnemyIndex {
+		SLIME, IMP, CREEPER
+	}
+
 	// height and width of the desktop client window
 	public static final int DESKTOP_VIEWPORT_WIDTH = 480;
 	public static final int DESKTOP_VIEWPORT_HEIGHT = 320;
@@ -73,7 +77,7 @@ public final class CobaltBasics {
 	public static final int MOB_SQUARE_SIZE = 32;
 
 	// y coordinate for the bottom of the view port
-	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 3;
+	public static final int VIEWPORT_LOWER_BOUNDS = GAME_SCREEN_HEIGHT - TERRAIN_HEIGHT * 5;
 
 	// storefront metrics
 	public static final int STOREFRONT_GREETING_WINDOW_BOTTOM = GAME_SCREEN_HEIGHT - 75;

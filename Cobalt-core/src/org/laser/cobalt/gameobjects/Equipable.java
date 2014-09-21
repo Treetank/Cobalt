@@ -2,6 +2,7 @@ package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.gameobjects.factories.EquipableFactory;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.SerializingData.EquipableData;
