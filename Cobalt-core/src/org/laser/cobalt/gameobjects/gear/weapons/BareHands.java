@@ -4,6 +4,8 @@ import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.DamageArray;
 
+import com.badlogic.gdx.utils.Json;
+
 public class BareHands extends Weapon {
 
 	public BareHands() {
@@ -20,6 +22,13 @@ public class BareHands extends Weapon {
 	@Override
 	protected DamageArray setupDamage() {
 		return null;
+	}
+
+	@Override
+	public void load(String loadString) {
+		Json json = new Json();
+		EquipableData data = json.fromJson(EquipableData.class, loadString);
+		level = data.getLevel();
 	}
 
 }

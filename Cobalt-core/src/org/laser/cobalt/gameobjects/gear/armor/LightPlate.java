@@ -4,6 +4,8 @@ import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.helpers.types.CombatStats;
 
+import com.badlogic.gdx.utils.Json;
+
 public class LightPlate extends ChestArmor {
 
 	public LightPlate(int level) {
@@ -12,6 +14,13 @@ public class LightPlate extends ChestArmor {
 	}
 
 	public void levelUp() {
-		
+
+	}
+
+	@Override
+	public void load(String loadString) {
+		Json json = new Json();
+		EquipableData data = json.fromJson(EquipableData.class, loadString);
+		level = data.getLevel();
 	}
 }

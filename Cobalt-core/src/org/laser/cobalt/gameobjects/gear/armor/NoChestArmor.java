@@ -3,6 +3,8 @@ package org.laser.cobalt.gameobjects.gear.armor;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.helpers.types.CombatStats;
 
+import com.badlogic.gdx.utils.Json;
+
 public class NoChestArmor extends ChestArmor {
 
 	public NoChestArmor() {
@@ -14,6 +16,13 @@ public class NoChestArmor extends ChestArmor {
 	public void levelUp() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void load(String loadString) {
+		Json json = new Json();
+		EquipableData data = json.fromJson(EquipableData.class, loadString);
+		level = data.getLevel();
 	}
 
 }

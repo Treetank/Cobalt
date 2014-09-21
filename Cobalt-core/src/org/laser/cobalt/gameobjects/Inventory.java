@@ -3,16 +3,18 @@ package org.laser.cobalt.gameobjects;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.weapons.Sword;
 
+import com.badlogic.gdx.utils.Json;
+
 public class Inventory {
 
 	private Sword sword;
 	private LightPlate lightPlate;
 	private int gold, redGems, blueGems, diamonds;
-	
+
 	private class InventoryData {
 		private final int gold, red, blue, diamond;
-		private final lightPlateJson, swordJson;
-		
+		private final String lightPlateJson, swordJson;
+
 		public InventoryData(int gold, int red, int blue, int diamond, String lightPlateJson, String swordJson) {
 			this.gold = gold;
 			this.red = red;
@@ -21,18 +23,30 @@ public class Inventory {
 			this.lightPlateJson = lightPlateJson;
 			this.swordJson = swordJson;
 		}
-		
-		public int getGold() {return gold;}
-		
-		public int getRedGems() {return red;}
-		
-		public int getBlueGems() {return blue;}
-		
-		public int getDiamonds() {return diamond;}
-		
-		public String getLightPlateJson() {return lightPlateJson;}
-		
-		public String getSwordJson() {return swordJson;}
+
+		public int getGold() {
+			return gold;
+		}
+
+		public int getRedGems() {
+			return red;
+		}
+
+		public int getBlueGems() {
+			return blue;
+		}
+
+		public int getDiamonds() {
+			return diamond;
+		}
+
+		public String getLightPlateJson() {
+			return lightPlateJson;
+		}
+
+		public String getSwordJson() {
+			return swordJson;
+		}
 	}
 
 	public Inventory() {
@@ -43,13 +57,13 @@ public class Inventory {
 		blueGems = 0;
 		diamonds = 0;
 	}
-	
+
 	public String save() {
 		InventoryData data = new InventoryData(getGold(), getRedGems(), getBlueGems(), getDiamonds(), getLightPlate().save(), getSword().save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
-	
+
 	public void load(String loadString) {
 		Json json = new Json();
 		InventoryData data = json.fromJson(InventoryData.class, loadString);
@@ -62,7 +76,7 @@ public class Inventory {
 	public void addItem(Equipable item) {
 
 	}
-	
+
 	public void resetCurrency() {
 		gold = 0;
 		redGems = 0;
