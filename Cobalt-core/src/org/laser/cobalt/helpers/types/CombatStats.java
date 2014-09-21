@@ -1,42 +1,12 @@
 package org.laser.cobalt.helpers.types;
 
+import org.laser.cobalt.helpers.types.SerializingData.CombatStatsData;
+
 import com.badlogic.gdx.utils.Json;
 
 public class CombatStats {
 
 	protected int strength, agility, intellect, stamina, vitality;
-
-	private class CombatStatsData {
-		private final int strength, agility, intellect, stamina, vitality;
-
-		public CombatStatsData(int strength, int agility, int intellect, int stamina, int vitality) {
-			this.strength = strength;
-			this.agility = agility;
-			this.intellect = intellect;
-			this.stamina = stamina;
-			this.vitality = vitality;
-		}
-
-		public int getVitality() {
-			return vitality;
-		}
-
-		public int getStamina() {
-			return stamina;
-		}
-
-		public int getIntellect() {
-			return intellect;
-		}
-
-		public int getAgility() {
-			return agility;
-		}
-
-		public int getStrength() {
-			return strength;
-		}
-	}
 
 	public CombatStats(int strength, int agility, int intellect, int stamina, int vitality) {
 		this.strength = strength;
@@ -47,7 +17,12 @@ public class CombatStats {
 	}
 
 	public String save() {
-		CombatStatsData data = new CombatStatsData(getStrength(), getAgility(), getIntellect(), getStamina(), getVitality());
+		CombatStatsData data = new CombatStatsData();
+		data.strength = getStrength();
+		data.agility = getAgility();
+		data.intellect = getIntellect();
+		data.stamina = getStamina();
+		data.vitality = getVitality();
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -55,11 +30,11 @@ public class CombatStats {
 	public void load(String loadString) {
 		Json json = new Json();
 		CombatStatsData data = json.fromJson(CombatStatsData.class, loadString);
-		setStrength(data.getStrength());
-		setAgility(data.getAgility());
-		setIntellect(data.getIntellect());
-		setStamina(data.getStamina());
-		setVitality(data.getVitality());
+		setStrength(data.strength);
+		setAgility(data.agility);
+		setIntellect(data.intellect);
+		setStamina(data.stamina);
+		setVitality(data.vitality);
 	}
 
 	public int getStrength() {

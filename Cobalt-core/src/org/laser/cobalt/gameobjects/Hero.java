@@ -3,35 +3,12 @@ package org.laser.cobalt.gameobjects;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
+import org.laser.cobalt.helpers.types.SerializingData.HeroData;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
 import com.badlogic.gdx.utils.Json;
 
 public class Hero extends Mob {
-
-	private class HeroData {
-		private final float x;
-		private final String statsJson;
-		private final String inventoryJson;
-
-		public HeroData(float x, String statsJson, String inventoryJson) {
-			this.x = x;
-			this.statsJson = statsJson;
-			this.inventoryJson = inventoryJson;
-		}
-
-		public float getX() {
-			return x;
-		}
-
-		public String getStatsJson() {
-			return statsJson;
-		}
-		
-		public String getInventoryJson() {
-			return inventoryJson;
-		}
-	}
 
 	private float velocity;
 	private Inventory inventory;
@@ -41,8 +18,13 @@ public class Hero extends Mob {
 		inventory = new Inventory();
 	}
 
-	public String save() {
-		HeroData data = new HeroData(getX(), stats.save(), inventory.save());
+	public String save(float levelPosition) {
+		HeroData data = new HeroData();
+		data.x = getX() + levelPosition;
+		data.statsJson = stats.save();
+		data.inventoryJson = inventory.save();
+		data.weaponJson = weapon.save();
+		data.chestArmorJson = chestArmor.save();
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -50,9 +32,11 @@ public class Hero extends Mob {
 	public void load(String loadString) {
 		Json json = new Json();
 		HeroData data = json.fromJson(HeroData.class, loadString);
-		move(data.getX());
-		stats.load(data.getStatsJson());
-		inventory.load(data.getInventoryJson());
+		move(data.x);
+		stats.load(data.statsJson);
+		inventory.load(data.inventoryJson);
+		equip(Equipable.load(data.weaponJson));
+		equip(Equipable.load(data.chestArmorJson));
 	}
 
 	public float getVelocity() {

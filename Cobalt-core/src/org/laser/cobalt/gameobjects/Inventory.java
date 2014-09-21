@@ -2,6 +2,7 @@ package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.weapons.Sword;
+import org.laser.cobalt.helpers.types.SerializingData.InventoryData;
 
 import com.badlogic.gdx.utils.Json;
 
@@ -11,47 +12,9 @@ public class Inventory {
 	private LightPlate lightPlate;
 	private int gold, redGems, blueGems, diamonds;
 
-	private class InventoryData {
-		private final int gold, red, blue, diamond;
-		private final String lightPlateJson, swordJson;
-
-		public InventoryData(int gold, int red, int blue, int diamond, String lightPlateJson, String swordJson) {
-			this.gold = gold;
-			this.red = red;
-			this.blue = blue;
-			this.diamond = diamond;
-			this.lightPlateJson = lightPlateJson;
-			this.swordJson = swordJson;
-		}
-
-		public int getGold() {
-			return gold;
-		}
-
-		public int getRedGems() {
-			return red;
-		}
-
-		public int getBlueGems() {
-			return blue;
-		}
-
-		public int getDiamonds() {
-			return diamond;
-		}
-
-		public String getLightPlateJson() {
-			return lightPlateJson;
-		}
-
-		public String getSwordJson() {
-			return swordJson;
-		}
-	}
-
 	public Inventory() {
-		sword = null;
-		lightPlate = null;
+		sword = new Sword(0);
+		lightPlate = new LightPlate(0);
 		gold = 0;
 		redGems = 0;
 		blueGems = 0;
@@ -59,7 +22,13 @@ public class Inventory {
 	}
 
 	public String save() {
-		InventoryData data = new InventoryData(getGold(), getRedGems(), getBlueGems(), getDiamonds(), getLightPlate().save(), getSword().save());
+		InventoryData data = new InventoryData();
+		data.gold = getGold();
+		data.red = getRedGems();
+		data.blue = getBlueGems();
+		data.diamond = getDiamonds();
+		data.lightPlateJson = getLightPlate().save();
+		data.swordJson = getSword().save();
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -68,9 +37,9 @@ public class Inventory {
 		Json json = new Json();
 		InventoryData data = json.fromJson(InventoryData.class, loadString);
 		resetCurrency();
-		addCurrency(data.getGold(), data.getRedGems(), data.getBlueGems(), data.getDiamonds());
-		getLightPlate().load(data.getLightPlateJson());
-		getSword().load(data.getSwordJson());
+		addCurrency(data.gold, data.red, data.blue, data.diamond);
+		addItem(Equipable.load(data.lightPlateJson));
+		addItem(Equipable.load(data.swordJson));
 	}
 
 	public void addItem(Equipable item) {

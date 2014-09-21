@@ -1,5 +1,7 @@
 package org.laser.cobalt.helpers.types;
 
+import org.laser.cobalt.helpers.types.SerializingData.MobStatsData;
+
 import com.badlogic.gdx.utils.Json;
 
 public class MobStats {
@@ -7,40 +9,6 @@ public class MobStats {
 	private int hp, damage, exp;
 	private StaticMobStats statics;
 	private CombatStats baseStats, bonusStats;
-
-	private class MobStatsData {
-
-		private final int hp, damage, exp;
-		private final String staticsJson, combatJson;
-
-		public MobStatsData(int hp, int damage, int exp, String staticsJson, String combatJson) {
-			this.hp = hp;
-			this.damage = damage;
-			this.exp = exp;
-			this.staticsJson = staticsJson;
-			this.combatJson = combatJson;
-		}
-
-		public String getCombatJson() {
-			return combatJson;
-		}
-
-		public String getStaticsJson() {
-			return staticsJson;
-		}
-
-		public int getExp() {
-			return exp;
-		}
-
-		public int getDamage() {
-			return damage;
-		}
-
-		public int getHp() {
-			return hp;
-		}
-	}
 
 	public MobStats(StaticMobStats statics, int hp, int damage, int exp, CombatStats combatStats) {
 		this.statics = statics;
@@ -52,7 +20,12 @@ public class MobStats {
 	}
 
 	public String save() {
-		MobStatsData data = new MobStatsData(Hp(), Damage(), Exp(), statics.save(), baseStats.save());
+		MobStatsData data = new MobStatsData();
+		data.hp = Hp();
+		data.damage = Damage();
+		data.exp = Exp();
+		data.staticsJson = statics.save();
+		data.combatJson = baseStats.save();
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -60,11 +33,11 @@ public class MobStats {
 	public void load(String loadString) {
 		Json json = new Json();
 		MobStatsData data = json.fromJson(MobStatsData.class, loadString);
-		this.hp = data.getHp();
-		this.damage = data.getDamage();
-		this.exp = data.getExp();
-		this.statics = StaticMobStats.load(data.getStaticsJson());
-		baseStats.load(data.getCombatJson());
+		this.hp = data.hp;
+		this.damage = data.damage;
+		this.exp = data.exp;
+		this.statics = StaticMobStats.load(data.staticsJson);
+		baseStats.load(data.combatJson);
 	}
 
 	public int getBaseStrength() {

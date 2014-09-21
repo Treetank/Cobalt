@@ -1,11 +1,10 @@
 package org.laser.cobalt.gameobjects.gear.weapons;
 
+import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.DamageArray;
-
-import com.badlogic.gdx.utils.Json;
 
 public class Sword extends Weapon {
 
@@ -25,9 +24,7 @@ public class Sword extends Weapon {
 	}
 
 	@Override
-	public void load(String loadString) {
-		Json json = new Json();
-		EquipableData data = json.fromJson(EquipableData.class, loadString);
-		level = data.getLevel();
+	public ItemIndex getItemIndex() {
+		return ItemIndex.SWORD;
 	}
 }

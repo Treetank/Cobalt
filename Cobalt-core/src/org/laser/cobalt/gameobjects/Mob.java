@@ -27,8 +27,8 @@ public abstract class Mob extends Drawable {
 		stats = ms;
 		swingTimer = 0;
 		beingHitTimer = 0;
-		equip(new NoChestArmor());
-		equip(new BareHands());
+		equip(new NoChestArmor(1));
+		equip(new BareHands(1));
 	}
 
 	public void update(float position, float delta) {

@@ -19,9 +19,14 @@ public final class CobaltBasics {
 		CREEPER_PATH, // ThirdLevel
 		HOSPITAL // Hospital
 	};
-	
+
 	public static enum Damage {
 		PHYSICAL, FIRE, WATER, EARTH, LIGHTNING
+	}
+
+	public static enum ItemIndex {
+		NO_CHEST_PLATE, LIGHT_CHEST_PLATE, // chest pieces
+		BARE_HANDS, SWORD // weapons
 	}
 
 	// height and width of the desktop client window

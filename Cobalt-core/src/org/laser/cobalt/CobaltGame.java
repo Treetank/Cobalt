@@ -45,14 +45,14 @@ public class CobaltGame extends Game {
 		// restore persistent game data
 		world = GameSaver.loadWorld();
 
-		// load super hero for testing
-		/**
-		 * world.loadHero(new Hero(world.getHero().getX(), new MobStats(new
-		 * StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new
-		 * CombatStats(1000, 1000, 1000, 1000, 1000))));
-		 * world.getHero().equip(new Sword(1)); world.getHero().equip(new
-		 * LightPlate(1));
-		 **/
+		// // load super hero for testing
+		//
+		// world.loadHero(new Hero(world.getHero().getX(), new MobStats(new
+		// StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new
+		// CombatStats(1000, 1000,
+		// 1000, 1000, 1000))));
+		// world.getHero().equip(new Sword(1));
+		// world.getHero().equip(new LightPlate(1));
 
 		// create a new world with restored data
 		gameWorld = new OutdoorGameWorld(this);

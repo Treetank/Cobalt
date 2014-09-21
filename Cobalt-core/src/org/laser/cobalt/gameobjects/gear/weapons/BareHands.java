@@ -1,15 +1,14 @@
 package org.laser.cobalt.gameobjects.gear.weapons;
 
+import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.DamageArray;
 
-import com.badlogic.gdx.utils.Json;
-
 public class BareHands extends Weapon {
 
-	public BareHands() {
-		super(null, new CombatStats(0, 0, 0, 0, 0), 1, 1);
+	public BareHands(int level) {
+		super(null, new CombatStats(0, 0, 0, 0, 0), level, 1);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -25,10 +24,8 @@ public class BareHands extends Weapon {
 	}
 
 	@Override
-	public void load(String loadString) {
-		Json json = new Json();
-		EquipableData data = json.fromJson(EquipableData.class, loadString);
-		level = data.getLevel();
+	public ItemIndex getItemIndex() {
+		return ItemIndex.BARE_HANDS;
 	}
 
 }
