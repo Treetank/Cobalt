@@ -18,6 +18,7 @@ public class OutdoorGameWorld extends GameWorld {
 
 	public void respawnHero() {
 		world.getHero().getStats().heal(-1);
+		world.getHero().stop();
 		game.ChangeLevel(null);
 	}
 }

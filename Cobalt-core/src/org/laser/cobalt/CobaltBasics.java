@@ -85,4 +85,8 @@ public final class CobaltBasics {
 	public static final int STOREFRONT_OPTION_WIDTH = 180;
 	public static final int STOREFRONT_OPTION_GAP = 10;
 	public static final int FONT_HEIGHT_OFFSET = 25;
+
+	// bottom button metrics
+	public static final int BOTTOM_BUTTON_PADDING = 28;
+	public static final int BOTTOM_BUTTON_SQUARE_SIZE = 64;
 }

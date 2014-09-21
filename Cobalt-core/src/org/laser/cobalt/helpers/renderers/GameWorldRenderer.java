@@ -130,7 +130,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		MobStats stats = gameWorld.getWorld().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
-		RoundRectangle(3, 3, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
+		RoundRectangle(3, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 6, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				DrawEnterButton();
@@ -161,6 +161,20 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 			}
 		}
 		batcher.end();
+		drawBottomButtons();
+	}
+
+	public void drawBottomButtons() {
+		shapeRenderer.begin(ShapeType.Filled);
+		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING, 3, CobaltBasics.BOTTOM_BUTTON_PADDING + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE,
+				CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 3 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 3
+				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 2, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 5 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 2, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 5
+				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 3, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 7 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 3, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 7
+				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 4, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		shapeRenderer.end();
 	}
 
 	public void drawTerrain() {
