@@ -55,8 +55,12 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 		shapeRenderer.begin(ShapeType.Filled);
 		drawGreeting();
 		drawOptionOne();
-		drawOptionTwo();
-		drawOptionThree();
+		if (level.getOptions().length > 1) {
+			drawOptionTwo();
+		if (level.getOptions().length > 2) {
+			drawOptionThree();
+			}
+			}
 		drawOptionFour();
 		shapeRenderer.end();
 	}
