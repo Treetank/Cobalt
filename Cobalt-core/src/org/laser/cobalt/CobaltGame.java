@@ -119,6 +119,16 @@ public class CobaltGame extends Game {
 		renderer = new GameWorldRenderer(this);
 		setScreen(new WorldScreen(this));
 	}
+	
+	public void pushBottomButton(int button) {
+		switch (button) {
+			case 0: break;
+			case 1: break;
+			case 2: break;
+			case 3: break;
+			default : break;
+		}
+	}
 
 	@Override
 	public void dispose() {
