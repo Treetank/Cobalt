@@ -29,4 +29,12 @@ public class Hospital extends IndoorGameLevel {
 		greeting = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";
 		optionText[0] = "HEAL";
 	}
+	
+	@Override
+	public boolean optionIsAvailable(int option) {
+		switch (option) {
+			case 0: return ((game.getWorld().getHero().getStats().Hp < game.getWorld().getHero().getStats().maxHp) && (game.getWorld().getHero().getInventory().getGold() > 10));
+			default: return false;
+		}
+	}
 }

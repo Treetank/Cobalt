@@ -37,4 +37,6 @@ public abstract class IndoorGameLevel extends GameLevel {
 	public abstract void doOption(int option);
 	
 	public abstract void setupText();
+	
+	public abstract boolean optionIsAvailable(int option);
 }

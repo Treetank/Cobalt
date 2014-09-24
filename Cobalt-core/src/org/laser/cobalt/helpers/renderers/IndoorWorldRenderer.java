@@ -38,13 +38,16 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 		batcher.draw(tempRegion, 0, 0);
 		batcher.enableBlending();
 		font.draw(batcher, level.getGreeting(), 15, CobaltBasics.GAME_SCREEN_HEIGHT - 15);
-		font.draw(batcher, level.getOptions()[0], 15, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2
+		if (level.optionIsAvailable(0)) {
+			font.draw(batcher, level.getOptions()[0], 15, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2
 				+ CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.FONT_HEIGHT_OFFSET);
-		if (level.getOptions().length > 1) {
+				}
+		if (level.getOptions().length > 1 && level.optionIsAvailable(1)) {
 			font.draw(batcher, level.getOptions()[1], 15 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP,
 					CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT
 							+ CobaltBasics.FONT_HEIGHT_OFFSET);
-			if (level.getOptions().length > 2)
+							}
+			if (level.getOptions().length > 2 && level.optionIsAvailable(2)) {
 				font.draw(batcher, level.getOptions()[2], 15, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP
 						+ CobaltBasics.FONT_HEIGHT_OFFSET);
 		}
@@ -54,12 +57,14 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		shapeRenderer.begin(ShapeType.Filled);
 		drawGreeting();
+		if (level.optionIsAvailable(0) {
 		drawOptionOne();
-		if (level.getOptions().length > 1) {
+		}
+		if (level.getOptions().length > 1 && level.optionIsAvailable(1)) {
 			drawOptionTwo();
-		if (level.getOptions().length > 2) {
-			drawOptionThree();
 			}
+		if (level.getOptions().length > 2 && level.optionIsAvailable(2)) {
+			drawOptionThree();
 			}
 		drawOptionFour();
 		shapeRenderer.end();
