@@ -38,7 +38,7 @@ public class SerializingData {
 
 	public static class InventoryData {
 		public int gold, red, blue, diamond;
-		public String lightPlateJson, swordJson;
+		public String lightPlateJson, swordJson, noChestJson, bareHandsJson;
 	}
 
 	public static class EquipableData {

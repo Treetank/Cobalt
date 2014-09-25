@@ -1,6 +1,10 @@
 package org.laser.cobalt.gameobjects;
 
+import org.laser.cobalt.CobaltBasics.ItemIndex;
+import org.laser.cobalt.gameobjects.factories.EquipableFactory;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
+import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
+import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.gameobjects.gear.weapons.Sword;
 import org.laser.cobalt.helpers.types.SerializingData.InventoryData;
 
@@ -10,11 +14,15 @@ public class Inventory {
 
 	private Sword sword;
 	private LightPlate lightPlate;
+	private BareHands bareHands;
+	private NoChestArmor noChest;
 	private int gold, redGems, blueGems, diamonds;
 
 	public Inventory() {
-		sword = new Sword(0);
-		lightPlate = new LightPlate(0);
+		sword = (Sword) EquipableFactory.ItemCreator(ItemIndex.SWORD, 0);
+		lightPlate = (LightPlate) EquipableFactory.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 0);
+		bareHands = (BareHands) EquipableFactory.ItemCreator(ItemIndex.BARE_HANDS, 0);
+		noChest = (NoChestArmor) EquipableFactory.ItemCreator(ItemIndex.NO_CHEST_PLATE, 0);
 		gold = 0;
 		redGems = 0;
 		blueGems = 0;
@@ -29,6 +37,8 @@ public class Inventory {
 		data.diamond = getDiamonds();
 		data.lightPlateJson = getLightPlate().save();
 		data.swordJson = getSword().save();
+		data.noChestJson = getNoChestArmor().save();
+		data.bareHandsJson = getBareHands().save();
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -40,10 +50,28 @@ public class Inventory {
 		addCurrency(data.gold, data.red, data.blue, data.diamond);
 		addItem(Equipable.load(data.lightPlateJson));
 		addItem(Equipable.load(data.swordJson));
+		addItem(Equipable.load(data.noChestJson));
+		addItem(Equipable.load(data.bareHandsJson));
 	}
 
 	public void addItem(Equipable item) {
+		switch (item.itemIndex) {
+		case BARE_HANDS:
+			bareHands = (BareHands) item;
+			break;
+		case LIGHT_CHEST_PLATE:
+			lightPlate = (LightPlate) item;
+			break;
+		case NO_CHEST_PLATE:
+			noChest = (NoChestArmor) item;
+			break;
+		case SWORD:
+			sword = (Sword) item;
+			break;
+		default:
+			break;
 
+		}
 	}
 
 	public void resetCurrency() {
@@ -82,5 +110,13 @@ public class Inventory {
 
 	public LightPlate getLightPlate() {
 		return lightPlate;
+	}
+
+	public BareHands getBareHands() {
+		return bareHands;
+	}
+
+	public NoChestArmor getNoChestArmor() {
+		return noChest;
 	}
 }
