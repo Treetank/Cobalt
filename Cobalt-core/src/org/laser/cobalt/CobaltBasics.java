@@ -17,7 +17,8 @@ public final class CobaltBasics {
 		STARTING_PATH, // FirstLevel
 		IMP_PATH, // SecondLevel
 		CREEPER_PATH, // ThirdLevel
-		HOSPITAL // Hospital
+		HOSPITAL, // Hospital
+		BLACKSMITH // Blacksmith
 	};
 
 	public static enum Damage {

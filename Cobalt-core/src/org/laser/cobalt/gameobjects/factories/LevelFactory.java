@@ -6,6 +6,7 @@ import org.laser.cobalt.gameobjects.levels.FirstLevel;
 import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameobjects.levels.Hospital;
 import org.laser.cobalt.gameobjects.levels.SecondLevel;
+import org.laser.cobalt.gameobjects.levels.Smith;
 import org.laser.cobalt.gameobjects.levels.ThirdLevel;
 
 public class LevelFactory {
@@ -16,14 +17,17 @@ public class LevelFactory {
 		case CREEPER_PATH:
 			retVal = new ThirdLevel(game);
 			break;
-		case HOSPITAL:
-			retVal = new Hospital(game);
-			break;
 		case IMP_PATH:
 			retVal = new SecondLevel(game);
 			break;
 		case STARTING_PATH:
 			retVal = new FirstLevel(game);
+			break;
+		case HOSPITAL:
+			retVal = new Hospital(game);
+			break;
+		case BLACKSMITH:
+			retVal = new Smith(game);
 			break;
 		default:
 			retVal = new FirstLevel(game);

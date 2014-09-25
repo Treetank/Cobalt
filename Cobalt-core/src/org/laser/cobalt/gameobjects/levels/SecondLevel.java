@@ -26,5 +26,6 @@ public class SecondLevel extends OutdoorGameLevel {
 
 		AddExit(new Exit(10, TextureIndex.HOUSE, LevelIndex.STARTING_PATH));
 		AddExit(new Exit(1450, TextureIndex.SIGN, LevelIndex.CREEPER_PATH));
+		AddExit(new Exit(825, TextureIndex.HOUSE, LevelIndex.BLACKSMITH));
 	}
 }
