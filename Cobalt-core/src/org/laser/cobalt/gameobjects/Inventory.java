@@ -1,7 +1,6 @@
 package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
-import org.laser.cobalt.gameobjects.factories.EquipableFactory;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
@@ -19,10 +18,10 @@ public class Inventory {
 	private int gold, redGems, blueGems, diamonds;
 
 	public Inventory() {
-		sword = (Sword) EquipableFactory.ItemCreator(ItemIndex.SWORD, 0);
-		lightPlate = (LightPlate) EquipableFactory.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 0);
-		bareHands = (BareHands) EquipableFactory.ItemCreator(ItemIndex.BARE_HANDS, 0);
-		noChest = (NoChestArmor) EquipableFactory.ItemCreator(ItemIndex.NO_CHEST_PLATE, 0);
+		sword = (Sword) Equipable.ItemCreator(ItemIndex.SWORD, 0);
+		lightPlate = (LightPlate) Equipable.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 0);
+		bareHands = (BareHands) Equipable.ItemCreator(ItemIndex.BARE_HANDS, 0);
+		noChest = (NoChestArmor) Equipable.ItemCreator(ItemIndex.NO_CHEST_PLATE, 0);
 		gold = 0;
 		redGems = 0;
 		blueGems = 0;

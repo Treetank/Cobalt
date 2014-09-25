@@ -1,7 +1,6 @@
 package org.laser.cobalt;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.factories.LevelFactory;
 import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.gameworld.OutdoorGameWorld;
@@ -77,7 +76,7 @@ public class CobaltGame extends Game {
 	}
 
 	public void setLevel(LevelIndex levelIndex) {
-		GameLevel tempLevel = LevelFactory.LevelCreator(this, levelIndex);
+		GameLevel tempLevel = GameLevel.LevelCreator(this, levelIndex);
 		if (tempLevel.isIndoor()) {
 			goIndoors();
 		}
@@ -119,14 +118,19 @@ public class CobaltGame extends Game {
 		renderer = new GameWorldRenderer(this);
 		setScreen(new WorldScreen(this));
 	}
-	
+
 	public void pushBottomButton(int button) {
 		switch (button) {
-			case 0: break;
-			case 1: break;
-			case 2: break;
-			case 3: break;
-			default : break;
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		default:
+			break;
 		}
 	}
 

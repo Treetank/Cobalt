@@ -4,7 +4,7 @@ import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
-import org.laser.cobalt.gameobjects.factories.EquipableFactory;
+import org.laser.cobalt.gameobjects.Equipable;
 
 public class Smith extends IndoorGameLevel {
 
@@ -17,7 +17,7 @@ public class Smith extends IndoorGameLevel {
 	public void doOption(int option) {
 		switch (option) {
 		case 0:
-			game.getWorld().getHero().getInventory().addItem(EquipableFactory.ItemCreator(ItemIndex.SWORD, 1));
+			game.getWorld().getHero().getInventory().addItem(Equipable.ItemCreator(ItemIndex.SWORD, 1));
 			game.getWorld().getHero().getInventory().addCurrency(-100, 0, 0, 0);
 			game.getWorld().getHero().equip(game.getWorld().getHero().getInventory().getSword());
 			break;

@@ -1,8 +1,8 @@
 package org.laser.cobalt.tests;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
+import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.gameobjects.Inventory;
-import org.laser.cobalt.gameobjects.factories.EquipableFactory;
 
 public class InventoryTester extends BaseTest {
 	private Inventory inv;
@@ -41,13 +41,13 @@ public class InventoryTester extends BaseTest {
 
 	public boolean addNewItemTest() {
 		boolean retVal = true;
-		inv.addItem(EquipableFactory.ItemCreator(ItemIndex.SWORD, 1));
+		inv.addItem(Equipable.ItemCreator(ItemIndex.SWORD, 1));
 		retVal &= printResult("add sword assert new level", inv.getSword().getLevel() == 1);
-		inv.addItem(EquipableFactory.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 1));
+		inv.addItem(Equipable.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 1));
 		retVal &= printResult("add light plate assert new level", inv.getLightPlate().getLevel() == 1);
-		inv.addItem(EquipableFactory.ItemCreator(ItemIndex.BARE_HANDS, 1));
+		inv.addItem(Equipable.ItemCreator(ItemIndex.BARE_HANDS, 1));
 		retVal &= printResult("add bare hands assert new level", inv.getSword().getLevel() == 1);
-		inv.addItem(EquipableFactory.ItemCreator(ItemIndex.NO_CHEST_PLATE, 1));
+		inv.addItem(Equipable.ItemCreator(ItemIndex.NO_CHEST_PLATE, 1));
 		retVal &= printResult("add no chest plate assert new level", inv.getLightPlate().getLevel() == 1);
 		inv.addCurrency(10, 50, 90, 223);
 		retVal &= printResult("add gold assert new value", inv.getGold() == 10);

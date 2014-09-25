@@ -2,7 +2,10 @@ package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
-import org.laser.cobalt.gameobjects.factories.EquipableFactory;
+import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
+import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
+import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
+import org.laser.cobalt.gameobjects.gear.weapons.Sword;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.SerializingData.EquipableData;
@@ -20,6 +23,28 @@ public abstract class Equipable extends Drawable {
 		this.stats = stats;
 		this.level = level;
 		itemIndex = getItemIndex();
+	}
+
+	public static Equipable ItemCreator(ItemIndex item, int level) {
+		Equipable retVal;
+		switch (item) {
+		case BARE_HANDS:
+			retVal = new BareHands(level);
+			break;
+		case LIGHT_CHEST_PLATE:
+			retVal = new LightPlate(level);
+			break;
+		case NO_CHEST_PLATE:
+			retVal = new NoChestArmor(level);
+			break;
+		case SWORD:
+			retVal = new Sword(level);
+			break;
+		default:
+			retVal = null;
+			break;
+		}
+		return retVal;
 	}
 
 	public String save() {
@@ -43,7 +68,7 @@ public abstract class Equipable extends Drawable {
 	public static Equipable load(String loadString) {
 		Json json = new Json();
 		EquipableData data = json.fromJson(EquipableData.class, loadString);
-		return EquipableFactory.ItemCreator(data.item, data.level);
+		return Equipable.ItemCreator(data.item, data.level);
 	}
 
 	public abstract ItemIndex getItemIndex();

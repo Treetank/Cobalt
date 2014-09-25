@@ -2,7 +2,11 @@ package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.Damage;
+import org.laser.cobalt.CobaltBasics.EnemyIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.gameobjects.enemies.Creeper;
+import org.laser.cobalt.gameobjects.enemies.Imp;
+import org.laser.cobalt.gameobjects.enemies.Slime;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
@@ -29,6 +33,24 @@ public abstract class Mob extends Drawable {
 		beingHitTimer = 0;
 		equip(new NoChestArmor(1));
 		equip(new BareHands(1));
+	}
+
+	public static Mob MobCreator(EnemyIndex enemy, float position) {
+		Mob retVal = null;
+		switch (enemy) {
+		case SLIME:
+			retVal = new Slime(position);
+			break;
+		case IMP:
+			retVal = new Imp(position);
+			break;
+		case CREEPER:
+			retVal = new Creeper(position);
+			break;
+		default:
+			break;
+		}
+		return retVal;
 	}
 
 	public void update(float position, float delta) {
