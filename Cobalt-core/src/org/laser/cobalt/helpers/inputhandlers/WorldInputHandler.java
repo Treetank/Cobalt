@@ -38,7 +38,7 @@ public class WorldInputHandler implements InputProcessor {
 		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
 		if (screenY <= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.VIEWPORT_LOWER_BOUNDS) {
 			level.clickEnter();
-		} else if (screenY >= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.BOTTOM_BUTTON_SIZE - 3) {
+		} else if (screenY >= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE - 3) {
 			game.pushBottomButton(screenX / 120);
 		} else if (screenX > DeviceInfo.screenMidX)
 			level.moveRight();
