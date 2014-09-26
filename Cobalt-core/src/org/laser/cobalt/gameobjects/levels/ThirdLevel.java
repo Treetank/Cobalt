@@ -5,7 +5,7 @@ import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.Exit;
-import org.laser.cobalt.gameobjects.Mob;
+import org.laser.cobalt.gameobjects.enemies.Mob;
 
 public class ThirdLevel extends OutdoorGameLevel {
 

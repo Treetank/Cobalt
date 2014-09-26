@@ -4,7 +4,7 @@ import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
-import org.laser.cobalt.gameobjects.Equipable;
+import org.laser.cobalt.gameobjects.gear.Equipable;
 
 public class Smith extends IndoorGameLevel {
 

@@ -10,8 +10,8 @@ import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Drawable;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Hero;
-import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.gameobjects.Terrain;
+import org.laser.cobalt.gameobjects.enemies.Mob;
 
 public class OutdoorGameLevel extends GameLevel {
 

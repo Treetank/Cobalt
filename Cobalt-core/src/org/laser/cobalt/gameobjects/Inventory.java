@@ -1,6 +1,7 @@
 package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
+import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
@@ -54,7 +55,7 @@ public class Inventory {
 	}
 
 	public void addItem(Equipable item) {
-		switch (item.itemIndex) {
+		switch (item.getItemIndex()) {
 		case BARE_HANDS:
 			bareHands = (BareHands) item;
 			break;

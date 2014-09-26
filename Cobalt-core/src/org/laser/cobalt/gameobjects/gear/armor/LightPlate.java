@@ -17,7 +17,7 @@ public class LightPlate extends ChestArmor {
 	}
 
 	@Override
-	public ItemIndex getItemIndex() {
+	public ItemIndex setupItemIndex() {
 		return ItemIndex.LIGHT_CHEST_PLATE;
 	}
 }

@@ -18,7 +18,7 @@ public class NoChestArmor extends ChestArmor {
 	}
 
 	@Override
-	public ItemIndex getItemIndex() {
+	public ItemIndex setupItemIndex() {
 		return ItemIndex.NO_CHEST_PLATE;
 	}
 

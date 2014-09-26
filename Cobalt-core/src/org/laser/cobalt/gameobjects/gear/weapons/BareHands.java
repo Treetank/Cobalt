@@ -24,7 +24,7 @@ public class BareHands extends Weapon {
 	}
 
 	@Override
-	public ItemIndex getItemIndex() {
+	public ItemIndex setupItemIndex() {
 		return ItemIndex.BARE_HANDS;
 	}
 

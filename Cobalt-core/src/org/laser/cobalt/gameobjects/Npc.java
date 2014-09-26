@@ -1,5 +1,6 @@
 package org.laser.cobalt.gameobjects;
 
+import org.laser.cobalt.gameobjects.enemies.Mob;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.TextureCollection;

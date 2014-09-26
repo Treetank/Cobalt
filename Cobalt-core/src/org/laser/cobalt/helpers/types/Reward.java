@@ -1,6 +1,6 @@
 package org.laser.cobalt.helpers.types;
 
-import org.laser.cobalt.gameobjects.Equipable;
+import org.laser.cobalt.gameobjects.gear.Equipable;
 
 public class Reward {
 

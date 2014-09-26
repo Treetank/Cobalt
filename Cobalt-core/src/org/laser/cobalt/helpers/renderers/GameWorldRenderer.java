@@ -5,7 +5,7 @@ import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Hero;
-import org.laser.cobalt.gameobjects.Mob;
+import org.laser.cobalt.gameobjects.enemies.Mob;
 import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.types.MobStats;

@@ -1,8 +1,8 @@
 package org.laser.cobalt.tests;
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
-import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.gameobjects.Inventory;
+import org.laser.cobalt.gameobjects.gear.Equipable;
 
 public class InventoryTester extends BaseTest {
 	private Inventory inv;

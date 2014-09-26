@@ -1,13 +1,12 @@
-package org.laser.cobalt.gameobjects;
+package org.laser.cobalt.gameobjects.enemies;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.EnemyIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
-import org.laser.cobalt.gameobjects.enemies.Creeper;
-import org.laser.cobalt.gameobjects.enemies.Imp;
-import org.laser.cobalt.gameobjects.enemies.Slime;
+import org.laser.cobalt.gameobjects.Drawable;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
+import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;

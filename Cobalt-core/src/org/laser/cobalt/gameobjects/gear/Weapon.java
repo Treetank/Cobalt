@@ -2,7 +2,6 @@ package org.laser.cobalt.gameobjects.gear;
 
 import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
-import org.laser.cobalt.gameobjects.Equipable;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.DamageArray;
 import org.laser.cobalt.helpers.types.ImageProperties;

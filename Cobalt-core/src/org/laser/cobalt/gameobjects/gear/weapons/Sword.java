@@ -24,7 +24,7 @@ public class Sword extends Weapon {
 	}
 
 	@Override
-	public ItemIndex getItemIndex() {
+	public ItemIndex setupItemIndex() {
 		return ItemIndex.SWORD;
 	}
 }
