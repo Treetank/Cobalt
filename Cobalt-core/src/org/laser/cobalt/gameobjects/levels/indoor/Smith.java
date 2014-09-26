@@ -1,5 +1,6 @@
 package org.laser.cobalt.gameobjects.levels.indoor;
 
+import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
@@ -7,7 +8,7 @@ import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 
-public class Smith extends IndoorGameLevel { 
+public class Smith extends IndoorGameLevel {
 
 	public Smith(CobaltGame game) {
 		super(game, TextureIndex.IN_HOSPITAL);
