@@ -1,4 +1,4 @@
-package org.laser.cobalt.gameobjects.levels;
+package org.laser.cobalt.gameobjects.levels.outdoor;
 
 import org.laser.cobalt.CobaltBasics.EnemyIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
@@ -6,6 +6,7 @@ import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.enemies.Mob;
+import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
 
 public class FirstLevel extends OutdoorGameLevel {
 

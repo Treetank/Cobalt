@@ -1,7 +1,8 @@
-package org.laser.cobalt.gameobjects.levels;
+package org.laser.cobalt.gameobjects.levels.indoor;
 
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
+import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 import org.laser.cobalt.CobaltGame;
 
 public class Hospital extends IndoorGameLevel {

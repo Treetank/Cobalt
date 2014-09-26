@@ -3,6 +3,11 @@ package org.laser.cobalt.gameobjects.levels;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
+import org.laser.cobalt.gameobjects.levels.indoor.Hospital;
+import org.laser.cobalt.gameobjects.levels.indoor.Smith;
+import org.laser.cobalt.gameobjects.levels.outdoor.FirstLevel;
+import org.laser.cobalt.gameobjects.levels.outdoor.SecondLevel;
+import org.laser.cobalt.gameobjects.levels.outdoor.ThirdLevel;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.types.World;
 
