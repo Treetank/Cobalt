@@ -90,9 +90,24 @@ public final class CobaltBasics {
 	// bottom button metrics
 	public static final int BOTTOM_BUTTON_PADDING = 28;
 	public static final int BOTTOM_BUTTON_SQUARE_SIZE = 64;
-	
+
+	// game select button metrics
+	public static final int GAME_SELECT_NEW_X1 = 100;
+	public static final int GAME_SELECT_NEW_Y1 = 50;
+	public static final int GAME_SELECT_NEW_X2 = 300;
+	public static final int GAME_SELECT_NEW_Y2 = 90;
+	public static final int GAME_SELECT_LOAD_X1 = 100;
+	public static final int GAME_SELECT_LOAD_Y1 = 150;
+	public static final int GAME_SELECT_LOAD_X2 = 300;
+	public static final int GAME_SELECT_LOAD_Y2 = 190;
+	public static final int GAME_SELECT_SUPER_X1 = 100;
+	public static final int GAME_SELECT_SUPER_Y1 = 250;
+	public static final int GAME_SELECT_SUPER_X2 = 300;
+	public static final int GAME_SELECT_SUPER_Y2 = 290;
+
+	// STRINGS
 	public static final String HOSPITAL_BASE_GREETING = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";
-	public static final String HOSPITAL_HEALED_GREETING ="THANK YOU. PLEASE COME AGAIN.";
+	public static final String HOSPITAL_HEALED_GREETING = "THANK YOU. PLEASE COME AGAIN.";
 	public static final String SMITHY_BASE_GREETING = "WELCOME TO THE SMITHERY. SELL YOU THIS NICE SWORD 100 GOLD.";
 	public static final String SMITHY_NO_WORK_GREETING = "I CANNOT HELP YOU AT THIS TIME";
 }
