@@ -7,7 +7,7 @@ import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 
-public class Smith extends IndoorGameLevel {
+public class Smith extends IndoorGameLevel { 
 
 	public Smith(CobaltGame game) {
 		super(game, TextureIndex.IN_HOSPITAL);
@@ -21,6 +21,7 @@ public class Smith extends IndoorGameLevel {
 			game.getWorld().getHero().getInventory().addItem(Equipable.ItemCreator(ItemIndex.SWORD, 1));
 			game.getWorld().getHero().getInventory().addCurrency(-100, 0, 0, 0);
 			game.getWorld().getHero().equip(game.getWorld().getHero().getInventory().getSword());
+			greeting = CobaltBasics.SMITHY_NO_WORK_GREETING;
 			break;
 		default:
 			break;
@@ -30,7 +31,7 @@ public class Smith extends IndoorGameLevel {
 	@Override
 	public void setupText() {
 		optionText = new String[1];
-		greeting = "WELCOME TO THE SMITHERY. SELL YOU THIS NICE SWORD 100G.";
+		greeting = CobaltBasics.SMITHY_BASE_GREETING;
 		optionText[0] = "BUY SWORD";
 	}
 

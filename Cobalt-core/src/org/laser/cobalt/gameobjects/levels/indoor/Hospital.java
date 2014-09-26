@@ -6,7 +6,7 @@ import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 import org.laser.cobalt.CobaltGame;
 
 public class Hospital extends IndoorGameLevel {
-
+	
 	public Hospital(CobaltGame game) {
 		super(game, TextureIndex.IN_HOSPITAL);
 		levelIndex = LevelIndex.HOSPITAL;
@@ -18,6 +18,7 @@ public class Hospital extends IndoorGameLevel {
 		case 0:
 			game.getWorld().getHero().getStats().heal(-1);
 			game.getWorld().getHero().getInventory().addCurrency(-10, 0, 0, 0);
+			greeting = CobaltBasics.HOSPITAL_HEALED_GREETING;
 			break;
 		default:
 			break;
@@ -27,7 +28,7 @@ public class Hospital extends IndoorGameLevel {
 	@Override
 	public void setupText() {
 		optionText = new String[1];
-		greeting = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";
+		greeting = CobaltBasics.HOSPITAL_BASE_GREETING;
 		optionText[0] = "HEAL";
 	}
 

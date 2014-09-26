@@ -90,4 +90,9 @@ public final class CobaltBasics {
 	// bottom button metrics
 	public static final int BOTTOM_BUTTON_PADDING = 28;
 	public static final int BOTTOM_BUTTON_SQUARE_SIZE = 64;
+	
+	public static final String HOSPITAL_BASE_GREETING = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";
+	public static final String HOSPITAL_HEALED_GREETING ="THANK YOU. PLEASE COME AGAIN.";
+	public static final String SMITHY_BASE_GREETING = "WELCOME TO THE SMITHERY. SELL YOU THIS NICE SWORD 100 GOLD.";
+	public static final String SMITHY_NO_WORK_GREETING = "I CANNOT HELP YOU AT THIS TIME";
 }
