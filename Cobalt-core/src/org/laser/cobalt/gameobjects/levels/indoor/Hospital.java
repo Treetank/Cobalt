@@ -29,7 +29,11 @@ public class Hospital extends IndoorGameLevel {
 	@Override
 	public void setupText() {
 		optionText = new String[1];
-		greeting = CobaltBasics.HOSPITAL_BASE_GREETING;
+		if (optionIsAvailable(0)) {
+			greeting = CobaltBasics.HOSPITAL_BASE_GREETING;
+		} else {
+			greeting = CobaltBasics.HOSPITAL_HEALED_GREETING;
+		}
 		optionText[0] = "HEAL";
 	}
 

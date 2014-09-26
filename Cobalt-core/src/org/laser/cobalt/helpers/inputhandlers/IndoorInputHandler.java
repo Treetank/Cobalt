@@ -41,11 +41,11 @@ public class IndoorInputHandler implements InputProcessor {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
 		if (optionOneClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
-			level.doOption(0);
+			level.clickOption(0);
 		} else if (optionTwoClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
-			level.doOption(1);
+			level.clickOption(1);
 		} else if (optionThreeClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
-			level.doOption(2);
+			level.clickOption(2);
 		} else if (optionExitClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
 			level.clickExit();
 		}

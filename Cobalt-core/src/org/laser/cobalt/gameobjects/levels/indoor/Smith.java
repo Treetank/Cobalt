@@ -32,7 +32,11 @@ public class Smith extends IndoorGameLevel {
 	@Override
 	public void setupText() {
 		optionText = new String[1];
-		greeting = CobaltBasics.SMITHY_BASE_GREETING;
+		if (optionIsAvailable(0)) {
+			greeting = CobaltBasics.SMITHY_BASE_GREETING;
+		} else {
+			greeting = CobaltBasics.SMITHY_NO_WORK_GREETING;
+		}
 		optionText[0] = "BUY SWORD";
 	}
 
