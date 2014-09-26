@@ -1,7 +1,7 @@
-package org.laser.cobalt.gameobjects.enemies;
+package org.laser.cobalt.gameobjects.npcs.enemies;
 
 import org.laser.cobalt.CobaltBasics.TextureIndex;
-import org.laser.cobalt.gameobjects.Npc;
+import org.laser.cobalt.gameobjects.npcs.Npc;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;

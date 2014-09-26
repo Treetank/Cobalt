@@ -1,28 +1,28 @@
-package org.laser.cobalt.gameobjects.enemies;
+package org.laser.cobalt.gameobjects.npcs.enemies;
 
 import org.laser.cobalt.CobaltBasics.TextureIndex;
-import org.laser.cobalt.gameobjects.Npc;
+import org.laser.cobalt.gameobjects.npcs.Npc;
 import org.laser.cobalt.helpers.types.CombatStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
-public class Imp extends Npc {
+public class Slime extends Npc {
 
-	public Imp(float x) {
-		super(x, new TextureCollection(TextureIndex.IMP, TextureIndex.IMP, TextureIndex.SCRATCH), new MobStats(new StaticMobStats(200, 1, 2, 0, 2), 200, 50, 8,
-				new CombatStats(2, 1, 1, 3, 1)));
+	public Slime(float x) {
+		super(x, new TextureCollection(TextureIndex.SLIME, TextureIndex.SLIME, TextureIndex.EXPLOSION), new MobStats(new StaticMobStats(100, 1, 2, 0, 2), 100,
+				10, 5, new CombatStats(1, 1, 1, 1, 1)));
 	}
 
 	@Override
 	protected Reward generateReward() {
 		Reward retVal = new Reward();
-		retVal.setGold(25);
+		retVal.setGold(5);
 		retVal.setRedGems(1);
 		retVal.setBlueGems(1);
 		retVal.setDiamonds(1);
-		retVal.setExperience(10);
+		retVal.setExperience(5);
 		return retVal;
 	}
 
