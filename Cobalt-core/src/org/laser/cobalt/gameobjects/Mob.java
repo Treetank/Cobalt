@@ -1,13 +1,13 @@
 package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics;
-import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
+import org.laser.cobalt.helpers.DamageCalculator;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
@@ -50,9 +50,9 @@ public abstract class Mob extends Drawable {
 
 	public void swing(Mob mob) {
 		if (!(swingTimer > 0)) {
-			swingTimer = stats.getStatics().SwingSpeed();
+			swingTimer = weapon.getAttackSpeed();
 			if (swingHit(mob)) {
-				receiveReward(mob.takeHit(stats.Damage(), textureCollection.Damage()));
+				receiveReward(mob.takeHit(DamageCalculator.CalculateDamage(this, mob), textureCollection.Damage()));
 			}
 			texture = textureCollection.Swinging();
 		}
@@ -66,10 +66,6 @@ public abstract class Mob extends Drawable {
 		} else {
 			return null;
 		}
-	}
-
-	public Reward takeHit(int damage, Damage damageType, TextureIndex texture) {
-		return takeHit(damage, texture);
 	}
 
 	public void die() {
@@ -111,6 +107,14 @@ public abstract class Mob extends Drawable {
 
 	protected boolean swingHit(Mob mob) {
 		return true;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public ChestArmor getChestArmor() {
+		return chestArmor;
 	}
 
 	public abstract void receiveReward(Reward reward);

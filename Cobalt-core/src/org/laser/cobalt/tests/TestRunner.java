@@ -9,6 +9,7 @@ public class TestRunner {
 		List<BaseTest> testList = new ArrayList<BaseTest>();
 		testList.add(new InventoryTester());
 		testList.add(new FactoryTester());
+		testList.add(new MobTester());
 
 		for (BaseTest b : testList) {
 			b.runTests();

@@ -1,5 +1,6 @@
 package org.laser.cobalt.gameobjects.gear.weapons;
 
+import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.helpers.types.CombatStats;
@@ -20,7 +21,9 @@ public class BareHands extends Weapon {
 
 	@Override
 	protected DamageArray setupDamage() {
-		return null;
+		DamageArray retVal = new DamageArray();
+		retVal.addDamage(Damage.PHYSICAL, 1);
+		return retVal;
 	}
 
 	@Override

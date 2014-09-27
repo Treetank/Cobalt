@@ -4,7 +4,7 @@ import org.laser.cobalt.CobaltBasics.Damage;
 
 public class DamageArray {
 
-	protected float physical, fire, water, earth, lightning;
+	protected int physical, fire, water, earth, lightning;
 
 	public DamageArray() {
 		physical = 0;
@@ -14,34 +14,86 @@ public class DamageArray {
 		lightning = 0;
 	}
 
-	public void addDamage(Damage damageType, float amount) {
+	public void addDamage(Damage damageType, int amount) {
 		switch (damageType) {
 		case PHYSICAL:
 			modifyPhysical(amount);
+			break;
+		case FIRE:
+			modifyFire(amount);
+			break;
+		case WATER:
+			modifyWater(amount);
+			break;
+		case EARTH:
+			modifyEarth(amount);
+			break;
+		case LIGHTNING:
+			modifyLightning(amount);
 			break;
 		default:
 			break;
 		}
 	}
 
-	private void modifyPhysical(float amount) {
-
+	private void modifyPhysical(int amount) {
+		physical += amount;
 	}
 
-	public float getDamage(Damage damageType) {
+	private void modifyFire(int amount) {
+		fire += amount;
+	}
+
+	private void modifyWater(int amount) {
+		water += amount;
+	}
+
+	private void modifyEarth(int amount) {
+		earth += amount;
+	}
+
+	private void modifyLightning(int amount) {
+		lightning += amount;
+	}
+
+	public int getDamage(Damage damageType) {
 		switch (damageType) {
 		case PHYSICAL:
 			return getPhysical();
+		case FIRE:
+			return getFire();
+		case WATER:
+			return getWater();
+		case EARTH:
+			return getEarth();
+		case LIGHTNING:
+			return getLightning();
 		default:
 			return getAllDamage();
 		}
 	}
 
-	private float getPhysical() {
+	private int getPhysical() {
 		return physical;
 	}
 
-	private float getAllDamage() {
-		return getPhysical();
+	private int getFire() {
+		return fire;
+	}
+
+	private int getWater() {
+		return water;
+	}
+
+	private int getEarth() {
+		return earth;
+	}
+
+	private int getLightning() {
+		return lightning;
+	}
+
+	private int getAllDamage() {
+		return getPhysical() + getFire() + getWater() + getEarth() + getLightning();
 	}
 }
