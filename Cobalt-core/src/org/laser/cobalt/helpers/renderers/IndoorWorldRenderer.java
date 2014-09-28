@@ -1,6 +1,14 @@
 package org.laser.cobalt.helpers.renderers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_WIDTH;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.FONT_HEIGHT_OFFSET;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.GREETING_WINDOW_BOTTOM;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_GAP;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_WIDTH;
+
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 import org.laser.cobalt.helpers.AssetLoader;
@@ -37,21 +45,17 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 		batcher.disableBlending();
 		batcher.draw(tempRegion, 0, 0);
 		batcher.enableBlending();
-		font.draw(batcher, level.getGreeting(), 15, CobaltBasics.GAME_SCREEN_HEIGHT - 15);
+		font.draw(batcher, level.getGreeting(), 15, SCREEN_HEIGHT - 15);
 		if (level.optionIsAvailable(0)) {
-			font.draw(batcher, level.getOptions()[0], 15, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2
-					+ CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.FONT_HEIGHT_OFFSET);
+			font.draw(batcher, level.getOptions()[0], 15, STOREFRONT_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT + FONT_HEIGHT_OFFSET);
 		}
 		if (level.getOptions().length > 1 && level.optionIsAvailable(1)) {
-			font.draw(batcher, level.getOptions()[1], 15 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP,
-					CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT
-							+ CobaltBasics.FONT_HEIGHT_OFFSET);
+			font.draw(batcher, level.getOptions()[1], 15 + OPTION_WIDTH + OPTION_GAP, STOREFRONT_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT + FONT_HEIGHT_OFFSET);
 		}
 		if (level.getOptions().length > 2 && level.optionIsAvailable(2)) {
-			font.draw(batcher, level.getOptions()[2], 15, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.FONT_HEIGHT_OFFSET);
+			font.draw(batcher, level.getOptions()[2], 15, STOREFRONT_HEIGHT + OPTION_GAP + FONT_HEIGHT_OFFSET);
 		}
-		font.draw(batcher, "EXIT", 15 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.FONT_HEIGHT_OFFSET);
+		font.draw(batcher, "EXIT", 15 + OPTION_WIDTH + OPTION_GAP, STOREFRONT_HEIGHT + OPTION_GAP + FONT_HEIGHT_OFFSET);
 		batcher.end();
 
 		shapeRenderer.begin(ShapeType.Filled);
@@ -70,30 +74,24 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 	}
 
 	public void drawGreeting() {
-		RoundRectangle(5, CobaltBasics.STOREFRONT_GREETING_WINDOW_BOTTOM, CobaltBasics.GAME_SCREEN_WIDTH - 5, CobaltBasics.GAME_SCREEN_HEIGHT - 5, 2);
+		RoundRectangle(5, GREETING_WINDOW_BOTTOM, SCREEN_WIDTH - 5, SCREEN_HEIGHT - 5, 2);
 	}
 
 	public void drawOptionOne() {
-		RoundRectangle(5, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT,
-				5 + CobaltBasics.STOREFRONT_OPTION_WIDTH, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2
-						+ CobaltBasics.STOREFRONT_OPTION_GAP * 2, 2);
+		RoundRectangle(5, STOREFRONT_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT, 5 + OPTION_WIDTH, STOREFRONT_HEIGHT + OPTION_HEIGHT * 2 + OPTION_GAP * 2, 2);
 	}
 
 	public void drawOptionTwo() {
-		RoundRectangle(5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2
-				+ CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2
-				+ CobaltBasics.STOREFRONT_OPTION_GAP * 2, 2);
+		RoundRectangle(5 + OPTION_WIDTH + OPTION_GAP, STOREFRONT_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT, 5 + OPTION_WIDTH * 2 + OPTION_GAP, STOREFRONT_HEIGHT
+				+ OPTION_HEIGHT * 2 + OPTION_GAP * 2, 2);
 	}
 
 	public void drawOptionThree() {
-		RoundRectangle(5, CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH,
-				CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 2);
+		RoundRectangle(5, STOREFRONT_HEIGHT + OPTION_GAP, 5 + OPTION_WIDTH, STOREFRONT_HEIGHT + OPTION_HEIGHT + OPTION_GAP, 2);
 	}
 
 	public void drawOptionFour() {
-		RoundRectangle(5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP, CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_GAP, 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP,
-				CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP, 2);
+		RoundRectangle(5 + OPTION_WIDTH + OPTION_GAP, STOREFRONT_HEIGHT + OPTION_GAP, 5 + OPTION_WIDTH * 2 + OPTION_GAP, STOREFRONT_HEIGHT + OPTION_HEIGHT
+				+ OPTION_GAP, 2);
 	}
 }

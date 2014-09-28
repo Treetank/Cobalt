@@ -1,9 +1,12 @@
 package org.laser.cobalt.gameobjects.levels;
 
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.LEFT_WALK_LIMIT;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.RIGHT_WALK_LIMIT;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_WIDTH;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.laser.cobalt.CobaltBasics;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
@@ -38,8 +41,7 @@ public class OutdoorGameLevel extends GameLevel {
 		Hero hero = game.getWorld().getHero();
 		hero.move(hero.getLocation() + hero.getVelocity());
 
-		if ((hero.getCenterX() < CobaltBasics.LEFT_WALK_LIMIT && hero.getVelocity() < 0)
-				|| (hero.getCenterX() > CobaltBasics.RIGHT_WALK_LIMIT && hero.getVelocity() > 0)) {
+		if ((hero.getCenterX() < LEFT_WALK_LIMIT && hero.getVelocity() < 0) || (hero.getCenterX() > RIGHT_WALK_LIMIT && hero.getVelocity() > 0)) {
 			world.setLevelPosition(world.getLevelPosition() + hero.getVelocity());
 		}
 
@@ -104,17 +106,17 @@ public class OutdoorGameLevel extends GameLevel {
 	}
 
 	public void rotateTerrain() {
-		if (terrain1.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
+		if (terrain1.getX() < -TERRAIN_WIDTH - 5)
 			terrain1.move(terrain3.getLocation() + terrain3.getWidth() - 1);
-		if (terrain1.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
+		if (terrain1.getX() > TERRAIN_WIDTH * 2 + 5)
 			terrain1.move(terrain2.getLocation() - terrain1.getWidth() + 1);
-		if (terrain2.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
+		if (terrain2.getX() < -TERRAIN_WIDTH - 5)
 			terrain2.move(terrain1.getLocation() + terrain1.getWidth() - 1);
-		if (terrain2.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
+		if (terrain2.getX() > TERRAIN_WIDTH * 2 + 5)
 			terrain2.move(terrain3.getLocation() - terrain2.getWidth() + 1);
-		if (terrain3.getX() < -CobaltBasics.TERRAIN_WIDTH - 5)
+		if (terrain3.getX() < -TERRAIN_WIDTH - 5)
 			terrain3.move(terrain2.getLocation() + terrain2.getWidth() - 1);
-		if (terrain3.getX() > CobaltBasics.TERRAIN_WIDTH * 2 + 5)
+		if (terrain3.getX() > TERRAIN_WIDTH * 2 + 5)
 			terrain3.move(terrain1.getLocation() - terrain3.getWidth() + 1);
 	}
 

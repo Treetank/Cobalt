@@ -1,6 +1,12 @@
 package org.laser.cobalt.helpers.renderers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.BOTTOM_BUTTON_PADDING;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.BOTTOM_BUTTON_SQUARE_SIZE;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_WIDTH;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.VIEWPORT_LOWER_BOUNDS;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
+
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
@@ -130,7 +136,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		MobStats stats = gameWorld.getWorld().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
-		RoundRectangle(3, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 6, DeviceInfo.gameWidth - 3, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 3, 2);
+		RoundRectangle(3, BOTTOM_BUTTON_SQUARE_SIZE + 6, DeviceInfo.gameWidth - 3, VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				DrawEnterButton();
@@ -139,25 +145,21 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 		shapeRenderer.end();
 		batcher.begin();
 		batcher.enableBlending();
-		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 15);
-		font.draw(batcher, stats.Exp() + "", 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 25);
-		font.draw(batcher, "STRENGTH  " + stats.getStrength() + "  " + stats.getBaseStrength() + "/" + stats.getBonusStrength(), 10,
-				CobaltBasics.VIEWPORT_LOWER_BOUNDS - 35);
-		font.draw(batcher, "AGILITY   " + stats.getAgility() + "  " + stats.getBaseAgility() + "/" + stats.getBonusAgility(), 10,
-				CobaltBasics.VIEWPORT_LOWER_BOUNDS - 45);
+		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, VIEWPORT_LOWER_BOUNDS - 15);
+		font.draw(batcher, stats.Exp() + "", 10, VIEWPORT_LOWER_BOUNDS - 25);
+		font.draw(batcher, "STRENGTH  " + stats.getStrength() + "  " + stats.getBaseStrength() + "/" + stats.getBonusStrength(), 10, VIEWPORT_LOWER_BOUNDS - 35);
+		font.draw(batcher, "AGILITY   " + stats.getAgility() + "  " + stats.getBaseAgility() + "/" + stats.getBonusAgility(), 10, VIEWPORT_LOWER_BOUNDS - 45);
 		font.draw(batcher, "INTELLECT " + stats.getIntellect() + "  " + stats.getBaseIntellect() + "/" + stats.getBonusIntellect(), 10,
-				CobaltBasics.VIEWPORT_LOWER_BOUNDS - 55);
-		font.draw(batcher, "STAMINA   " + stats.getStamina() + "  " + stats.getBaseStamina() + "/" + stats.getBonusStamina(), 10,
-				CobaltBasics.VIEWPORT_LOWER_BOUNDS - 65);
-		font.draw(batcher, "VITALITY  " + stats.getVitality() + "  " + stats.getBaseVitality() + "/" + stats.getBonusVitality(), 10,
-				CobaltBasics.VIEWPORT_LOWER_BOUNDS - 75);
-		font.draw(batcher, "GOLD " + hero.getInventory().getGold(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 85);
-		font.draw(batcher, "RED GEMS " + hero.getInventory().getRedGems(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 95);
-		font.draw(batcher, "BLUE GEMS " + hero.getInventory().getBlueGems(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 105);
-		font.draw(batcher, "DIAMONDS " + hero.getInventory().getDiamonds(), 10, CobaltBasics.VIEWPORT_LOWER_BOUNDS - 115);
+				VIEWPORT_LOWER_BOUNDS - 55);
+		font.draw(batcher, "STAMINA   " + stats.getStamina() + "  " + stats.getBaseStamina() + "/" + stats.getBonusStamina(), 10, VIEWPORT_LOWER_BOUNDS - 65);
+		font.draw(batcher, "VITALITY  " + stats.getVitality() + "  " + stats.getBaseVitality() + "/" + stats.getBonusVitality(), 10, VIEWPORT_LOWER_BOUNDS - 75);
+		font.draw(batcher, "GOLD " + hero.getInventory().getGold(), 10, VIEWPORT_LOWER_BOUNDS - 85);
+		font.draw(batcher, "RED GEMS " + hero.getInventory().getRedGems(), 10, VIEWPORT_LOWER_BOUNDS - 95);
+		font.draw(batcher, "BLUE GEMS " + hero.getInventory().getBlueGems(), 10, VIEWPORT_LOWER_BOUNDS - 105);
+		font.draw(batcher, "DIAMONDS " + hero.getInventory().getDiamonds(), 10, VIEWPORT_LOWER_BOUNDS - 115);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
-				font.draw(batcher, "ENTER", CobaltBasics.GAME_SCREEN_WIDTH - 50, CobaltBasics.GAME_SCREEN_HEIGHT - 10);
+				font.draw(batcher, "ENTER", SCREEN_WIDTH - 50, SCREEN_HEIGHT - 10);
 			}
 		}
 		batcher.end();
@@ -166,14 +168,13 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 	public void drawBottomButtons() {
 		shapeRenderer.begin(ShapeType.Filled);
-		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING, 3, CobaltBasics.BOTTOM_BUTTON_PADDING + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE,
-				CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
-		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 3 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 3
-				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 2, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
-		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 5 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 2, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 5
-				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 3, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
-		RoundRectangle(CobaltBasics.BOTTOM_BUTTON_PADDING * 7 + CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 3, 3, CobaltBasics.BOTTOM_BUTTON_PADDING * 7
-				+ CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE * 4, CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(BOTTOM_BUTTON_PADDING, 3, BOTTOM_BUTTON_PADDING + BOTTOM_BUTTON_SQUARE_SIZE, BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(BOTTOM_BUTTON_PADDING * 3 + BOTTOM_BUTTON_SQUARE_SIZE, 3, BOTTOM_BUTTON_PADDING * 3 + BOTTOM_BUTTON_SQUARE_SIZE * 2,
+				BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(BOTTOM_BUTTON_PADDING * 5 + BOTTOM_BUTTON_SQUARE_SIZE * 2, 3, BOTTOM_BUTTON_PADDING * 5 + BOTTOM_BUTTON_SQUARE_SIZE * 3,
+				BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
+		RoundRectangle(BOTTOM_BUTTON_PADDING * 7 + BOTTOM_BUTTON_SQUARE_SIZE * 3, 3, BOTTOM_BUTTON_PADDING * 7 + BOTTOM_BUTTON_SQUARE_SIZE * 4,
+				BOTTOM_BUTTON_SQUARE_SIZE + 3, 2);
 		shapeRenderer.end();
 	}
 
@@ -183,10 +184,9 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		shapeRenderer.begin(ShapeType.Filled);
 		shapeRenderer.setColor(Color.BLUE);
-		shapeRenderer.rect(0, CobaltBasics.VIEWPORT_LOWER_BOUNDS + CobaltBasics.TERRAIN_HEIGHT, DeviceInfo.gameWidth, DeviceInfo.gameHeight
-				- CobaltBasics.TERRAIN_HEIGHT - CobaltBasics.VIEWPORT_LOWER_BOUNDS);
+		shapeRenderer.rect(0, VIEWPORT_LOWER_BOUNDS + TERRAIN_HEIGHT, DeviceInfo.gameWidth, DeviceInfo.gameHeight - TERRAIN_HEIGHT - VIEWPORT_LOWER_BOUNDS);
 		shapeRenderer.setColor(34, 177, 76, 1);
-		shapeRenderer.rect(0, CobaltBasics.VIEWPORT_LOWER_BOUNDS, DeviceInfo.gameWidth, CobaltBasics.TERRAIN_HEIGHT);
+		shapeRenderer.rect(0, VIEWPORT_LOWER_BOUNDS, DeviceInfo.gameWidth, TERRAIN_HEIGHT);
 		shapeRenderer.end();
 
 		batcher.begin();
@@ -211,8 +211,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 	}
 
 	public void DrawEnterButton() {
-		RoundRectangle(CobaltBasics.GAME_SCREEN_WIDTH - 64, CobaltBasics.GAME_SCREEN_HEIGHT - 32, CobaltBasics.GAME_SCREEN_WIDTH,
-				CobaltBasics.GAME_SCREEN_HEIGHT, 2);
-		shapeRenderer.rect(CobaltBasics.GAME_SCREEN_WIDTH - 62, CobaltBasics.GAME_SCREEN_HEIGHT - 30, 60, 28);
+		RoundRectangle(SCREEN_WIDTH - 64, SCREEN_HEIGHT - 32, SCREEN_WIDTH, SCREEN_HEIGHT, 2);
+		shapeRenderer.rect(SCREEN_WIDTH - 62, SCREEN_HEIGHT - 30, 60, 28);
 	}
 }

@@ -10,6 +10,7 @@ public class TestRunner {
 		testList.add(new InventoryTester());
 		testList.add(new FactoryTester());
 		testList.add(new MobTester());
+		testList.add(new CombatTester());
 
 		for (BaseTest b : testList) {
 			b.runTests();

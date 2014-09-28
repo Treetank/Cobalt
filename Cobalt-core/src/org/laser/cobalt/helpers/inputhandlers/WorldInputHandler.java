@@ -1,6 +1,9 @@
 package org.laser.cobalt.helpers.inputhandlers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.BOTTOM_BUTTON_SQUARE_SIZE;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.VIEWPORT_LOWER_BOUNDS;
+
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
@@ -36,9 +39,9 @@ public class WorldInputHandler implements InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
-		if (screenY <= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.VIEWPORT_LOWER_BOUNDS) {
+		if (screenY <= SCREEN_HEIGHT - VIEWPORT_LOWER_BOUNDS) {
 			level.clickEnter();
-		} else if (screenY >= CobaltBasics.GAME_SCREEN_HEIGHT - CobaltBasics.BOTTOM_BUTTON_SQUARE_SIZE - 3) {
+		} else if (screenY >= SCREEN_HEIGHT - BOTTOM_BUTTON_SQUARE_SIZE - 3) {
 			game.pushBottomButton(screenX / 120);
 		} else if (screenX > DeviceInfo.screenMidX)
 			level.moveRight();

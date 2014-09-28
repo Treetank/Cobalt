@@ -1,6 +1,19 @@
 package org.laser.cobalt.helpers.renderers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.FONT_HEIGHT_OFFSET;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_X1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_X2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_Y2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_X1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_X2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y2;
+
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.interfaces.IRenderer;
 
@@ -30,19 +43,14 @@ public class GameSelectRenderer extends CobaltRenderer implements IRenderer {
 	}
 
 	public void drawRectangles() {
-		RoundRectangle(CobaltBasics.GAME_SELECT_NEW_X1, CobaltBasics.GAME_SELECT_NEW_Y1, CobaltBasics.GAME_SELECT_NEW_X2, CobaltBasics.GAME_SELECT_NEW_Y2, 2);
-		RoundRectangle(CobaltBasics.GAME_SELECT_LOAD_X1, CobaltBasics.GAME_SELECT_LOAD_Y1, CobaltBasics.GAME_SELECT_LOAD_X2, CobaltBasics.GAME_SELECT_LOAD_Y2,
-				2);
-		RoundRectangle(CobaltBasics.GAME_SELECT_SUPER_X1, CobaltBasics.GAME_SELECT_SUPER_Y1, CobaltBasics.GAME_SELECT_SUPER_X2,
-				CobaltBasics.GAME_SELECT_SUPER_Y2, 2);
+		RoundRectangle(NEW_X1, NEW_Y1, NEW_X2, NEW_Y2, 2);
+		RoundRectangle(LOAD_X1, LOAD_Y1, LOAD_X2, LOAD_Y2, 2);
+		RoundRectangle(SUPER_X1, SUPER_Y1, SUPER_X2, SUPER_Y2, 2);
 	}
 
 	public void drawText() {
-		font.draw(batcher, "NEW GAME", CobaltBasics.GAME_SELECT_NEW_X1 + CobaltBasics.FONT_HEIGHT_OFFSET, CobaltBasics.GAME_SELECT_NEW_Y1
-				+ CobaltBasics.FONT_HEIGHT_OFFSET);
-		font.draw(batcher, "CONTINUE", CobaltBasics.GAME_SELECT_LOAD_X1 + CobaltBasics.FONT_HEIGHT_OFFSET, CobaltBasics.GAME_SELECT_LOAD_Y1
-				+ CobaltBasics.FONT_HEIGHT_OFFSET);
-		font.draw(batcher, "LOAD SUPER", CobaltBasics.GAME_SELECT_SUPER_X1 + CobaltBasics.FONT_HEIGHT_OFFSET, CobaltBasics.GAME_SELECT_SUPER_Y1
-				+ CobaltBasics.FONT_HEIGHT_OFFSET);
+		font.draw(batcher, "NEW GAME", NEW_X1 + FONT_HEIGHT_OFFSET, NEW_Y1 + FONT_HEIGHT_OFFSET);
+		font.draw(batcher, "CONTINUE", LOAD_X1 + FONT_HEIGHT_OFFSET, LOAD_Y1 + FONT_HEIGHT_OFFSET);
+		font.draw(batcher, "LOAD SUPER", SUPER_X1 + FONT_HEIGHT_OFFSET, SUPER_Y1 + FONT_HEIGHT_OFFSET);
 	}
 }

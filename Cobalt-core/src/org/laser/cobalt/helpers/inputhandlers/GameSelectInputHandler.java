@@ -1,6 +1,15 @@
 package org.laser.cobalt.helpers.inputhandlers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.LOAD_Y2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y1;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y2;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+
 import org.laser.cobalt.CobaltGame;
 
 import com.badlogic.gdx.InputProcessor;
@@ -33,15 +42,15 @@ public class GameSelectInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		int flippedY = CobaltBasics.GAME_SCREEN_HEIGHT - screenY;
-		if (screenX > CobaltBasics.GAME_SELECT_NEW_X1 && screenX < CobaltBasics.GAME_SELECT_NEW_X2) {
-			if (flippedY > CobaltBasics.GAME_SELECT_NEW_Y1 && flippedY < CobaltBasics.GAME_SELECT_NEW_Y2) {
+		int flippedY = SCREEN_HEIGHT - screenY;
+		if (screenX > NEW_X1 && screenX < NEW_X2) {
+			if (flippedY > NEW_Y1 && flippedY < NEW_Y2) {
 				game.newGame();
 				return true;
-			} else if (flippedY > CobaltBasics.GAME_SELECT_LOAD_Y1 && flippedY < CobaltBasics.GAME_SELECT_LOAD_Y2) {
+			} else if (flippedY > LOAD_Y1 && flippedY < LOAD_Y2) {
 				game.loadGame();
 				return true;
-			} else if (flippedY > CobaltBasics.GAME_SELECT_SUPER_Y1 && flippedY < CobaltBasics.GAME_SELECT_SUPER_Y2) {
+			} else if (flippedY > SUPER_Y1 && flippedY < SUPER_Y2) {
 				game.loadSuperGame();
 				return true;
 			}

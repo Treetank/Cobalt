@@ -1,19 +1,20 @@
 package org.laser.cobalt.gameobjects;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.VIEWPORT_LOWER_BOUNDS;
+
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.helpers.types.ImageProperties;
 
 import com.badlogic.gdx.math.Vector2;
 
 public class Drawable {
-	
+
 	protected Vector2 coords;
 	protected float width, height, location, baseLocation;
 	protected TextureIndex texture;
 
 	public Drawable(ImageProperties ip, TextureIndex texture) {
-		coords = new Vector2(ip.X(), ip.Y() + CobaltBasics.VIEWPORT_LOWER_BOUNDS);
+		coords = new Vector2(ip.X(), ip.Y() + VIEWPORT_LOWER_BOUNDS);
 		this.width = ip.Width();
 		this.height = ip.Height();
 		this.location = ip.X();
@@ -40,11 +41,11 @@ public class Drawable {
 	public float getHeight() {
 		return height;
 	}
-	
+
 	public void move(float location) {
 		this.location = location;
 	}
-	
+
 	public float getLocation() {
 		return location;
 	}
@@ -60,7 +61,7 @@ public class Drawable {
 	public TextureIndex getTexture() {
 		return texture;
 	}
-	
+
 	public void returnToBase() {
 		location = baseLocation;
 	}

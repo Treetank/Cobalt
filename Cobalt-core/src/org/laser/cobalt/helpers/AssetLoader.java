@@ -1,6 +1,16 @@
 package org.laser.cobalt.helpers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.MOB_SQUARE_SIZE;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_WIDTH;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_WIDTH;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.MOB_START_X;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.MOB_START_Y;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.STOREFRONT_START_X;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.STOREFRONT_START_Y;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.TERRAIN_START_X;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.TERRAIN_START_Y;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -55,18 +65,17 @@ public class AssetLoader {
 	}
 
 	private static TextureRegion loadTexture(int xPos, int yPos, int size) {
-		return new TextureRegion(texture, CobaltBasics.MOB_TEXTURE_START_X + xPos * CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_TEXTURE_START_Y + yPos
-				* CobaltBasics.MOB_SQUARE_SIZE, size * CobaltBasics.MOB_SQUARE_SIZE, size * CobaltBasics.MOB_SQUARE_SIZE);
+		return new TextureRegion(texture, MOB_START_X + xPos * MOB_SQUARE_SIZE, MOB_START_Y + yPos * MOB_SQUARE_SIZE, size * MOB_SQUARE_SIZE, size
+				* MOB_SQUARE_SIZE);
 	}
 
 	private static TextureRegion loadTerrain(int xPos, int yPos) {
-		return new TextureRegion(texture, CobaltBasics.TERRAIN_TEXTURE_START_X + xPos * CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_TEXTURE_START_Y + yPos
-				* CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.TERRAIN_WIDTH, CobaltBasics.TERRAIN_HEIGHT);
+		return new TextureRegion(texture, TERRAIN_START_X + xPos * TERRAIN_WIDTH, TERRAIN_START_Y + yPos * TERRAIN_HEIGHT, TERRAIN_WIDTH, TERRAIN_HEIGHT);
 	}
 
 	private static TextureRegion loadStorefront(int xPos, int yPos) {
-		return new TextureRegion(texture, CobaltBasics.STOREFRONT_TEXTURE_START_X + xPos * CobaltBasics.STOREFRONT_WIDTH,
-				CobaltBasics.STOREFRONT_TEXTURE_START_Y + yPos * CobaltBasics.STOREFRONT_HEIGHT, CobaltBasics.STOREFRONT_WIDTH, CobaltBasics.STOREFRONT_HEIGHT);
+		return new TextureRegion(texture, STOREFRONT_START_X + xPos * STOREFRONT_WIDTH, STOREFRONT_START_Y + yPos * STOREFRONT_HEIGHT, STOREFRONT_WIDTH,
+				STOREFRONT_HEIGHT);
 	}
 
 	public static void dispose() {

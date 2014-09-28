@@ -1,5 +1,8 @@
 package org.laser.cobalt;
 
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_WIDTH;
+
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
@@ -41,8 +44,8 @@ public class CobaltGame extends Game {
 		DeviceInfo.screenMidY = DeviceInfo.screenHeight / 2;
 
 		// setup game resolution metrics
-		DeviceInfo.gameWidth = CobaltBasics.GAME_SCREEN_WIDTH;
-		DeviceInfo.gameHeight = CobaltBasics.GAME_SCREEN_HEIGHT;
+		DeviceInfo.gameWidth = SCREEN_WIDTH;
+		DeviceInfo.gameHeight = SCREEN_HEIGHT;
 		DeviceInfo.gameMidY = DeviceInfo.gameHeight / 2;
 		DeviceInfo.gameMidX = DeviceInfo.gameWidth / 2;
 

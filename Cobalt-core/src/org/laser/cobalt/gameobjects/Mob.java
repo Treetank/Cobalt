@@ -1,6 +1,8 @@
 package org.laser.cobalt.gameobjects;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.MOB_SQUARE_SIZE;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
+
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
 import org.laser.cobalt.gameobjects.gear.Equipable;
@@ -23,7 +25,7 @@ public abstract class Mob extends Drawable {
 	protected Weapon weapon;
 
 	public Mob(float x, TextureCollection tc, MobStats ms) {
-		super(new ImageProperties(x, CobaltBasics.TERRAIN_HEIGHT, CobaltBasics.MOB_SQUARE_SIZE, CobaltBasics.MOB_SQUARE_SIZE), tc.Base());
+		super(new ImageProperties(x, TERRAIN_HEIGHT, MOB_SQUARE_SIZE, MOB_SQUARE_SIZE), tc.Base());
 		textureCollection = tc;
 		stats = ms;
 		swingTimer = 0;

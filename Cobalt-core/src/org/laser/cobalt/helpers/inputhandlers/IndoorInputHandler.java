@@ -1,6 +1,11 @@
 package org.laser.cobalt.helpers.inputhandlers;
 
-import org.laser.cobalt.CobaltBasics;
+import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_GAP;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.StoreMetrics.OPTION_WIDTH;
+
 import org.laser.cobalt.CobaltGame;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
 
@@ -40,13 +45,13 @@ public class IndoorInputHandler implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
-		if (optionOneClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+		if (optionOneClicked(screenX, SCREEN_HEIGHT - screenY)) {
 			level.clickOption(0);
-		} else if (optionTwoClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+		} else if (optionTwoClicked(screenX, SCREEN_HEIGHT - screenY)) {
 			level.clickOption(1);
-		} else if (optionThreeClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+		} else if (optionThreeClicked(screenX, SCREEN_HEIGHT - screenY)) {
 			level.clickOption(2);
-		} else if (optionExitClicked(screenX, CobaltBasics.GAME_SCREEN_HEIGHT - screenY)) {
+		} else if (optionExitClicked(screenX, SCREEN_HEIGHT - screenY)) {
 			level.clickExit();
 		}
 		return true;
@@ -71,27 +76,21 @@ public class IndoorInputHandler implements InputProcessor {
 	}
 
 	public boolean optionOneClicked(int x, int y) {
-		return (x > 5 && x < CobaltBasics.STOREFRONT_OPTION_WIDTH + 5
-				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT && y < CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2 + CobaltBasics.STOREFRONT_OPTION_GAP * 2);
+		return (x > 5 && x < OPTION_WIDTH + 5 && y > OPTION_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT && y < STOREFRONT_HEIGHT + OPTION_HEIGHT * 2 + OPTION_GAP
+				* 2);
 	}
 
 	public boolean optionTwoClicked(int x, int y) {
-		return (x > 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP
-				&& x < 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP
-				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP * 2 + CobaltBasics.STOREFRONT_OPTION_HEIGHT && y < CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_HEIGHT * 2 + CobaltBasics.STOREFRONT_OPTION_GAP * 2);
+		return (x > 5 + OPTION_WIDTH + OPTION_GAP && x < 5 + OPTION_WIDTH * 2 + OPTION_GAP && y > STOREFRONT_HEIGHT + OPTION_GAP * 2 + OPTION_HEIGHT && y < STOREFRONT_HEIGHT
+				+ OPTION_HEIGHT * 2 + OPTION_GAP * 2);
 	}
 
 	public boolean optionThreeClicked(int x, int y) {
-		return (x > 5 && x < CobaltBasics.STOREFRONT_OPTION_WIDTH + 5 && y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP && y < CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.STOREFRONT_OPTION_HEIGHT);
+		return (x > 5 && x < OPTION_WIDTH + 5 && y > STOREFRONT_HEIGHT + OPTION_GAP && y < STOREFRONT_HEIGHT + OPTION_GAP + OPTION_HEIGHT);
 	}
 
 	public boolean optionExitClicked(int x, int y) {
-		return (x > 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH + CobaltBasics.STOREFRONT_OPTION_GAP
-				&& x < 5 + CobaltBasics.STOREFRONT_OPTION_WIDTH * 2 + CobaltBasics.STOREFRONT_OPTION_GAP
-				&& y > CobaltBasics.STOREFRONT_HEIGHT + CobaltBasics.STOREFRONT_OPTION_GAP && y < CobaltBasics.STOREFRONT_HEIGHT
-				+ CobaltBasics.STOREFRONT_OPTION_GAP + CobaltBasics.STOREFRONT_OPTION_HEIGHT);
+		return (x > 5 + OPTION_WIDTH + OPTION_GAP && x < 5 + OPTION_WIDTH * 2 + OPTION_GAP && y > STOREFRONT_HEIGHT + OPTION_GAP && y < STOREFRONT_HEIGHT
+				+ OPTION_GAP + OPTION_HEIGHT);
 	}
 }
