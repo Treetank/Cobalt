@@ -50,8 +50,8 @@ public abstract class Equipable extends Drawable {
 
 	public String save() {
 		EquipableData data = new EquipableData();
-		data.level = getLevel();
-		data.item = setupItemIndex();
+		data.setLevel(getLevel());
+		data.setItem(setupItemIndex());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -67,7 +67,7 @@ public abstract class Equipable extends Drawable {
 	public static Equipable load(String loadString) {
 		Json json = new Json();
 		EquipableData data = json.fromJson(EquipableData.class, loadString);
-		return Equipable.ItemCreator(data.item, data.level);
+		return Equipable.ItemCreator(data.getItem(), data.getLevel());
 	}
 
 	public ItemIndex getItemIndex() {

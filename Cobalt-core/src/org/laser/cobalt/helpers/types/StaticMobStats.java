@@ -19,11 +19,11 @@ public final class StaticMobStats {
 
 	public String save() {
 		StaticMobStatsData data = new StaticMobStatsData();
-		data.maxHp = MaxHp();
-		data.level = Level();
-		data.range = SwingRange();
-		data.swingSpeed = SwingSpeed();
-		data.moveSpeed = MoveSpeed();
+		data.setMaxHp(MaxHp());
+		data.setLevel(Level());
+		data.setRange(SwingRange());
+		data.setSwingSpeed(SwingSpeed());
+		data.setMoveSpeed(MoveSpeed());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -31,7 +31,7 @@ public final class StaticMobStats {
 	public static StaticMobStats load(String loadString) {
 		Json json = new Json();
 		StaticMobStatsData data = json.fromJson(StaticMobStatsData.class, loadString);
-		StaticMobStats retVal = new StaticMobStats(data.maxHp, data.level, data.swingSpeed, data.moveSpeed, data.range);
+		StaticMobStats retVal = new StaticMobStats(data.getMaxHp(), data.getLevel(), data.getSwingSpeed(), data.getMoveSpeed(), data.getRange());
 		return retVal;
 	}
 

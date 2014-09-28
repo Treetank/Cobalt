@@ -21,11 +21,11 @@ public class MobStats {
 
 	public String save() {
 		MobStatsData data = new MobStatsData();
-		data.hp = Hp();
-		data.damage = Damage();
-		data.exp = Exp();
-		data.staticsJson = statics.save();
-		data.combatJson = baseStats.save();
+		data.setHp(Hp());
+		data.setDamage(Damage());
+		data.setExp(Exp());
+		data.setStaticsJson(statics.save());
+		data.setCombatJson(baseStats.save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -33,11 +33,11 @@ public class MobStats {
 	public void load(String loadString) {
 		Json json = new Json();
 		MobStatsData data = json.fromJson(MobStatsData.class, loadString);
-		this.hp = data.hp;
-		this.damage = data.damage;
-		this.exp = data.exp;
-		this.statics = StaticMobStats.load(data.staticsJson);
-		baseStats.load(data.combatJson);
+		this.hp = data.getHp();
+		this.damage = data.getDamage();
+		this.exp = data.getExp();
+		this.statics = StaticMobStats.load(data.getStaticsJson());
+		baseStats.load(data.getCombatJson());
 	}
 
 	public int getBaseStrength() {

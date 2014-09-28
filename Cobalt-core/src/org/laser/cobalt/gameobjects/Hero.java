@@ -13,6 +13,7 @@ public class Hero extends Mob {
 
 	private float velocity;
 	private Inventory inventory;
+	private MobStats offhand;
 
 	public Hero(float x, MobStats ms) {
 		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
@@ -21,11 +22,11 @@ public class Hero extends Mob {
 
 	public String save(float levelPosition) {
 		HeroData data = new HeroData();
-		data.x = getX() + levelPosition;
-		data.statsJson = stats.save();
-		data.inventoryJson = inventory.save();
-		data.weaponJson = weapon.save();
-		data.chestArmorJson = chestArmor.save();
+		data.setX(getX() + levelPosition);
+		data.setStatsJson(stats.save());
+		data.setInventoryJson(inventory.save());
+		data.setWeaponJson(weapon.save());
+		data.setChestArmorJson(chestArmor.save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -33,11 +34,12 @@ public class Hero extends Mob {
 	public void load(String loadString) {
 		Json json = new Json();
 		HeroData data = json.fromJson(HeroData.class, loadString);
-		move(data.x);
-		stats.load(data.statsJson);
-		inventory.load(data.inventoryJson);
-		equip(Equipable.load(data.weaponJson));
-		equip(Equipable.load(data.chestArmorJson));
+		move(data.getX());
+		stats.load(data.getStatsJson());
+		inventory.load(data.getInventoryJson());
+		equip(Equipable.load(data.getWeaponJson()));
+		equip(Equipable.load(data.getChestArmorJson()));
+		offhand.load(data.getNullproblem());
 	}
 
 	public float getVelocity() {

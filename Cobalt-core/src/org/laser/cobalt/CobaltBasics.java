@@ -115,6 +115,75 @@ public final class CobaltBasics {
 		public static final int FONT_HEIGHT_OFFSET = 25;
 	}
 
+	public static final class CombatMetrics {
+		public static final int AGILITY_SWING_MODIFIER = 1000;
+		public static final float TAKE_DAMAGE_TIMER = 0.5f;
+	}
+
+	public static final class StatMetrics {
+		public static final class GearStats {
+			public static final class WeaponStats {
+				public static final class BareHandStats {
+					public static final int SWING_SPEED = 1;
+					public static final int LEVEL_1_STRENGTH = 0;
+					public static final int LEVEL_1_AGILITY = 0;
+					public static final int LEVEL_1_INTELLECT = 0;
+					public static final int LEVEL_1_STAMINA = 0;
+					public static final int LEVEL_1_VITALITY = 0;
+					public static final int LEVEL_1_DAMAGE = 3;
+				}
+
+				public static final class SwordStats {
+					public static final int SWING_SPEED = 2;
+					public static final int LEVEL_1_STRENGTH = 5;
+					public static final int LEVEL_1_AGILITY = 2;
+					public static final int LEVEL_1_INTELLECT = 0;
+					public static final int LEVEL_1_STAMINA = 5;
+					public static final int LEVEL_1_VITALITY = 0;
+					public static final int LEVEL_1_DAMAGE = 5;
+				}
+			}
+
+			public static final class ChestArmorStats {
+				public static final class NoChestStats {
+					public static final int LEVEL_1_STRENGTH = 0;
+					public static final int LEVEL_1_AGILITY = 0;
+					public static final int LEVEL_1_INTELLECT = 0;
+					public static final int LEVEL_1_STAMINA = 0;
+					public static final int LEVEL_1_VITALITY = 0;
+					public static final int LEVEL_1_DEFENSE = 0;
+				}
+
+				public static final class LightPlateChestStats {
+					public static final int LEVEL_1_STRENGTH = 5;
+					public static final int LEVEL_1_AGILITY = 0;
+					public static final int LEVEL_1_INTELLECT = 0;
+					public static final int LEVEL_1_STAMINA = 10;
+					public static final int LEVEL_1_VITALITY = 0;
+					public static final int LEVEL_1_DEFENSE = 5;
+				}
+			}
+		}
+
+		public static final class MobStats {
+			public static final class HeroStats {
+
+			}
+
+			public static final class SlimeStats {
+
+			}
+
+			public static final class ImpStats {
+
+			}
+
+			public static final class CreeperStats {
+
+			}
+		}
+	}
+
 	public static final class CobaltStrings {
 		// STRINGS
 		public static final String HOSPITAL_BASE_GREETING = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";

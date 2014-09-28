@@ -22,9 +22,9 @@ public class World {
 
 	public String save() {
 		WorldData data = new WorldData();
-		data.levelPosition = getLevelPosition();
-		data.level = getLevel();
-		data.heroJson = getHero().save(getLevelPosition());
+		data.setLevelPosition(getLevelPosition());
+		data.setLevel(getLevel());
+		data.setHeroJson(getHero().save(getLevelPosition()));
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -32,9 +32,9 @@ public class World {
 	public void load(String loadString) {
 		Json json = new Json();
 		WorldData data = json.fromJson(WorldData.class, loadString);
-		setLevelPosition(data.levelPosition);
-		setLevel(data.level);
-		getHero().load(data.heroJson);
+		setLevelPosition(data.getLevelPosition());
+		setLevel(data.getLevel());
+		getHero().load(data.getHeroJson());
 	}
 
 	public Hero getHero() {

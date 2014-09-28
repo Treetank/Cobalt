@@ -31,14 +31,14 @@ public class Inventory {
 
 	public String save() {
 		InventoryData data = new InventoryData();
-		data.gold = getGold();
-		data.red = getRedGems();
-		data.blue = getBlueGems();
-		data.diamond = getDiamonds();
-		data.lightPlateJson = getLightPlate().save();
-		data.swordJson = getSword().save();
-		data.noChestJson = getNoChestArmor().save();
-		data.bareHandsJson = getBareHands().save();
+		data.setGold(getGold());
+		data.setRed(getRedGems());
+		data.setBlue(getBlueGems());
+		data.setDiamond(getDiamonds());
+		data.setLightPlateJson(getLightPlate().save());
+		data.setSwordJson(getSword().save());
+		data.setNoChestJson(getNoChestArmor().save());
+		data.setBareHandsJson(getBareHands().save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -47,11 +47,11 @@ public class Inventory {
 		Json json = new Json();
 		InventoryData data = json.fromJson(InventoryData.class, loadString);
 		resetCurrency();
-		addCurrency(data.gold, data.red, data.blue, data.diamond);
-		addItem(Equipable.load(data.lightPlateJson));
-		addItem(Equipable.load(data.swordJson));
-		addItem(Equipable.load(data.noChestJson));
-		addItem(Equipable.load(data.bareHandsJson));
+		addCurrency(data.getGold(), data.getRed(), data.getBlue(), data.getDiamond());
+		addItem(Equipable.load(data.getLightPlateJson()));
+		addItem(Equipable.load(data.getSwordJson()));
+		addItem(Equipable.load(data.getNoChestJson()));
+		addItem(Equipable.load(data.getBareHandsJson()));
 	}
 
 	public void addItem(Equipable item) {

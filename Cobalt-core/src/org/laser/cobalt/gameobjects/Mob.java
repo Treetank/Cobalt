@@ -1,5 +1,7 @@
 package org.laser.cobalt.gameobjects;
 
+import static org.laser.cobalt.CobaltBasics.CombatMetrics.AGILITY_SWING_MODIFIER;
+import static org.laser.cobalt.CobaltBasics.CombatMetrics.TAKE_DAMAGE_TIMER;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.MOB_SQUARE_SIZE;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
 
@@ -52,7 +54,7 @@ public abstract class Mob extends Drawable {
 
 	public void swing(Mob mob) {
 		if (!(swingTimer > 0)) {
-			swingTimer = weapon.getAttackSpeed();
+			swingTimer = (1 / (weapon.getAttackSpeed() + (stats.getAgility() / AGILITY_SWING_MODIFIER)));
 			if (swingHit(mob)) {
 				receiveReward(mob.takeHit(DamageCalculator.CalculateDamage(this, mob), textureCollection.Damage()));
 			}
@@ -62,7 +64,7 @@ public abstract class Mob extends Drawable {
 
 	public Reward takeHit(int damage, TextureIndex hitImage) {
 		beingHitImage = hitImage;
-		beingHitTimer = 0.5f;
+		beingHitTimer = TAKE_DAMAGE_TIMER;
 		if (stats.takeDamage(damage)) {
 			return generateReward();
 		} else {

@@ -18,11 +18,11 @@ public class CombatStats {
 
 	public String save() {
 		CombatStatsData data = new CombatStatsData();
-		data.strength = getStrength();
-		data.agility = getAgility();
-		data.intellect = getIntellect();
-		data.stamina = getStamina();
-		data.vitality = getVitality();
+		data.setStrength(getStrength());
+		data.setAgility(getAgility());
+		data.setIntellect(getIntellect());
+		data.setStamina(getStamina());
+		data.setVitality(getVitality());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -30,11 +30,11 @@ public class CombatStats {
 	public void load(String loadString) {
 		Json json = new Json();
 		CombatStatsData data = json.fromJson(CombatStatsData.class, loadString);
-		setStrength(data.strength);
-		setAgility(data.agility);
-		setIntellect(data.intellect);
-		setStamina(data.stamina);
-		setVitality(data.vitality);
+		setStrength(data.getStrength());
+		setAgility(data.getAgility());
+		setIntellect(data.getIntellect());
+		setStamina(data.getStamina());
+		setVitality(data.getVitality());
 	}
 
 	public int getStrength() {
