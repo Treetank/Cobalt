@@ -184,6 +184,10 @@ public final class CobaltBasics {
 		}
 	}
 
+	public static final class InitialValues {
+		public static final int LEVEL_POSITION = 0;
+	}
+
 	public static final class CobaltStrings {
 		// STRINGS
 		public static final String HOSPITAL_BASE_GREETING = "WELCOME TO HOSPITAL. HEALING COST 10 GOLD.";

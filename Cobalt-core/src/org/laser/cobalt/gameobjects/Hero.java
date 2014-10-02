@@ -6,10 +6,11 @@ import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.SerializingData.HeroData;
 import org.laser.cobalt.helpers.types.TextureCollection;
+import org.laser.cobalt.interfaces.ISavable;
 
 import com.badlogic.gdx.utils.Json;
 
-public class Hero extends Mob {
+public class Hero extends Mob implements ISavable {
 
 	private float velocity;
 	private Inventory inventory;
@@ -18,11 +19,13 @@ public class Hero extends Mob {
 	public Hero(float x, MobStats ms) {
 		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
 		inventory = new Inventory();
+		offhand = ms;
 	}
 
-	public String save(float levelPosition) {
+	@Override
+	public String save() {
 		HeroData data = new HeroData();
-		data.setX(getX() + levelPosition);
+		data.setX(getX());
 		data.setStatsJson(stats.save());
 		data.setInventoryJson(inventory.save());
 		data.setWeaponJson(weapon.save());
@@ -31,15 +34,24 @@ public class Hero extends Mob {
 		return json.toJson(data);
 	}
 
+	@Override
 	public void load(String loadString) {
-		Json json = new Json();
-		HeroData data = json.fromJson(HeroData.class, loadString);
-		move(data.getX());
-		stats.load(data.getStatsJson());
-		inventory.load(data.getInventoryJson());
-		equip(Equipable.load(data.getWeaponJson()));
-		equip(Equipable.load(data.getChestArmorJson()));
-		offhand.load(data.getNullproblem());
+		if (loadString != null & loadString != "") {
+			Json json = new Json();
+			HeroData data = json.fromJson(HeroData.class, loadString);
+			move(data.getX());
+			stats.load(data.getStatsJson());
+			inventory.load(data.getInventoryJson());
+			equip(Equipable.load(data.getWeaponJson()));
+			equip(Equipable.load(data.getChestArmorJson()));
+			offhand.load(data.getNullproblem());
+		} else
+			loadNew();
+	}
+
+	@Override
+	public void loadNew() {
+
 	}
 
 	public float getVelocity() {
