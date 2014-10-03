@@ -355,4 +355,44 @@ public class SerializingData {
 		private int level;
 		private ItemIndex item;
 	}
+
+	public static class PrimaryStatData {
+		private int base, bonus;
+
+		public int getBase() {
+			return base;
+		}
+
+		public void setBase(int base) {
+			this.base = base;
+		}
+
+		public int getBonus() {
+			return bonus;
+		}
+
+		public void setBonus(int bonus) {
+			this.bonus = bonus;
+		}
+	}
+
+	public static class ConsumableResourceData {
+		private int current, max;
+
+		public int getCurrent() {
+			return current;
+		}
+
+		public void setCurrent(int current) {
+			this.current = current;
+		}
+
+		public int getMax() {
+			return max;
+		}
+
+		public void setMax(int max) {
+			this.max = max;
+		}
+	}
 }
