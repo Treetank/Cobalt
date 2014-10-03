@@ -15,6 +15,9 @@ import com.badlogic.gdx.utils.Json;
 
 public class Hero extends Mob implements ISavable {
 
+	private ConsumableResource hp, mp;
+	private PrimaryStat strength, agility, intellect, stamina, vitality;
+	
 	private float velocity;
 	private Inventory inventory;
 	private MobStats offhand;
@@ -23,6 +26,10 @@ public class Hero extends Mob implements ISavable {
 		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
 		inventory = new Inventory();
 		offhand = ms;
+	}
+	
+	public Hero () {
+		super(0,null,null);
 	}
 
 	@Override

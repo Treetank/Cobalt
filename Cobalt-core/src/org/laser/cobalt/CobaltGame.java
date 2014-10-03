@@ -43,6 +43,7 @@ public class CobaltGame extends Game {
 		DeviceInfo.screenMidX = DeviceInfo.screenWidth / 2;
 		DeviceInfo.screenMidY = DeviceInfo.screenHeight / 2;
 
+
 		// setup game resolution metrics
 		DeviceInfo.gameWidth = SCREEN_WIDTH;
 		DeviceInfo.gameHeight = SCREEN_HEIGHT;

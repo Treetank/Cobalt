@@ -11,6 +11,7 @@ public class TestRunner {
 		testList.add(new FactoryTester());
 		testList.add(new MobTester());
 		testList.add(new CombatTester());
+		testList.add(new VariableTester());
 
 		for (BaseTest b : testList) {
 			b.runTests();
