@@ -15,6 +15,7 @@ import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y1;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y2;
 
 import org.laser.cobalt.CobaltGame;
+import org.laser.cobalt.CobaltMain;
 import org.laser.cobalt.interfaces.IRenderer;
 
 import com.badlogic.gdx.Gdx;
@@ -26,6 +27,10 @@ public class GameSelectRenderer extends CobaltRenderer implements IRenderer {
 	public GameSelectRenderer(CobaltGame game) {
 		super(game);
 		// TODO Auto-generated constructor stub
+	}
+
+	public GameSelectRenderer(CobaltMain cobaltMain) {
+		super(cobaltMain);
 	}
 
 	@Override

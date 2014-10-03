@@ -11,15 +11,21 @@ import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y2;
 import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
 
 import org.laser.cobalt.CobaltGame;
+import org.laser.cobalt.CobaltMain;
 
 import com.badlogic.gdx.InputProcessor;
 
 public class GameSelectInputHandler implements InputProcessor {
 
 	private CobaltGame game;
+	private CobaltMain mainGame;
 
 	public GameSelectInputHandler(CobaltGame game) {
 		this.game = game;
+	}
+
+	public GameSelectInputHandler(CobaltMain cobaltMain) {
+		mainGame = cobaltMain;
 	}
 
 	@Override

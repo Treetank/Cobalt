@@ -2,6 +2,13 @@ package org.laser.cobalt;
 
 public final class CobaltBasics {
 
+	public static enum GameState {
+		GAME_SELECT, // selecting new game or continue
+		ACTIVE_WORLD, // hero active outdoors
+		INDOORS, // hero inside building
+		HERO_DIED // hero has died
+	}
+
 	public static enum TextureIndex {
 		GRASS, ICE, // Terrains
 		HERO, HERO_ATTACKING, // Hero images

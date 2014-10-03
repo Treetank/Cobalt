@@ -1,5 +1,8 @@
 package org.laser.cobalt.gameobjects;
 
+import static org.laser.cobalt.CobaltBasics.InitialValues.LEVEL_POSITION;
+
+import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.helpers.types.MobStats;
@@ -51,7 +54,10 @@ public class Hero extends Mob implements ISavable {
 
 	@Override
 	public void loadNew() {
-
+		stats.loadNew();
+		move(LEVEL_POSITION);
+		equip(Equipable.ItemCreator(ItemIndex.BARE_HANDS, 1));
+		equip(Equipable.ItemCreator(ItemIndex.NO_CHEST_PLATE, 1));
 	}
 
 	public float getVelocity() {

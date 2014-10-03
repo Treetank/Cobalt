@@ -1,6 +1,7 @@
 package org.laser.cobalt.helpers.renderers;
 
 import org.laser.cobalt.CobaltGame;
+import org.laser.cobalt.CobaltMain;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
@@ -11,9 +12,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class CobaltRenderer {
+public abstract class CobaltRenderer {
 
 	protected CobaltGame game;
+	protected CobaltMain mainGame;
 	protected GameWorld gameWorld;
 	protected OrthographicCamera cam;
 	protected ShapeRenderer shapeRenderer;
@@ -22,6 +24,15 @@ public class CobaltRenderer {
 
 	public CobaltRenderer(CobaltGame game) {
 		this.game = game;
+		setupRenderer();
+	}
+
+	public CobaltRenderer(CobaltMain cobaltMain) {
+		this.mainGame = cobaltMain;
+		setupRenderer();
+	}
+
+	public void setupRenderer() {
 		this.gameWorld = game.getGameWorld();
 
 		cam = new OrthographicCamera();
@@ -59,4 +70,6 @@ public class CobaltRenderer {
 		}
 		return false;
 	}
+
+	public abstract void render(float delta);
 }
