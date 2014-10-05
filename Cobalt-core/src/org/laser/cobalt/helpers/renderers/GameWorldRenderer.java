@@ -8,7 +8,6 @@ import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.VIEWPORT_LOWER_BOU
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
 
 import org.laser.cobalt.CobaltGame;
-import org.laser.cobalt.CobaltMain;
 import org.laser.cobalt.DeviceInfo;
 import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Hero;
@@ -30,10 +29,6 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 	public GameWorldRenderer(CobaltGame game) {
 		super(game);
-	}
-
-	public GameWorldRenderer(CobaltMain cobaltMain) {
-		super(cobaltMain);
 	}
 
 	public void render(float delta) {

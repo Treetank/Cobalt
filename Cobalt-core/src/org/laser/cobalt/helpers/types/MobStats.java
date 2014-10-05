@@ -40,11 +40,6 @@ public class MobStats {
 		baseStats.load(data.getCombatJson());
 	}
 
-	public void loadNew() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public int getBaseStrength() {
 		return baseStats.getStrength();
 	}

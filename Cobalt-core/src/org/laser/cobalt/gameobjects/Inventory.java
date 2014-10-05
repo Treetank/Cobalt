@@ -19,10 +19,6 @@ public class Inventory {
 	private int gold, redGems, blueGems, diamonds;
 
 	public Inventory() {
-		initVars();
-	}
-
-	public void initVars() {
 		sword = (Sword) Equipable.ItemCreator(ItemIndex.SWORD, 0);
 		lightPlate = (LightPlate) Equipable.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 0);
 		bareHands = (BareHands) Equipable.ItemCreator(ItemIndex.BARE_HANDS, 0);
@@ -56,10 +52,6 @@ public class Inventory {
 		addItem(Equipable.load(data.getSwordJson()));
 		addItem(Equipable.load(data.getNoChestJson()));
 		addItem(Equipable.load(data.getBareHandsJson()));
-	}
-
-	public void loadNew() {
-		initVars();
 	}
 
 	public void addItem(Equipable item) {

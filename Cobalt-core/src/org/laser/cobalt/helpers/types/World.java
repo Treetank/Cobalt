@@ -13,13 +13,11 @@ import com.badlogic.gdx.utils.Json;
 public class World implements ISavable {
 
 	private Hero hero;
-	private Inventory inventory;
 	private float levelPosition;
 	private LevelIndex level;
 
 	public World() {
 		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new CombatStats(1, 1, 1, 1, 1)));
-		setInventory(new Inventory());
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
 	}
@@ -49,8 +47,7 @@ public class World implements ISavable {
 
 	@Override
 	public void loadNew() {
-		this.inventory.loadNew();
-		this.hero.loadNew();
+		getHero().load("");
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
 	}
@@ -81,9 +78,5 @@ public class World implements ISavable {
 
 	public Inventory getInventory() {
 		return hero.getInventory();
-	}
-
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
 	}
 }
