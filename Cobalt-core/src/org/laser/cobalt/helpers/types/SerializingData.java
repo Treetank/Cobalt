@@ -95,18 +95,7 @@ public class SerializingData {
 			this.chestArmorJson = chestArmorJson;
 		}
 
-		public String getNullproblem() {
-			if (nullproblem != null)
-				return nullproblem;
-			else
-				return "";
-		}
-
-		public void setNullproblem(String nullproblem) {
-			this.nullproblem = nullproblem;
-		}
-
-		private String statsJson, inventoryJson, weaponJson, chestArmorJson, nullproblem;
+		private String statsJson, inventoryJson, weaponJson, chestArmorJson;
 
 	}
 
@@ -209,7 +198,7 @@ public class SerializingData {
 		private float swingSpeed, moveSpeed;
 	}
 
-	public static class CombatStatsData {
+	public static class PrimaryStatsData {
 		private int strength, agility, intellect, stamina, vitality;
 
 		public int getStrength() {

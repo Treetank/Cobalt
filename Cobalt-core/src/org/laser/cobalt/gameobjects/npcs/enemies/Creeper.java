@@ -2,7 +2,7 @@ package org.laser.cobalt.gameobjects.npcs.enemies;
 
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.npcs.Npc;
-import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.StaticMobStats;
@@ -12,7 +12,7 @@ public class Creeper extends Npc {
 
 	public Creeper(float x) {
 		super(x, new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH), new MobStats(new StaticMobStats(15, 2, 1, 0, 2), 15,
-				75, 10, new CombatStats(2, 3, 1, 2, 1)));
+				75, 10, new PrimaryStats(2, 3, 1, 2, 1)));
 	}
 
 	@Override

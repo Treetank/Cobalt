@@ -9,12 +9,12 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.ChestArmorStat
 
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.gameobjects.gear.ChestArmor;
-import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 
 public class NoChestArmor extends ChestArmor {
 
 	public NoChestArmor(int level) {
-		super(null, new CombatStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level, LEVEL_1_DEFENSE);
+		super(null, new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level, LEVEL_1_DEFENSE);
 		// TODO Auto-generated constructor stub
 	}
 

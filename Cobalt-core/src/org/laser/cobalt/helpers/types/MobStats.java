@@ -8,15 +8,15 @@ public class MobStats {
 
 	private int hp, damage, exp;
 	private StaticMobStats statics;
-	private CombatStats baseStats, bonusStats;
+	private PrimaryStats baseStats, bonusStats;
 
-	public MobStats(StaticMobStats statics, int hp, int damage, int exp, CombatStats combatStats) {
+	public MobStats(StaticMobStats statics, int hp, int damage, int exp, PrimaryStats combatStats) {
 		this.statics = statics;
 		this.hp = hp;
 		this.damage = damage;
 		this.exp = exp;
 		baseStats = combatStats;
-		bonusStats = new CombatStats(0, 0, 0, 0, 0);
+		bonusStats = new PrimaryStats(0, 0, 0, 0, 0);
 	}
 
 	public String save() {
@@ -140,7 +140,7 @@ public class MobStats {
 		bonusStats.setVitality(bonusVitality);
 	}
 
-	public void addToBonusStats(CombatStats stats) {
+	public void addToBonusStats(PrimaryStats stats) {
 		bonusStats.setStrength(bonusStats.getStrength() + stats.getStrength());
 		bonusStats.setAgility(bonusStats.getAgility() + stats.getAgility());
 		bonusStats.setIntellect(bonusStats.getIntellect() + stats.getIntellect());
@@ -148,7 +148,7 @@ public class MobStats {
 		bonusStats.setVitality(bonusStats.getVitality() + stats.getVitality());
 	}
 
-	public void removeBonusStats(CombatStats stats) {
+	public void removeBonusStats(PrimaryStats stats) {
 		bonusStats.setStrength(bonusStats.getStrength() - stats.getStrength());
 		bonusStats.setAgility(bonusStats.getAgility() - stats.getAgility());
 		bonusStats.setIntellect(bonusStats.getIntellect() - stats.getIntellect());

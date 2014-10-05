@@ -17,7 +17,7 @@ public class World implements ISavable {
 	private LevelIndex level;
 
 	public World() {
-		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new CombatStats(1, 1, 1, 1, 1)));
+		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new PrimaryStats(1, 1, 1, 1, 1)));
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
 	}

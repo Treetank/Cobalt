@@ -15,7 +15,7 @@ import org.laser.cobalt.helpers.GameSaver;
 import org.laser.cobalt.helpers.renderers.GameSelectRenderer;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
-import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
@@ -72,7 +72,7 @@ public class CobaltGame extends Game {
 
 	public void loadSuperGame() {
 		world = new World();
-		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new CombatStats(1000, 1000,
+		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new PrimaryStats(1000, 1000,
 				1000, 1000, 1000))));
 		world.getHero().equip(new Sword(1));
 		world.getHero().equip(new LightPlate(1));

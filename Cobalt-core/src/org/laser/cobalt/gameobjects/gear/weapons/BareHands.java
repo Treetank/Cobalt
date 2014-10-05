@@ -11,13 +11,13 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.Ba
 import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
-import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.DamageArray;
 
 public class BareHands extends Weapon {
 
 	public BareHands(int level) {
-		super(null, new CombatStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level, SWING_SPEED);
+		super(null, new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level, SWING_SPEED);
 	}
 
 	@Override

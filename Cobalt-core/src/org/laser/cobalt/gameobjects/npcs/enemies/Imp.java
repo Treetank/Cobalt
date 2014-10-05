@@ -2,7 +2,7 @@ package org.laser.cobalt.gameobjects.npcs.enemies;
 
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.npcs.Npc;
-import org.laser.cobalt.helpers.types.CombatStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.StaticMobStats;
@@ -12,7 +12,7 @@ public class Imp extends Npc {
 
 	public Imp(float x) {
 		super(x, new TextureCollection(TextureIndex.IMP, TextureIndex.IMP, TextureIndex.SCRATCH), new MobStats(new StaticMobStats(20, 1, 2, 0, 2), 20, 50, 8,
-				new CombatStats(2, 1, 1, 3, 1)));
+				new PrimaryStats(2, 1, 1, 3, 1)));
 	}
 
 	@Override
