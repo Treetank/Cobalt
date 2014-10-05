@@ -2,7 +2,6 @@ package org.laser.cobalt.gameobjects;
 
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Equipable;
-import org.laser.cobalt.helpers.types.ConsumableResource;
 import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.SerializingData.HeroData;
@@ -13,18 +12,23 @@ import com.badlogic.gdx.utils.Json;
 
 public class Hero extends Mob implements ISavable {
 
-	private ConsumableResource hp, mp;
-
 	private float velocity;
 	private Inventory inventory;
 
+	@Deprecated
 	public Hero(float x, MobStats ms) {
 		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
 		inventory = new Inventory();
 	}
 
 	public Hero() {
-		super(0, null, null);
+		super();
+		setTextureCollection(new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION));
+	}
+
+	@Override
+	protected void init() {
+		velocity = 0;
 	}
 
 	@Override

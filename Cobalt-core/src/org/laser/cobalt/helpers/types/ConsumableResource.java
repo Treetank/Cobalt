@@ -11,6 +11,16 @@ public class ConsumableResource {
 	public ConsumableResource() {
 	}
 
+	public ConsumableResource(int max) {
+		this.current = max;
+		this.max = max;
+	}
+
+	public ConsumableResource(int current, int max) {
+		this.current = current;
+		this.max = max;
+	}
+
 	public int getCurrent() {
 		return current;
 	}

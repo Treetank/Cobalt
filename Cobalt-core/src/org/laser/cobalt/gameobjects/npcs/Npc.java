@@ -13,8 +13,21 @@ public abstract class Npc extends Mob {
 
 	protected float respawnSpeed, respawnTimer;
 
+	@Deprecated
 	public Npc(float x, TextureCollection tc, MobStats ms) {
 		super(x, tc, ms);
+	}
+
+	protected Npc(float x) {
+		super(x);
+	}
+
+	protected void setRespawnSpeed(float speed) {
+		this.respawnSpeed = speed;
+	}
+
+	@Override
+	protected void init() {
 		respawnSpeed = 5;
 		respawnTimer = 0;
 	}

@@ -10,7 +10,16 @@ import org.laser.cobalt.helpers.types.ImageProperties;
 public class Terrain extends Drawable {
 
 	public Terrain(float x, TextureIndex texture) {
-		super(new ImageProperties(x, TERRAIN_BASE_Y, TERRAIN_HEIGHT, TERRAIN_WIDTH), texture);
+		super();
+		setImageProperties(new ImageProperties(x, TERRAIN_BASE_Y, TERRAIN_HEIGHT, TERRAIN_WIDTH));
+		setTexture(texture);
+	}
+
+	protected Terrain() {
+	}
+
+	@Override
+	protected void init() {
 	}
 
 }

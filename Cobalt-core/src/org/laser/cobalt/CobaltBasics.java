@@ -170,16 +170,56 @@ public final class CobaltBasics {
 
 			}
 
-			public static final class SlimeStats {
+			public static final class HeroSuperStats {
 
+			}
+
+			public static final class SlimeStats {
+				public static final int LEVEL_1_STRENGTH = 2;
+				public static final int LEVEL_1_AGILITY = 3;
+				public static final int LEVEL_1_INTELLECT = 1;
+				public static final int LEVEL_1_STAMINA = 2;
+				public static final int LEVEL_1_VITALITY = 1;
+				public static final int LEVEL_1_HP = 15;
+				public static final int LEVEL_1_MP = 5;
+				public static final int RESPAWN_SPEED = 5;
+				public static final int LEVEL_1_GOLD = 5;
+				public static final int LEVEL_1_RED = 1;
+				public static final int LEVEL_1_BLUE = 1;
+				public static final int LEVEL_1_DIAMONDS = 1;
+				public static final int LEVEL_1_EXPERIENCE = 5;
 			}
 
 			public static final class ImpStats {
-
+				public static final int LEVEL_1_STRENGTH = 2;
+				public static final int LEVEL_1_AGILITY = 3;
+				public static final int LEVEL_1_INTELLECT = 1;
+				public static final int LEVEL_1_STAMINA = 2;
+				public static final int LEVEL_1_VITALITY = 1;
+				public static final int LEVEL_1_HP = 15;
+				public static final int LEVEL_1_MP = 5;
+				public static final int RESPAWN_SPEED = 5;
+				public static final int LEVEL_1_GOLD = 25;
+				public static final int LEVEL_1_RED = 1;
+				public static final int LEVEL_1_BLUE = 1;
+				public static final int LEVEL_1_DIAMONDS = 1;
+				public static final int LEVEL_1_EXPERIENCE = 10;
 			}
 
 			public static final class CreeperStats {
-
+				public static final int LEVEL_1_STRENGTH = 2;
+				public static final int LEVEL_1_AGILITY = 3;
+				public static final int LEVEL_1_INTELLECT = 1;
+				public static final int LEVEL_1_STAMINA = 2;
+				public static final int LEVEL_1_VITALITY = 1;
+				public static final int LEVEL_1_HP = 15;
+				public static final int LEVEL_1_MP = 5;
+				public static final int RESPAWN_SPEED = 5;
+				public static final int LEVEL_1_GOLD = 15;
+				public static final int LEVEL_1_RED = 5;
+				public static final int LEVEL_1_BLUE = 3;
+				public static final int LEVEL_1_DIAMONDS = 1;
+				public static final int LEVEL_1_EXPERIENCE = 25;
 			}
 		}
 	}

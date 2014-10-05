@@ -7,8 +7,8 @@ import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.gameobjects.gear.weapons.Sword;
-import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.ImageProperties;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.SerializingData.EquipableData;
 
 import com.badlogic.gdx.utils.Json;
@@ -20,10 +20,22 @@ public abstract class Equipable extends Drawable {
 	protected int level;
 
 	public Equipable(ImageProperties ip, TextureIndex texture, PrimaryStats stats, int level) {
-		super(ip, texture);
+		super();
+		setImageProperties(ip);
+		setTexture(texture);
 		this.stats = stats;
 		this.level = level;
 		itemIndex = setupItemIndex();
+	}
+
+	protected Equipable() {
+		stats = new PrimaryStats();
+		itemIndex = ItemIndex.BARE_HANDS;
+		level = 0;
+	}
+
+	@Override
+	protected void init() {
 	}
 
 	public static Equipable ItemCreator(ItemIndex item, int level) {

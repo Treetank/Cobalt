@@ -12,12 +12,18 @@ import org.laser.cobalt.gameobjects.gear.Weapon;
 import org.laser.cobalt.gameobjects.gear.armor.NoChestArmor;
 import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.helpers.DamageCalculator;
+import org.laser.cobalt.helpers.types.ConsumableResource;
 import org.laser.cobalt.helpers.types.ImageProperties;
 import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
+import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
 public abstract class Mob extends Drawable {
+
+	protected ConsumableResource hp, mp;
+	protected PrimaryStats baseStats, bonusStats;
 
 	protected float swingTimer, beingHitTimer;
 	protected TextureIndex beingHitImage;
@@ -26,12 +32,51 @@ public abstract class Mob extends Drawable {
 	protected ChestArmor chestArmor;
 	protected Weapon weapon;
 
+	@Deprecated
 	public Mob(float x, TextureCollection tc, MobStats ms) {
-		super(new ImageProperties(x, TERRAIN_HEIGHT, MOB_SQUARE_SIZE, MOB_SQUARE_SIZE), tc.Base());
-		textureCollection = tc;
+		super();
+		setImageProperties(new ImageProperties(x, TERRAIN_HEIGHT, MOB_SQUARE_SIZE, MOB_SQUARE_SIZE));
+		setTextureCollection(tc);
 		stats = ms;
+	}
+
+	protected Mob(float x) {
+		super();
+		setImageProperties(new ImageProperties(x, TERRAIN_HEIGHT, MOB_SQUARE_SIZE, MOB_SQUARE_SIZE));
+	}
+
+	protected Mob() {
+		this(0);
+	}
+
+	protected void setTextureCollection(TextureCollection tc) {
+		setTexture(tc.Base());
+		textureCollection = tc;
+	}
+
+	protected void setPrimaryStats(PrimaryStats base) {
+		setPrimaryStats(base, new PrimaryStats());
+	}
+
+	protected void setPrimaryStats(PrimaryStats base, PrimaryStats bonus) {
+		this.baseStats = base;
+		this.bonusStats = bonus;
+	}
+
+	protected void setResources(ConsumableResource hp, ConsumableResource mp) {
+		this.hp = hp;
+		this.mp = mp;
+	}
+
+	@Override
+	protected void init() {
 		swingTimer = 0;
 		beingHitTimer = 0;
+		hp = new ConsumableResource();
+		mp = new ConsumableResource();
+		baseStats = new PrimaryStats();
+		bonusStats = new PrimaryStats();
+		stats = new MobStats(new StaticMobStats(0, 0, 0, 0, 0), 0, 0, 0, baseStats);
 		equip(new NoChestArmor(1));
 		equip(new BareHands(1));
 	}

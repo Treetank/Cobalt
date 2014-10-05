@@ -1,9 +1,24 @@
 package org.laser.cobalt.gameobjects.npcs.enemies;
 
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_AGILITY;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_BLUE;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_DIAMONDS;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_EXPERIENCE;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_GOLD;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_HP;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_INTELLECT;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_MP;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_RED;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_STAMINA;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_STRENGTH;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.LEVEL_1_VITALITY;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.RESPAWN_SPEED;
+
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.npcs.Npc;
-import org.laser.cobalt.helpers.types.PrimaryStats;
+import org.laser.cobalt.helpers.types.ConsumableResource;
 import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
@@ -13,16 +28,22 @@ public class Slime extends Npc {
 	public Slime(float x) {
 		super(x, new TextureCollection(TextureIndex.SLIME, TextureIndex.SLIME, TextureIndex.EXPLOSION), new MobStats(new StaticMobStats(10, 1, 2, 0, 2), 10,
 				10, 5, new PrimaryStats(1, 1, 1, 1, 1)));
+
+		// super(x);
+		setTextureCollection(new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH));
+		setPrimaryStats(new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY));
+		setResources(new ConsumableResource(LEVEL_1_HP), new ConsumableResource(LEVEL_1_MP));
+		setRespawnSpeed(RESPAWN_SPEED);
 	}
 
 	@Override
 	protected Reward generateReward() {
 		Reward retVal = new Reward();
-		retVal.setGold(5);
-		retVal.setRedGems(1);
-		retVal.setBlueGems(1);
-		retVal.setDiamonds(1);
-		retVal.setExperience(5);
+		retVal.setGold(LEVEL_1_GOLD);
+		retVal.setRedGems(LEVEL_1_RED);
+		retVal.setBlueGems(LEVEL_1_BLUE);
+		retVal.setDiamonds(LEVEL_1_DIAMONDS);
+		retVal.setExperience(LEVEL_1_EXPERIENCE);
 		return retVal;
 	}
 
