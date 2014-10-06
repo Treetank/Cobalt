@@ -48,6 +48,32 @@ public class PrimaryStats extends SavableData {
 		setStats(data.getStrength(), data.getAgility(), data.getIntellect(), data.getStamina(), data.getVitality());
 	}
 
+	public void addStats(PrimaryStats stats) {
+		this.strength += stats.strength;
+		this.agility += stats.agility;
+		this.intellect += stats.intellect;
+		this.stamina += stats.stamina;
+		this.vitality += stats.vitality;
+	}
+
+	public void removeStats(PrimaryStats stats) {
+		this.strength -= stats.strength;
+		if (this.strength > 0)
+			this.strength = 0;
+		this.agility -= stats.agility;
+		if (this.agility > 0)
+			this.agility = 0;
+		this.intellect -= stats.intellect;
+		if (this.intellect > 0)
+			this.intellect = 0;
+		this.stamina -= stats.stamina;
+		if (this.stamina > 0)
+			this.stamina = 0;
+		this.vitality -= stats.vitality;
+		if (this.vitality > 0)
+			this.vitality = 0;
+	}
+
 	public int getStrength() {
 		return strength;
 	}

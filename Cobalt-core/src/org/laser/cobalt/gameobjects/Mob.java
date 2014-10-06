@@ -91,7 +91,8 @@ public abstract class Mob extends Drawable {
 		}
 		if (beingHitTimer > 0) {
 			beingHitTimer -= delta;
-			if (stats.Hp() <= 0 && beingHitTimer <= 0) {
+			// TODO if (hp.getCurrent() == 0) {
+			if (stats.Hp() <= 0) {
 				die();
 			}
 		}
@@ -99,6 +100,9 @@ public abstract class Mob extends Drawable {
 
 	public void swing(Mob mob) {
 		if (!(swingTimer > 0)) {
+			// TODO swingTimer = (1 / (weapon.getAttackSpeed() +
+			// ((baseStats.getAgility() + bonusStats.getAgility()) /
+			// AGILITY_SWING_MODIFIER)));
 			swingTimer = (1 / (weapon.getAttackSpeed() + (stats.getAgility() / AGILITY_SWING_MODIFIER)));
 			if (swingHit(mob)) {
 				receiveReward(mob.takeHit(DamageCalculator.CalculateDamage(this, mob), textureCollection.Damage()));
@@ -110,6 +114,8 @@ public abstract class Mob extends Drawable {
 	public Reward takeHit(int damage, TextureIndex hitImage) {
 		beingHitImage = hitImage;
 		beingHitTimer = TAKE_DAMAGE_TIMER;
+		// TODO hp.useResource(damage);
+		// TODO if (hp.getCurrent() == 0) {
 		if (stats.takeDamage(damage)) {
 			return generateReward();
 		} else {
@@ -121,6 +127,7 @@ public abstract class Mob extends Drawable {
 	}
 
 	public void respawn() {
+		// TODO hp.fill();
 		stats.heal(stats.getStatics().MaxHp());
 		returnToBase();
 	}
@@ -141,16 +148,23 @@ public abstract class Mob extends Drawable {
 			unEquip(chestArmor);
 			chestArmor = (ChestArmor) item;
 		}
+		// TODO bonusStats.addStats(item.getStats());
 		stats.addToBonusStats(item.getStats());
 	}
 
 	public void unEquip(Equipable item) {
 		if (item != null) {
+			// TODO bonusStats.removeStats(item.getStats());
 			stats.removeBonusStats(item.getStats());
 		}
 	}
 
 	public MobStats getStats() {
+		// TODO change return type
+		// TODO PrimaryStats retVal = new PrimaryStats();
+		// TODO retVal.addStats(baseStats);
+		// TODO retVal.addStats(bonusStats);
+		// TODO return retVal;
 		return stats;
 	}
 

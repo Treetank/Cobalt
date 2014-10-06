@@ -28,6 +28,7 @@ public abstract class Npc extends Mob {
 
 	@Override
 	protected void init() {
+		super.init();
 		respawnSpeed = 5;
 		respawnTimer = 0;
 	}

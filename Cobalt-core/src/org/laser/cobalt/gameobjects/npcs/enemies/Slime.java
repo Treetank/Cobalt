@@ -30,7 +30,7 @@ public class Slime extends Npc {
 				10, 5, new PrimaryStats(1, 1, 1, 1, 1)));
 
 		// super(x);
-		setTextureCollection(new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH));
+		setTextureCollection(new TextureCollection(TextureIndex.SLIME, TextureIndex.SLIME, TextureIndex.EXPLOSION));
 		setPrimaryStats(new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY));
 		setResources(new ConsumableResource(LEVEL_1_HP), new ConsumableResource(LEVEL_1_MP));
 		setRespawnSpeed(RESPAWN_SPEED);

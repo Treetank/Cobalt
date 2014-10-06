@@ -30,7 +30,7 @@ public class Imp extends Npc {
 				new PrimaryStats(2, 1, 1, 3, 1)));
 
 		// super(x);
-		setTextureCollection(new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH));
+		setTextureCollection(new TextureCollection(TextureIndex.IMP, TextureIndex.IMP, TextureIndex.SCRATCH));
 		setPrimaryStats(new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY));
 		setResources(new ConsumableResource(LEVEL_1_HP), new ConsumableResource(LEVEL_1_MP));
 		setRespawnSpeed(RESPAWN_SPEED);

@@ -28,6 +28,7 @@ public class Hero extends Mob implements ISavable {
 
 	@Override
 	protected void init() {
+		super.init();
 		velocity = 0;
 	}
 
@@ -67,10 +68,14 @@ public class Hero extends Mob implements ISavable {
 	}
 
 	public void moveRight() {
+		// TODO velocity = 1 + (baseStats.getAgility() +
+		// bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER;
 		velocity = stats.getStatics().MoveSpeed();
 	}
 
 	public void moveLeft() {
+		// TODO velocity = -(1 + (baseStats.getAgility() +
+		// bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER);
 		velocity = -stats.getStatics().MoveSpeed();
 	}
 
@@ -79,6 +84,7 @@ public class Hero extends Mob implements ISavable {
 	}
 
 	public boolean isDead() {
+		// TODO return hp.getCurrent() == 0;
 		return stats.Hp() == 0;
 	}
 

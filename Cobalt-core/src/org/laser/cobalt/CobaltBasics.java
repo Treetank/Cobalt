@@ -118,6 +118,7 @@ public final class CobaltBasics {
 	public static final class CombatMetrics {
 		public static final int AGILITY_SWING_MODIFIER = 1000;
 		public static final float TAKE_DAMAGE_TIMER = 0.5f;
+		public static final float AGILITY_MOVESPEED_MODIFIER = 100;
 	}
 
 	public static final class StatMetrics {

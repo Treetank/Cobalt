@@ -40,7 +40,6 @@ public class World implements ISavable {
 			setLevelPosition(data.getLevelPosition());
 			setLevel(data.getLevel());
 			getHero().load(data.getHeroJson());
-			getHero().move(getHero().getX() + getLevelPosition());
 		} else
 			loadNew();
 	}
