@@ -34,6 +34,13 @@ public final class CobaltBasics {
 		SLIME, IMP, CREEPER
 	}
 
+	public static enum GameStateIndex {
+		SAVE_SELECT, // choosing new or continue
+		GAME_RUNNING, // alive in outdoor world
+		INDOORS, // inside a building
+		HERO_DEAD // hero has died
+	}
+
 	public static final class DesktopWindowMetrics {
 		// height and width of the desktop client window
 		public static final int VIEWPORT_WIDTH = 480;
@@ -113,6 +120,7 @@ public final class CobaltBasics {
 		public static final int SUPER_X2 = 300;
 		public static final int SUPER_Y2 = 290;
 		public static final int FONT_HEIGHT_OFFSET = 25;
+		public static final boolean SUPER_GAME_AVAILABLE = true;
 	}
 
 	public static final class CombatMetrics {

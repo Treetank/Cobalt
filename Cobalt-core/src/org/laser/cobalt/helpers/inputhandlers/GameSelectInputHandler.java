@@ -6,6 +6,7 @@ import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X1;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_X2;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y1;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.NEW_Y2;
+import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_GAME_AVAILABLE;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y1;
 import static org.laser.cobalt.CobaltBasics.GameSelectMetrics.SUPER_Y2;
 import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_HEIGHT;
@@ -50,7 +51,7 @@ public class GameSelectInputHandler implements InputProcessor {
 			} else if (flippedY > LOAD_Y1 && flippedY < LOAD_Y2) {
 				game.loadGame();
 				return true;
-			} else if (flippedY > SUPER_Y1 && flippedY < SUPER_Y2) {
+			} else if (flippedY > SUPER_Y1 && flippedY < SUPER_Y2 && SUPER_GAME_AVAILABLE) {
 				game.loadSuperGame();
 				return true;
 			}

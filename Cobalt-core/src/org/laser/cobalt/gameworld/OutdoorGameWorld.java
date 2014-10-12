@@ -11,14 +11,5 @@ public class OutdoorGameWorld extends GameWorld {
 	@Override
 	public void update(float delta) {
 		super.update(delta);
-		if (world.getHero().isDead()) {
-			respawnHero();
-		}
-	}
-
-	public void respawnHero() {
-		world.getHero().getStats().heal(-1);
-		world.getHero().stop();
-		game.ChangeLevel(null);
 	}
 }
