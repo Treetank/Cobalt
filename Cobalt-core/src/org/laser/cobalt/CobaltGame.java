@@ -5,9 +5,6 @@ import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_WIDTH;
 
 import org.laser.cobalt.CobaltBasics.GameStateIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.Hero;
-import org.laser.cobalt.gameobjects.gear.armor.LightPlate;
-import org.laser.cobalt.gameobjects.gear.weapons.Sword;
 import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.gameworld.OutdoorGameWorld;
@@ -17,9 +14,6 @@ import org.laser.cobalt.helpers.inputhandlers.GameSelectInputHandler;
 import org.laser.cobalt.helpers.renderers.GameSelectRenderer;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
-import org.laser.cobalt.helpers.types.MobStats;
-import org.laser.cobalt.helpers.types.PrimaryStats;
-import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.interfaces.IRenderer;
 import org.laser.cobalt.screens.GameScreen;
@@ -108,10 +102,7 @@ public class CobaltGame extends Game {
 	@Deprecated
 	public void oldLoadSuperGame() {
 		world = new World();
-		world.loadHero(new Hero(world.getHero().getX(), new MobStats(new StaticMobStats(50000, 100, 1, 10, 5), 50000, 10000, 0, new PrimaryStats(1000, 1000,
-				1000, 1000, 1000))));
-		world.getHero().equip(new Sword(1));
-		world.getHero().equip(new LightPlate(1));
+		world.loadSuperHero();
 		oldStartGame();
 	}
 

@@ -24,6 +24,7 @@ public abstract class Mob extends Drawable {
 
 	protected ConsumableResource hp, mp;
 	protected PrimaryStats baseStats, bonusStats;
+	private int experience;
 
 	protected float swingTimer, beingHitTimer;
 	protected TextureIndex beingHitImage;
@@ -70,6 +71,7 @@ public abstract class Mob extends Drawable {
 
 	@Override
 	protected void init() {
+		experience = 0;
 		swingTimer = 0;
 		beingHitTimer = 0;
 		hp = new ConsumableResource();
@@ -159,13 +161,16 @@ public abstract class Mob extends Drawable {
 		}
 	}
 
+	@Deprecated
 	public MobStats getStats() {
-		// TODO change return type
-		// TODO PrimaryStats retVal = new PrimaryStats();
-		// TODO retVal.addStats(baseStats);
-		// TODO retVal.addStats(bonusStats);
-		// TODO return retVal;
 		return stats;
+	}
+
+	public PrimaryStats getPrimaryStats() {
+		PrimaryStats retVal = new PrimaryStats();
+		retVal.addStats(baseStats);
+		retVal.addStats(bonusStats);
+		return retVal;
 	}
 
 	protected boolean swingHit(Mob mob) {
@@ -183,4 +188,12 @@ public abstract class Mob extends Drawable {
 	public abstract void receiveReward(Reward reward);
 
 	protected abstract Reward generateReward();
+
+	public int getExperience() {
+		return experience;
+	}
+
+	protected void setExperience(int experience) {
+		this.experience = experience;
+	}
 }

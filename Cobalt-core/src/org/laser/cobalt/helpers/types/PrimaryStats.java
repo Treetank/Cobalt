@@ -16,7 +16,7 @@ public class PrimaryStats extends SavableData {
 		setStats(strength, agility, intellect, stamina, vitality);
 	}
 
-	private void setStats(int strength, int agility, int intellect, int stamina, int vitality) {
+	public void setStats(int strength, int agility, int intellect, int stamina, int vitality) {
 		this.strength = strength;
 		this.agility = agility;
 		this.intellect = intellect;

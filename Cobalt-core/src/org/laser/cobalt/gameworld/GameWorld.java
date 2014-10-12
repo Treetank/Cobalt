@@ -7,38 +7,48 @@ import org.laser.cobalt.helpers.types.World;
 public class GameWorld {
 
 	protected CobaltGame game;
-	protected World world;
+	protected World data;
 	protected GameLevel level;
 
 	public GameWorld(CobaltGame game) {
+		this.game = game;
 		oldConstructor(game);
 		// TODO newConstructor(game);
 	}
 
 	@Deprecated
 	public void oldConstructor(CobaltGame game) {
-		this.game = game;
-		this.world = game.getWorld();
-		game.setLevel(world.getLevel());
+		this.data = game.getWorld();
+		game.setLevel(data.getLevel());
 	}
 
 	public void newConstructor(CobaltGame game) {
-
+		this.data = new World();
 	}
 
 	public void respawnHero() {
-		world.getHero().getStats().heal(-1);
-		world.getHero().stop();
+		data.getHero().getStats().heal(-1);
+		data.getHero().stop();
 		game.ChangeLevel(null);
 	}
 
 	public void update(float delta) {
-		if (world.getHero().isDead()) {
+		oldUpdate(delta);
+		// TODO newUpdate(delta);
+	}
+
+	public void newUpdate(float delta) {
+		data.update(delta);
+	}
+
+	@Deprecated
+	public void oldUpdate(float delta) {
+		if (data.getHero().isDead()) {
 			respawnHero();
 		}
 	}
 
-	public World getWorld() {
-		return world;
+	public World getWorldData() {
+		return data;
 	}
 }

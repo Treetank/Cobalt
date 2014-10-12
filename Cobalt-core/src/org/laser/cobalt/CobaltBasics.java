@@ -176,7 +176,21 @@ public final class CobaltBasics {
 
 		public static final class MobStats {
 			public static final class HeroStats {
-
+				public static final int NORMAL_INITIAL_STRENGTH = 1;
+				public static final int NORMAL_INITIAL_AGILITY = 1;
+				public static final int NORMAL_INITIAL_INTELLECT = 1;
+				public static final int NORMAL_INITIAL_STAMINA = 1;
+				public static final int NORMAL_INITIAL_VITALITY = 1;
+				public static final int NORMAL_INITIAL_HP = 500;
+				public static final int NORMAL_INITIAL_MP = 100;
+				public static final int SUPER_INITIAL_STRENGTH = 1;
+				public static final int SUPER_INITIAL_AGILITY = 1;
+				public static final int SUPER_INITIAL_INTELLECT = 1;
+				public static final int SUPER_INITIAL_STAMINA = 1;
+				public static final int SUPER_INITIAL_VITALITY = 1;
+				public static final int SUPER_INITIAL_HP = 500;
+				public static final int SUPER_INITIAL_MP = 100;
+				public static final int INITIAL_POSITION = 50;
 			}
 
 			public static final class HeroSuperStats {

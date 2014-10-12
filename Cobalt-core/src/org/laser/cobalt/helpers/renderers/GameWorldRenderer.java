@@ -134,7 +134,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		Hero hero = game.getWorld().getHero();
 
-		MobStats stats = gameWorld.getWorld().getHero().getStats();
+		MobStats stats = gameWorld.getWorldData().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
 		RoundRectangle(3, BOTTOM_BUTTON_SQUARE_SIZE + 6, DeviceInfo.gameWidth - 3, VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : level.getExit()) {

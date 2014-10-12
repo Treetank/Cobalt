@@ -16,8 +16,8 @@ public class DamageCalculator {
 
 	private static int calcPhysical(Mob attacker, Mob defender) {
 		int retVal = 0;
-		retVal += attacker.getWeapon().getBaseDamage().getDamage(Damage.PHYSICAL) * attacker.getStats().getStrength();
-		retVal -= defender.getChestArmor().getArmorValue() * (defender.getStats().getStrength() + defender.getStats().getAgility());
+		retVal += attacker.getWeapon().getBaseDamage().getDamage(Damage.PHYSICAL) * attacker.getPrimaryStats().getStrength();
+		retVal -= defender.getChestArmor().getArmorValue() * (defender.getPrimaryStats().getStrength() + defender.getPrimaryStats().getAgility());
 		if (retVal < 0)
 			retVal = 0;
 		return retVal;

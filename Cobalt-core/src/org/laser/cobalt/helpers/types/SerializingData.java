@@ -42,6 +42,8 @@ public class SerializingData {
 	public static class HeroData {
 
 		private float x;
+		private int experience;
+		private String statsJson, inventoryJson, weaponJson, chestArmorJson, primaryStatsJson, hpJson, mpJson;
 
 		public float getX() {
 			return x;
@@ -95,7 +97,37 @@ public class SerializingData {
 			this.chestArmorJson = chestArmorJson;
 		}
 
-		private String statsJson, inventoryJson, weaponJson, chestArmorJson;
+		public int getExperience() {
+			return experience;
+		}
+
+		public void setExperience(int experience) {
+			this.experience = experience;
+		}
+
+		public String getPrimaryStatsJson() {
+			return primaryStatsJson;
+		}
+
+		public void setPrimaryStatsJson(String primaryStatsJson) {
+			this.primaryStatsJson = primaryStatsJson;
+		}
+
+		public String getHpJson() {
+			return hpJson;
+		}
+
+		public void setHpJson(String hpJson) {
+			this.hpJson = hpJson;
+		}
+
+		public String getMpJson() {
+			return mpJson;
+		}
+
+		public void setMpJson(String mpJson) {
+			this.mpJson = mpJson;
+		}
 
 	}
 

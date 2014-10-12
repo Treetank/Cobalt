@@ -6,11 +6,10 @@ import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.Inventory;
 import org.laser.cobalt.helpers.types.SerializingData.WorldData;
-import org.laser.cobalt.interfaces.ISavable;
 
 import com.badlogic.gdx.utils.Json;
 
-public class World implements ISavable {
+public class World {
 
 	private Hero hero;
 	private float levelPosition;
@@ -18,11 +17,11 @@ public class World implements ISavable {
 
 	public World() {
 		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new PrimaryStats(1, 1, 1, 1, 1)));
+		hero.loadNew();
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
 	}
 
-	@Override
 	public String save() {
 		WorldData data = new WorldData();
 		data.setLevelPosition(getLevelPosition());
@@ -32,7 +31,6 @@ public class World implements ISavable {
 		return json.toJson(data);
 	}
 
-	@Override
 	public void load(String loadString) {
 		if (loadString != null) {
 			Json json = new Json();
@@ -44,11 +42,18 @@ public class World implements ISavable {
 			loadNew();
 	}
 
-	@Override
 	public void loadNew() {
 		getHero().load("");
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
+	}
+
+	public void loadSuperHero() {
+		hero.loadSuper();
+	}
+
+	public void update(float delta) {
+
 	}
 
 	public Hero getHero() {
