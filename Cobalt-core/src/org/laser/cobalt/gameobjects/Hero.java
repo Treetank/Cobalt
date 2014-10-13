@@ -1,5 +1,6 @@
 package org.laser.cobalt.gameobjects;
 
+import static org.laser.cobalt.CobaltBasics.CombatMetrics.AGILITY_MOVESPEED_MODIFIER;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.INITIAL_POSITION;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.NORMAL_INITIAL_AGILITY;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.NORMAL_INITIAL_HP;
@@ -41,6 +42,7 @@ public class Hero extends Mob {
 
 	public Hero() {
 		super();
+		inventory = new Inventory();
 		setTextureCollection(new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION));
 	}
 
@@ -51,7 +53,7 @@ public class Hero extends Mob {
 
 	public String save() {
 		HeroData data = new HeroData();
-		data.setX(getX());
+		data.setX(getLocation());
 		data.setPrimaryStatsJson(baseStats.save());
 		data.setHpJson(hp.save());
 		data.setMpJson(mp.save());
@@ -105,15 +107,13 @@ public class Hero extends Mob {
 	}
 
 	public void moveRight() {
-		// TODO velocity = 1 + (baseStats.getAgility() +
-		// bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER;
-		velocity = stats.getStatics().MoveSpeed();
+		velocity = 1 + (baseStats.getAgility() + bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER;
+		// TODO deprecated velocity = stats.getStatics().MoveSpeed();
 	}
 
 	public void moveLeft() {
-		// TODO velocity = -(1 + (baseStats.getAgility() +
-		// bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER);
-		velocity = -stats.getStatics().MoveSpeed();
+		velocity = -(1 + (baseStats.getAgility() + bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER);
+		// TODO deprecated velocity = -stats.getStatics().MoveSpeed();
 	}
 
 	public void stop() {
@@ -121,8 +121,8 @@ public class Hero extends Mob {
 	}
 
 	public boolean isDead() {
-		// TODO return hp.getCurrent() == 0;
-		return stats.Hp() == 0;
+		return hp.getCurrent() == 0;
+		// TODO deprecated return stats.Hp() == 0;
 	}
 
 	@Override
@@ -139,10 +139,12 @@ public class Hero extends Mob {
 
 	}
 
+	@Deprecated
 	public Inventory getInventory() {
 		return inventory;
 	}
 
+	@Deprecated
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}

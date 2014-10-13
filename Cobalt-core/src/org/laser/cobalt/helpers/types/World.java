@@ -14,12 +14,11 @@ public class World {
 	private Hero hero;
 	private float levelPosition;
 	private LevelIndex level;
+	private Inventory inventory;
 
 	public World() {
-		hero = new Hero(50, new MobStats(new StaticMobStats(500, 1, 1, 2, 2), 500, 100, 0, new PrimaryStats(1, 1, 1, 1, 1)));
-		hero.loadNew();
-		levelPosition = LEVEL_POSITION;
-		setLevel(LevelIndex.STARTING_PATH);
+		hero = new Hero();
+		inventory = new Inventory();
 	}
 
 	public String save() {
@@ -27,6 +26,7 @@ public class World {
 		data.setLevelPosition(getLevelPosition());
 		data.setLevel(getLevel());
 		data.setHeroJson(getHero().save());
+		data.setInventoryJson(inventory.save());
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -35,21 +35,25 @@ public class World {
 		if (loadString != null) {
 			Json json = new Json();
 			WorldData data = json.fromJson(WorldData.class, loadString);
-			setLevelPosition(data.getLevelPosition());
-			setLevel(data.getLevel());
-			getHero().load(data.getHeroJson());
+			levelPosition = data.getLevelPosition();
+			level = data.getLevel();
+			hero.load(data.getHeroJson());
+			inventory.load(data.getInventoryJson());
 		} else
 			loadNew();
 	}
 
 	public void loadNew() {
-		getHero().load("");
+		hero.load("");
+		inventory.load("");
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
 	}
 
 	public void loadSuperHero() {
 		hero.loadSuper();
+		levelPosition = LEVEL_POSITION;
+		level = LevelIndex.STARTING_PATH;
 	}
 
 	public void update(float delta) {
@@ -81,6 +85,6 @@ public class World {
 	}
 
 	public Inventory getInventory() {
-		return hero.getInventory();
+		return inventory;
 	}
 }

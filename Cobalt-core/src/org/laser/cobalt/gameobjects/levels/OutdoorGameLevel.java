@@ -15,6 +15,7 @@ import org.laser.cobalt.gameobjects.Exit;
 import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.gameobjects.Terrain;
+import org.laser.cobalt.helpers.types.World;
 
 public class OutdoorGameLevel extends GameLevel {
 
@@ -38,7 +39,8 @@ public class OutdoorGameLevel extends GameLevel {
 
 	@Override
 	public void update(float delta) {
-		Hero hero = game.getWorld().getHero();
+		World world = game.getGameWorld().getWorldData();
+		Hero hero = world.getHero();
 		hero.move(hero.getLocation() + hero.getVelocity());
 
 		if ((hero.getCenterX() < LEFT_WALK_LIMIT && hero.getVelocity() < 0) || (hero.getCenterX() > RIGHT_WALK_LIMIT && hero.getVelocity() > 0)) {
@@ -81,15 +83,15 @@ public class OutdoorGameLevel extends GameLevel {
 	}
 
 	public void moveLeft() {
-		game.getWorld().getHero().moveLeft();
+		game.getGameWorld().getWorldData().getHero().moveLeft();
 	}
 
 	public void moveRight() {
-		game.getWorld().getHero().moveRight();
+		game.getGameWorld().getWorldData().getHero().moveRight();
 	}
 
 	public void clickEnter() {
-		Hero hero = game.getWorld().getHero();
+		Hero hero = game.getGameWorld().getWorldData().getHero();
 		Exit exitToFollow = null;
 		for (Exit x : exits) {
 			if (hero.getLocation() > x.getLocation() - hero.getWidth() && hero.getLocation() < x.getLocation() + x.getWidth()) {
@@ -102,7 +104,7 @@ public class OutdoorGameLevel extends GameLevel {
 	}
 
 	public void stopMoving() {
-		game.getWorld().getHero().stop();
+		game.getGameWorld().getWorldData().getHero().stop();
 	}
 
 	public void rotateTerrain() {
@@ -121,19 +123,19 @@ public class OutdoorGameLevel extends GameLevel {
 	}
 
 	public void checkCollisions() {
-		Hero hero = game.getWorld().getHero();
+		Hero hero = game.getGameWorld().getWorldData().getHero();
 		for (Mob m : enemies) {
 			if (hero.getLocation() > m.getLocation() - hero.getWidth() && hero.getLocation() <= m.getLocation()) {
 				hero.move(m.getLocation() - hero.getWidth());
 			} else if (hero.getLocation() > m.getLocation() && hero.getLocation() < m.getLocation() + m.getWidth()) {
 				hero.move(m.getLocation() + m.getWidth());
 			}
-			if (hero.getLocation() > m.getLocation() - hero.getWidth() - hero.getStats().getStatics().SwingRange()
-					&& hero.getLocation() < m.getLocation() + m.getWidth() + hero.getStats().getStatics().SwingRange()) {
+			if (hero.getLocation() > m.getLocation() - hero.getWidth() - hero.getWeapon().getRange()
+					&& hero.getLocation() < m.getLocation() + m.getWidth() + hero.getWeapon().getRange()) {
 				hero.swing(m);
 			}
-			if (hero.getLocation() > m.getLocation() - hero.getWidth() - m.getStats().getStatics().SwingRange()
-					&& hero.getLocation() < m.getLocation() + m.getWidth() + m.getStats().getStatics().SwingRange()) {
+			if (hero.getLocation() > m.getLocation() - hero.getWidth() - m.getWeapon().getRange()
+					&& hero.getLocation() < m.getLocation() + m.getWidth() + m.getWeapon().getRange()) {
 				m.swing(hero);
 			}
 		}

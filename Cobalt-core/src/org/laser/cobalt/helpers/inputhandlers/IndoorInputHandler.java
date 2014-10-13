@@ -44,7 +44,7 @@ public class IndoorInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
+		IndoorGameLevel level = (IndoorGameLevel) game.getGameWorld().getLevel();
 		if (optionOneClicked(screenX, SCREEN_HEIGHT - screenY)) {
 			level.clickOption(0);
 		} else if (optionTwoClicked(screenX, SCREEN_HEIGHT - screenY)) {

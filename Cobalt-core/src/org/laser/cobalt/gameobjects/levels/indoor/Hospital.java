@@ -6,7 +6,9 @@ import static org.laser.cobalt.CobaltBasics.CobaltStrings.HOSPITAL_HEALED_GREETI
 import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.CobaltGame;
+import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.levels.IndoorGameLevel;
+import org.laser.cobalt.helpers.types.World;
 
 public class Hospital extends IndoorGameLevel {
 
@@ -17,10 +19,12 @@ public class Hospital extends IndoorGameLevel {
 
 	@Override
 	public void doOption(int option) {
+		Hero hero = game.getGameWorld().getWorldData().getHero();
+		World data = game.getGameWorld().getWorldData();
 		switch (option) {
 		case 0:
-			game.getWorld().getHero().getStats().heal(-1);
-			game.getWorld().getHero().getInventory().addCurrency(-10, 0, 0, 0);
+			hero.getHp().fill();
+			data.getInventory().addCurrency(-10, 0, 0, 0);
 			greeting = HOSPITAL_HEALED_GREETING;
 			break;
 		default:
@@ -41,10 +45,11 @@ public class Hospital extends IndoorGameLevel {
 
 	@Override
 	public boolean optionIsAvailable(int option) {
+		Hero hero = game.getGameWorld().getWorldData().getHero();
+		World data = game.getGameWorld().getWorldData();
 		switch (option) {
 		case 0:
-			return ((game.getWorld().getHero().getStats().Hp() < game.getWorld().getHero().getStats().getStatics().MaxHp()) && (game.getWorld().getHero()
-					.getInventory().getGold() > 10));
+			return ((hero.getHp().getCurrent() < hero.getHp().getMax()) && (data.getInventory().getGold() > 10));
 		default:
 			return false;
 		}

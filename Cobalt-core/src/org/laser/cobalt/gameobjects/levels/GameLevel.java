@@ -9,7 +9,6 @@ import org.laser.cobalt.gameobjects.levels.outdoor.FirstLevel;
 import org.laser.cobalt.gameobjects.levels.outdoor.SecondLevel;
 import org.laser.cobalt.gameobjects.levels.outdoor.ThirdLevel;
 import org.laser.cobalt.gameworld.GameWorld;
-import org.laser.cobalt.helpers.types.World;
 
 public abstract class GameLevel {
 
@@ -18,11 +17,8 @@ public abstract class GameLevel {
 	protected TextureIndex terrainTexture;
 	protected LevelIndex levelIndex;
 
-	protected World world;
-
 	public GameLevel(CobaltGame game, TextureIndex texture) {
 		this.game = game;
-		this.world = game.getWorld();
 		this.gameWorld = game.getGameWorld();
 		this.terrainTexture = texture;
 

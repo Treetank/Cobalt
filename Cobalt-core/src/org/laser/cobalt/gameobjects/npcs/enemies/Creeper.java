@@ -17,19 +17,14 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.CreeperStats.RE
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.npcs.Npc;
 import org.laser.cobalt.helpers.types.ConsumableResource;
-import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
-import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
 public class Creeper extends Npc {
 
 	public Creeper(float x) {
-		super(x, new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH), new MobStats(new StaticMobStats(15, 2, 1, 0, 2), 15,
-				75, 10, new PrimaryStats(2, 3, 1, 2, 1)));
-
-		// super(x);
+		super(x);
 		setTextureCollection(new TextureCollection(TextureIndex.CREEPER, TextureIndex.CREEPER, TextureIndex.SCRATCH));
 		setPrimaryStats(new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY));
 		setResources(new ConsumableResource(LEVEL_1_HP), new ConsumableResource(LEVEL_1_MP));

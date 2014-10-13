@@ -17,19 +17,14 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.SlimeStats.RESP
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.npcs.Npc;
 import org.laser.cobalt.helpers.types.ConsumableResource;
-import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
-import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
 public class Slime extends Npc {
 
 	public Slime(float x) {
-		super(x, new TextureCollection(TextureIndex.SLIME, TextureIndex.SLIME, TextureIndex.EXPLOSION), new MobStats(new StaticMobStats(10, 1, 2, 0, 2), 10,
-				10, 5, new PrimaryStats(1, 1, 1, 1, 1)));
-
-		// super(x);
+		super(x);
 		setTextureCollection(new TextureCollection(TextureIndex.SLIME, TextureIndex.SLIME, TextureIndex.EXPLOSION));
 		setPrimaryStats(new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY));
 		setResources(new ConsumableResource(LEVEL_1_HP), new ConsumableResource(LEVEL_1_MP));

@@ -196,4 +196,24 @@ public abstract class Mob extends Drawable {
 	protected void setExperience(int experience) {
 		this.experience = experience;
 	}
+
+	public void addExperience(int experience) {
+		this.experience += experience;
+	}
+
+	public ConsumableResource getHp() {
+		return hp;
+	}
+
+	public ConsumableResource getMp() {
+		return mp;
+	}
+
+	public PrimaryStats getBaseStats() {
+		return baseStats;
+	}
+
+	public PrimaryStats getBonusStats() {
+		return bonusStats;
+	}
 }

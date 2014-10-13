@@ -12,6 +12,7 @@ public class GameSaver {
 		public String worldJson;
 	}
 
+	@Deprecated
 	public static void saveWorld(World world) {
 		JsonWorld jWorld = new JsonWorld();
 
@@ -21,6 +22,7 @@ public class GameSaver {
 		writeFile("game.sav", json.toJson(jWorld));
 	}
 
+	@Deprecated
 	public static World loadWorld() {
 		String save = readFile("game.sav");
 		World world = new World();
@@ -31,6 +33,25 @@ public class GameSaver {
 			world.load(jWorld.worldJson);
 		}
 		return world;
+	}
+
+	public static void saveWorld(String saveString, int saveFile) {
+		JsonWorld jWorld = new JsonWorld();
+
+		jWorld.worldJson = saveString;
+
+		Json json = new Json();
+		writeFile("game.sav", json.toJson(jWorld));
+	}
+
+	public static String loadWorld(int saveFile) {
+		String save = readFile("game.sav");
+		if (!save.isEmpty()) {
+			Json json = new Json();
+			JsonWorld jWorld = json.fromJson(JsonWorld.class, save);
+			return jWorld.worldJson;
+		}
+		return "";
 	}
 
 	public static void writeFile(String fileName, String s) {

@@ -44,14 +44,25 @@ public class Inventory {
 	}
 
 	public void load(String loadString) {
-		Json json = new Json();
-		InventoryData data = json.fromJson(InventoryData.class, loadString);
+		if (loadString != null && loadString != "") {
+			Json json = new Json();
+			InventoryData data = json.fromJson(InventoryData.class, loadString);
+			resetCurrency();
+			addCurrency(data.getGold(), data.getRed(), data.getBlue(), data.getDiamond());
+			addItem(Equipable.load(data.getLightPlateJson()));
+			addItem(Equipable.load(data.getSwordJson()));
+			addItem(Equipable.load(data.getNoChestJson()));
+			addItem(Equipable.load(data.getBareHandsJson()));
+		} else
+			loadNew();
+	}
+
+	public void loadNew() {
 		resetCurrency();
-		addCurrency(data.getGold(), data.getRed(), data.getBlue(), data.getDiamond());
-		addItem(Equipable.load(data.getLightPlateJson()));
-		addItem(Equipable.load(data.getSwordJson()));
-		addItem(Equipable.load(data.getNoChestJson()));
-		addItem(Equipable.load(data.getBareHandsJson()));
+		sword = (Sword) Equipable.ItemCreator(ItemIndex.SWORD, 0);
+		lightPlate = (LightPlate) Equipable.ItemCreator(ItemIndex.LIGHT_CHEST_PLATE, 0);
+		bareHands = (BareHands) Equipable.ItemCreator(ItemIndex.BARE_HANDS, 0);
+		noChest = (NoChestArmor) Equipable.ItemCreator(ItemIndex.NO_CHEST_PLATE, 0);
 	}
 
 	public void addItem(Equipable item) {

@@ -14,7 +14,8 @@ import org.laser.cobalt.gameobjects.Hero;
 import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.gameobjects.levels.OutdoorGameLevel;
 import org.laser.cobalt.helpers.AssetLoader;
-import org.laser.cobalt.helpers.types.MobStats;
+import org.laser.cobalt.helpers.types.PrimaryStats;
+import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.interfaces.IRenderer;
 
 import com.badlogic.gdx.Gdx;
@@ -32,13 +33,13 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 	}
 
 	public void render(float delta) {
-		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
-		Hero hero = game.getWorld().getHero();
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getGameWorld().getLevel();
+		Hero hero = game.getGameWorld().getWorldData().getHero();
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		drawTerrain();
+		drawTerrain(level);
 
 		drawLandmarks(level);
 
@@ -46,7 +47,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		drawHero(hero);
 
-		drawUI();
+		drawUI(level);
 	}
 
 	public void drawHero(Hero hero) {
@@ -129,12 +130,14 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 		batcher.end();
 	}
 
-	public void drawUI() {
-		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+	public void drawUI(OutdoorGameLevel level) {
+		Hero hero = game.getGameWorld().getWorldData().getHero();
+		World data = game.getGameWorld().getWorldData();
 
-		Hero hero = game.getWorld().getHero();
+		PrimaryStats base = gameWorld.getWorldData().getHero().getBaseStats();
+		PrimaryStats bonus = gameWorld.getWorldData().getHero().getBonusStats();
+		PrimaryStats stats = gameWorld.getWorldData().getHero().getPrimaryStats();
 
-		MobStats stats = gameWorld.getWorldData().getHero().getStats();
 		shapeRenderer.begin(ShapeType.Filled);
 		RoundRectangle(3, BOTTOM_BUTTON_SQUARE_SIZE + 6, DeviceInfo.gameWidth - 3, VIEWPORT_LOWER_BOUNDS - 3, 2);
 		for (Exit x : level.getExit()) {
@@ -145,18 +148,17 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 		shapeRenderer.end();
 		batcher.begin();
 		batcher.enableBlending();
-		font.draw(batcher, stats.Hp() + "/" + stats.getStatics().MaxHp(), 10, VIEWPORT_LOWER_BOUNDS - 15);
-		font.draw(batcher, stats.Exp() + "", 10, VIEWPORT_LOWER_BOUNDS - 25);
-		font.draw(batcher, "STRENGTH  " + stats.getStrength() + "  " + stats.getBaseStrength() + "/" + stats.getBonusStrength(), 10, VIEWPORT_LOWER_BOUNDS - 35);
-		font.draw(batcher, "AGILITY   " + stats.getAgility() + "  " + stats.getBaseAgility() + "/" + stats.getBonusAgility(), 10, VIEWPORT_LOWER_BOUNDS - 45);
-		font.draw(batcher, "INTELLECT " + stats.getIntellect() + "  " + stats.getBaseIntellect() + "/" + stats.getBonusIntellect(), 10,
-				VIEWPORT_LOWER_BOUNDS - 55);
-		font.draw(batcher, "STAMINA   " + stats.getStamina() + "  " + stats.getBaseStamina() + "/" + stats.getBonusStamina(), 10, VIEWPORT_LOWER_BOUNDS - 65);
-		font.draw(batcher, "VITALITY  " + stats.getVitality() + "  " + stats.getBaseVitality() + "/" + stats.getBonusVitality(), 10, VIEWPORT_LOWER_BOUNDS - 75);
-		font.draw(batcher, "GOLD " + hero.getInventory().getGold(), 10, VIEWPORT_LOWER_BOUNDS - 85);
-		font.draw(batcher, "RED GEMS " + hero.getInventory().getRedGems(), 10, VIEWPORT_LOWER_BOUNDS - 95);
-		font.draw(batcher, "BLUE GEMS " + hero.getInventory().getBlueGems(), 10, VIEWPORT_LOWER_BOUNDS - 105);
-		font.draw(batcher, "DIAMONDS " + hero.getInventory().getDiamonds(), 10, VIEWPORT_LOWER_BOUNDS - 115);
+		font.draw(batcher, hero.getHp().getCurrent() + "/" + hero.getHp().getMax(), 10, VIEWPORT_LOWER_BOUNDS - 15);
+		font.draw(batcher, hero.getExperience() + "", 10, VIEWPORT_LOWER_BOUNDS - 25);
+		font.draw(batcher, "STRENGTH  " + stats.getStrength() + "  " + base.getStrength() + "/" + bonus.getStrength(), 10, VIEWPORT_LOWER_BOUNDS - 35);
+		font.draw(batcher, "AGILITY   " + stats.getAgility() + "  " + base.getAgility() + "/" + bonus.getAgility(), 10, VIEWPORT_LOWER_BOUNDS - 45);
+		font.draw(batcher, "INTELLECT " + stats.getIntellect() + "  " + base.getIntellect() + "/" + bonus.getIntellect(), 10, VIEWPORT_LOWER_BOUNDS - 55);
+		font.draw(batcher, "STAMINA   " + stats.getStamina() + "  " + base.getStamina() + "/" + bonus.getStamina(), 10, VIEWPORT_LOWER_BOUNDS - 65);
+		font.draw(batcher, "VITALITY  " + stats.getVitality() + "  " + base.getVitality() + "/" + bonus.getVitality(), 10, VIEWPORT_LOWER_BOUNDS - 75);
+		font.draw(batcher, "GOLD " + data.getInventory().getGold(), 10, VIEWPORT_LOWER_BOUNDS - 85);
+		font.draw(batcher, "RED GEMS " + data.getInventory().getRedGems(), 10, VIEWPORT_LOWER_BOUNDS - 95);
+		font.draw(batcher, "BLUE GEMS " + data.getInventory().getBlueGems(), 10, VIEWPORT_LOWER_BOUNDS - 105);
+		font.draw(batcher, "DIAMONDS " + data.getInventory().getDiamonds(), 10, VIEWPORT_LOWER_BOUNDS - 115);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				font.draw(batcher, "ENTER", SCREEN_WIDTH - 50, SCREEN_HEIGHT - 10);
@@ -178,8 +180,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 		shapeRenderer.end();
 	}
 
-	public void drawTerrain() {
-		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+	public void drawTerrain(OutdoorGameLevel level) {
 		TextureRegion tempRegion = null;
 
 		shapeRenderer.begin(ShapeType.Filled);
@@ -191,7 +192,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 
 		batcher.begin();
 		batcher.disableBlending();
-		switch (game.getLevel().getTerrainTexture()) {
+		switch (level.getTerrainTexture()) {
 		case GRASS:
 			tempRegion = AssetLoader.grass;
 			break;

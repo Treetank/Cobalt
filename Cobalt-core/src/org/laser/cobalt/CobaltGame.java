@@ -5,21 +5,17 @@ import static org.laser.cobalt.CobaltBasics.GameWindowMetrics.SCREEN_WIDTH;
 
 import org.laser.cobalt.CobaltBasics.GameStateIndex;
 import org.laser.cobalt.CobaltBasics.LevelIndex;
-import org.laser.cobalt.gameobjects.levels.GameLevel;
 import org.laser.cobalt.gameworld.GameWorld;
-import org.laser.cobalt.gameworld.OutdoorGameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
 import org.laser.cobalt.helpers.inputhandlers.GameSelectInputHandler;
+import org.laser.cobalt.helpers.inputhandlers.IndoorInputHandler;
+import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
 import org.laser.cobalt.helpers.renderers.GameSelectRenderer;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
-import org.laser.cobalt.helpers.types.World;
 import org.laser.cobalt.interfaces.IRenderer;
 import org.laser.cobalt.screens.GameScreen;
-import org.laser.cobalt.screens.GameSelectScreen;
-import org.laser.cobalt.screens.IndoorScreen;
-import org.laser.cobalt.screens.WorldScreen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -27,24 +23,22 @@ import com.badlogic.gdx.Gdx;
 public class CobaltGame extends Game {
 
 	private GameWorld gameWorld;
-	private World world;
 	private IRenderer renderer;
-	private GameLevel gameLevel, lastOutdoorLevel;
-	private float saveOutdoorPosition, saveOutdoorX;
 	private GameStateIndex gameState;
 
 	@Override
 	public void create() {
-		initGame();
+		prepScreen();
 
 		// load all assets
 		AssetLoader.load();
 
-		bootGame();
-		// TODO beginGame();
+		initGame();
+
+		beginGame();
 	}
 
-	private void initGame() {
+	private void prepScreen() {
 		// setup hardware screen metrics
 		DeviceInfo.screenWidth = Gdx.graphics.getWidth();
 		DeviceInfo.screenHeight = Gdx.graphics.getHeight();
@@ -58,16 +52,13 @@ public class CobaltGame extends Game {
 		DeviceInfo.gameMidX = DeviceInfo.gameWidth / 2;
 	}
 
-	@Deprecated
-	private void bootGame() {
+	private void initGame() {
 		renderer = new GameSelectRenderer(this);
-		setScreen(new GameSelectScreen(this));
+		gameWorld = new GameWorld(this);
 	}
 
 	private void beginGame() {
 		gameState = GameStateIndex.SAVE_SELECT;
-		renderer = new GameSelectRenderer(this);
-		gameWorld = new GameWorld(this);
 		Gdx.input.setInputProcessor(new GameSelectInputHandler(this));
 		setScreen(new GameScreen(this));
 	}
@@ -76,95 +67,47 @@ public class CobaltGame extends Game {
 		return gameWorld;
 	}
 
-	public World getWorld() {
-		return world;
-	}
-
 	public IRenderer getRenderer() {
 		return renderer;
 	}
 
 	public void loadSuperGame() {
-		oldLoadSuperGame();
+		gameWorld.loadSuper();
+		startGame();
 	}
 
 	public void loadGame() {
-		oldLoadGame();
+		gameWorld.loadLast();
+		startGame();
 	}
 
 	public void newGame() {
-		oldNewGame();
+		gameWorld.loadNew();
+		startGame();
 	}
 
 	public void startGame() {
-	}
-
-	@Deprecated
-	public void oldLoadSuperGame() {
-		world = new World();
-		world.loadSuperHero();
-		oldStartGame();
-	}
-
-	@Deprecated
-	public void oldLoadGame() {
-		world = GameSaver.loadWorld();
-		oldStartGame();
-	}
-
-	@Deprecated
-	public void oldNewGame() {
-		world = new World();
-		oldStartGame();
-	}
-
-	@Deprecated
-	public void oldStartGame() {
-		gameWorld = new OutdoorGameWorld(this);
+		gameState = GameStateIndex.GAME_RUNNING;
+		gameWorld.loadLevel();
 		renderer = new GameWorldRenderer(this);
-		setScreen(new WorldScreen(this));
-	}
-
-	public void setLevel(LevelIndex levelIndex) {
-		GameLevel tempLevel = GameLevel.LevelCreator(this, levelIndex);
-		if (tempLevel.isIndoor()) {
-			goIndoors();
-		}
-		gameLevel = tempLevel;
+		Gdx.input.setInputProcessor(new WorldInputHandler(this));
 	}
 
 	public void ChangeLevel(LevelIndex levelIndex) {
-		if (levelIndex == null) {
-			levelIndex = gameLevel.getLevelIndex();
+		gameWorld.ChangeLevel(levelIndex);
+		if (gameWorld.isInside()) {
+			renderer = new IndoorWorldRenderer(this);
+			Gdx.input.setInputProcessor(new IndoorInputHandler(this));
 		}
-		setLevel(levelIndex);
-		world.setLevel(levelIndex);
-		world.setLevelPosition(0);
-		world.getHero().move(50);
-	}
-
-	public GameLevel getLevel() {
-		return gameLevel;
 	}
 
 	public void update(float delta) {
-		oldUpdate(delta);
-		// TODO newUpdate(delta);
-	}
-
-	@Deprecated
-	public void oldUpdate(float delta) {
-		gameLevel.update(delta);
-		gameWorld.update(delta);
-	}
-
-	public void newUpdate(float delta) {
 		switch (gameState) {
 		case SAVE_SELECT:
 			updateLoading();
 			break;
 		case GAME_RUNNING:
-			updateRunning();
+			updateRunning(delta);
 			break;
 		case INDOORS:
 			updateIndoors();
@@ -182,8 +125,8 @@ public class CobaltGame extends Game {
 
 	}
 
-	private void updateRunning() {
-
+	private void updateRunning(float delta) {
+		gameWorld.update(delta);
 	}
 
 	private void updateIndoors() {
@@ -194,21 +137,10 @@ public class CobaltGame extends Game {
 
 	}
 
-	private void goIndoors() {
-		lastOutdoorLevel = gameLevel;
-		saveOutdoorPosition = world.getLevelPosition();
-		saveOutdoorX = world.getHero().getX();
-		renderer = new IndoorWorldRenderer(this);
-		setScreen(new IndoorScreen(this));
-	}
-
 	public void goOutdoors() {
-		gameLevel = lastOutdoorLevel;
-		world.setLevelPosition(saveOutdoorPosition);
-		world.getHero().move(saveOutdoorPosition + saveOutdoorX);
-		world.setLevel(gameLevel.getLevelIndex());
+		gameWorld.goOutside();
 		renderer = new GameWorldRenderer(this);
-		setScreen(new WorldScreen(this));
+		Gdx.input.setInputProcessor(new WorldInputHandler(this));
 	}
 
 	public void pushBottomButton(int button) {
@@ -229,12 +161,7 @@ public class CobaltGame extends Game {
 	@Override
 	public void dispose() {
 		super.dispose();
-		if (gameLevel != null) {
-			if (gameLevel.isIndoor()) {
-				goOutdoors();
-			}
-			GameSaver.saveWorld(world);
-		}
+		GameSaver.saveWorld(gameWorld.getWorldData().save(), 0);
 		AssetLoader.dispose();
 	}
 }

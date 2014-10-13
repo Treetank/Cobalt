@@ -134,6 +134,7 @@ public final class CobaltBasics {
 			public static final class WeaponStats {
 				public static final class BareHandStats {
 					public static final int SWING_SPEED = 1;
+					public static final float RANGE = 0.5f;
 					public static final int LEVEL_1_STRENGTH = 0;
 					public static final int LEVEL_1_AGILITY = 0;
 					public static final int LEVEL_1_INTELLECT = 0;
@@ -144,6 +145,7 @@ public final class CobaltBasics {
 
 				public static final class SwordStats {
 					public static final int SWING_SPEED = 2;
+					public static final float RANGE = 1.5f;
 					public static final int LEVEL_1_STRENGTH = 5;
 					public static final int LEVEL_1_AGILITY = 2;
 					public static final int LEVEL_1_INTELLECT = 0;
@@ -183,18 +185,14 @@ public final class CobaltBasics {
 				public static final int NORMAL_INITIAL_VITALITY = 1;
 				public static final int NORMAL_INITIAL_HP = 500;
 				public static final int NORMAL_INITIAL_MP = 100;
-				public static final int SUPER_INITIAL_STRENGTH = 1;
-				public static final int SUPER_INITIAL_AGILITY = 1;
-				public static final int SUPER_INITIAL_INTELLECT = 1;
-				public static final int SUPER_INITIAL_STAMINA = 1;
-				public static final int SUPER_INITIAL_VITALITY = 1;
-				public static final int SUPER_INITIAL_HP = 500;
-				public static final int SUPER_INITIAL_MP = 100;
+				public static final int SUPER_INITIAL_STRENGTH = 1000;
+				public static final int SUPER_INITIAL_AGILITY = 1000;
+				public static final int SUPER_INITIAL_INTELLECT = 1000;
+				public static final int SUPER_INITIAL_STAMINA = 1000;
+				public static final int SUPER_INITIAL_VITALITY = 1000;
+				public static final int SUPER_INITIAL_HP = 50000;
+				public static final int SUPER_INITIAL_MP = 10000;
 				public static final int INITIAL_POSITION = 50;
-			}
-
-			public static final class HeroSuperStats {
-
 			}
 
 			public static final class SlimeStats {

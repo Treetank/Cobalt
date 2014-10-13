@@ -38,7 +38,7 @@ public class WorldInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getGameWorld().getLevel();
 		if (screenY <= SCREEN_HEIGHT - VIEWPORT_LOWER_BOUNDS) {
 			level.clickEnter();
 		} else if (screenY >= SCREEN_HEIGHT - BOTTOM_BUTTON_SQUARE_SIZE - 3) {
@@ -52,7 +52,7 @@ public class WorldInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		OutdoorGameLevel level = (OutdoorGameLevel) game.getLevel();
+		OutdoorGameLevel level = (OutdoorGameLevel) game.getGameWorld().getLevel();
 		level.stopMoving();
 		return true;
 	}

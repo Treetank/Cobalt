@@ -19,7 +19,7 @@ public class MobTester extends BaseTest {
 	public boolean testInitialValues() {
 		Mob mob = Npc.EnemyCreator(EnemyIndex.SLIME, 0);
 		boolean retVal = true;
-		retVal &= printResult("assert Slime initial hp", mob.getStats().Hp() == 10);
+		retVal &= printResult("assert Slime initial hp", mob.getHp().getCurrent() == 10);
 		return retVal;
 	}
 

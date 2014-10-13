@@ -27,7 +27,7 @@ public class IndoorWorldRenderer extends CobaltRenderer implements IRenderer {
 
 	@Override
 	public void render(float delta) {
-		IndoorGameLevel level = (IndoorGameLevel) game.getLevel();
+		IndoorGameLevel level = (IndoorGameLevel) game.getGameWorld().getLevel();
 
 		TextureRegion tempRegion = null;
 		Gdx.gl.glClearColor(0, 0, 0, 1);

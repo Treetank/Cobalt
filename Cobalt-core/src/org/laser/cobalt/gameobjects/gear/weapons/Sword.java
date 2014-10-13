@@ -6,19 +6,21 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.Sw
 import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.SwordStats.LEVEL_1_STAMINA;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.SwordStats.LEVEL_1_STRENGTH;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.SwordStats.LEVEL_1_VITALITY;
+import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.SwordStats.RANGE;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.GearStats.WeaponStats.SwordStats.SWING_SPEED;
 
 import org.laser.cobalt.CobaltBasics.Damage;
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Weapon;
-import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.DamageArray;
+import org.laser.cobalt.helpers.types.PrimaryStats;
 
 public class Sword extends Weapon {
 
 	public Sword(int level) {
-		super(TextureIndex.SWORD, new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level, SWING_SPEED);
+		super(TextureIndex.SWORD, new PrimaryStats(LEVEL_1_STRENGTH, LEVEL_1_AGILITY, LEVEL_1_INTELLECT, LEVEL_1_STAMINA, LEVEL_1_VITALITY), level,
+				SWING_SPEED, RANGE);
 	}
 
 	@Override
