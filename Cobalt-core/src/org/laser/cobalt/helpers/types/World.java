@@ -57,7 +57,11 @@ public class World {
 	}
 
 	public void update(float delta) {
-
+		Reward tempReward = hero.collectReward();
+		if (tempReward != null) {
+			hero.addExperience(tempReward.getExperience());
+			inventory.addCurrency(tempReward.getGold(), tempReward.getRedGems(), tempReward.getBlueGems(), tempReward.getDiamonds());
+		}
 	}
 
 	public Hero getHero() {

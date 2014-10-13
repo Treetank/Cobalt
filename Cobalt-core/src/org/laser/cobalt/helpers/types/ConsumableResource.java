@@ -31,6 +31,8 @@ public class ConsumableResource {
 
 	public void useResource(int adjustValue) {
 		current -= adjustValue;
+		if (current < 0)
+			current = 0;
 	}
 
 	public void fillResource(int adjustValue) {

@@ -17,11 +17,13 @@ import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.SUPER
 import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.SUPER_INITIAL_STRENGTH;
 import static org.laser.cobalt.CobaltBasics.StatMetrics.MobStats.HeroStats.SUPER_INITIAL_VITALITY;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.laser.cobalt.CobaltBasics.ItemIndex;
 import org.laser.cobalt.CobaltBasics.TextureIndex;
 import org.laser.cobalt.gameobjects.gear.Equipable;
 import org.laser.cobalt.helpers.types.ConsumableResource;
-import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
 import org.laser.cobalt.helpers.types.SerializingData.HeroData;
@@ -32,22 +34,16 @@ import com.badlogic.gdx.utils.Json;
 public class Hero extends Mob {
 
 	private float velocity;
-	private Inventory inventory;
-
-	@Deprecated
-	public Hero(float x, MobStats ms) {
-		super(x, new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION), ms);
-		inventory = new Inventory();
-	}
+	private List<Reward> rewards;
 
 	public Hero() {
 		super();
-		inventory = new Inventory();
 		setTextureCollection(new TextureCollection(TextureIndex.HERO, TextureIndex.HERO_ATTACKING, TextureIndex.EXPLOSION));
 	}
 
 	protected void init() {
 		super.init();
+		rewards = new ArrayList<Reward>();
 		velocity = 0;
 	}
 
@@ -57,8 +53,6 @@ public class Hero extends Mob {
 		data.setPrimaryStatsJson(baseStats.save());
 		data.setHpJson(hp.save());
 		data.setMpJson(mp.save());
-		data.setStatsJson(stats.save());
-		data.setInventoryJson(inventory.save());
 		data.setWeaponJson(weapon.save());
 		data.setChestArmorJson(chestArmor.save());
 		data.setExperience(getExperience());
@@ -74,8 +68,6 @@ public class Hero extends Mob {
 			baseStats.load(data.getPrimaryStatsJson());
 			hp.load(data.getHpJson());
 			mp.load(data.getMpJson());
-			stats.load(data.getStatsJson());
-			inventory.load(data.getInventoryJson());
 			equip(Equipable.load(data.getWeaponJson()));
 			equip(Equipable.load(data.getChestArmorJson()));
 			setExperience(data.getExperience());
@@ -108,12 +100,10 @@ public class Hero extends Mob {
 
 	public void moveRight() {
 		velocity = 1 + (baseStats.getAgility() + bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER;
-		// TODO deprecated velocity = stats.getStatics().MoveSpeed();
 	}
 
 	public void moveLeft() {
 		velocity = -(1 + (baseStats.getAgility() + bonusStats.getAgility()) / AGILITY_MOVESPEED_MODIFIER);
-		// TODO deprecated velocity = -stats.getStatics().MoveSpeed();
 	}
 
 	public void stop() {
@@ -122,7 +112,15 @@ public class Hero extends Mob {
 
 	public boolean isDead() {
 		return hp.getCurrent() == 0;
-		// TODO deprecated return stats.Hp() == 0;
+	}
+
+	public Reward collectReward() {
+		Reward retVal = null;
+		if (rewards.size() > 0) {
+			retVal = rewards.get(0);
+			rewards.remove(0);
+		}
+		return retVal;
 	}
 
 	@Override
@@ -133,19 +131,8 @@ public class Hero extends Mob {
 	@Override
 	public void receiveReward(Reward reward) {
 		if (reward != null) {
-			stats.addExp(reward.getExperience());
-			inventory.addCurrency(reward.getGold(), reward.getRedGems(), reward.getBlueGems(), reward.getDiamonds());
+			rewards.add(reward);
 		}
 
-	}
-
-	@Deprecated
-	public Inventory getInventory() {
-		return inventory;
-	}
-
-	@Deprecated
-	public void setInventory(Inventory inventory) {
-		this.inventory = inventory;
 	}
 }

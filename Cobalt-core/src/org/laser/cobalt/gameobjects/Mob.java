@@ -14,10 +14,8 @@ import org.laser.cobalt.gameobjects.gear.weapons.BareHands;
 import org.laser.cobalt.helpers.DamageCalculator;
 import org.laser.cobalt.helpers.types.ConsumableResource;
 import org.laser.cobalt.helpers.types.ImageProperties;
-import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.PrimaryStats;
 import org.laser.cobalt.helpers.types.Reward;
-import org.laser.cobalt.helpers.types.StaticMobStats;
 import org.laser.cobalt.helpers.types.TextureCollection;
 
 public abstract class Mob extends Drawable {
@@ -29,17 +27,8 @@ public abstract class Mob extends Drawable {
 	protected float swingTimer, beingHitTimer;
 	protected TextureIndex beingHitImage;
 	protected TextureCollection textureCollection;
-	protected MobStats stats;
 	protected ChestArmor chestArmor;
 	protected Weapon weapon;
-
-	@Deprecated
-	public Mob(float x, TextureCollection tc, MobStats ms) {
-		super();
-		setImageProperties(new ImageProperties(x, TERRAIN_HEIGHT, MOB_SQUARE_SIZE, MOB_SQUARE_SIZE));
-		setTextureCollection(tc);
-		stats = ms;
-	}
 
 	protected Mob(float x) {
 		super();
@@ -78,7 +67,6 @@ public abstract class Mob extends Drawable {
 		mp = new ConsumableResource();
 		baseStats = new PrimaryStats();
 		bonusStats = new PrimaryStats();
-		stats = new MobStats(new StaticMobStats(0, 0, 0, 0, 0), 0, 0, 0, baseStats);
 		equip(new NoChestArmor(1));
 		equip(new BareHands(1));
 	}
@@ -93,8 +81,7 @@ public abstract class Mob extends Drawable {
 		}
 		if (beingHitTimer > 0) {
 			beingHitTimer -= delta;
-			// TODO if (hp.getCurrent() == 0) {
-			if (stats.Hp() <= 0) {
+			if (hp.getCurrent() == 0) {
 				die();
 			}
 		}
@@ -102,10 +89,7 @@ public abstract class Mob extends Drawable {
 
 	public void swing(Mob mob) {
 		if (!(swingTimer > 0)) {
-			// TODO swingTimer = (1 / (weapon.getAttackSpeed() +
-			// ((baseStats.getAgility() + bonusStats.getAgility()) /
-			// AGILITY_SWING_MODIFIER)));
-			swingTimer = (1 / (weapon.getAttackSpeed() + (stats.getAgility() / AGILITY_SWING_MODIFIER)));
+			swingTimer = (1 / (weapon.getAttackSpeed() + ((baseStats.getAgility() + bonusStats.getAgility()) / AGILITY_SWING_MODIFIER)));
 			if (swingHit(mob)) {
 				receiveReward(mob.takeHit(DamageCalculator.CalculateDamage(this, mob), textureCollection.Damage()));
 			}
@@ -116,9 +100,8 @@ public abstract class Mob extends Drawable {
 	public Reward takeHit(int damage, TextureIndex hitImage) {
 		beingHitImage = hitImage;
 		beingHitTimer = TAKE_DAMAGE_TIMER;
-		// TODO hp.useResource(damage);
-		// TODO if (hp.getCurrent() == 0) {
-		if (stats.takeDamage(damage)) {
+		hp.useResource(damage);
+		if (hp.getCurrent() == 0) {
 			return generateReward();
 		} else {
 			return null;
@@ -129,8 +112,7 @@ public abstract class Mob extends Drawable {
 	}
 
 	public void respawn() {
-		// TODO hp.fill();
-		stats.heal(stats.getStatics().MaxHp());
+		hp.fill();
 		returnToBase();
 	}
 
@@ -150,20 +132,13 @@ public abstract class Mob extends Drawable {
 			unEquip(chestArmor);
 			chestArmor = (ChestArmor) item;
 		}
-		// TODO bonusStats.addStats(item.getStats());
-		stats.addToBonusStats(item.getStats());
+		bonusStats.addStats(item.getStats());
 	}
 
 	public void unEquip(Equipable item) {
 		if (item != null) {
-			// TODO bonusStats.removeStats(item.getStats());
-			stats.removeBonusStats(item.getStats());
+			bonusStats.removeStats(item.getStats());
 		}
-	}
-
-	@Deprecated
-	public MobStats getStats() {
-		return stats;
 	}
 
 	public PrimaryStats getPrimaryStats() {

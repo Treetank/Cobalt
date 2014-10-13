@@ -5,18 +5,11 @@ import org.laser.cobalt.gameobjects.Mob;
 import org.laser.cobalt.gameobjects.npcs.enemies.Creeper;
 import org.laser.cobalt.gameobjects.npcs.enemies.Imp;
 import org.laser.cobalt.gameobjects.npcs.enemies.Slime;
-import org.laser.cobalt.helpers.types.MobStats;
 import org.laser.cobalt.helpers.types.Reward;
-import org.laser.cobalt.helpers.types.TextureCollection;
 
 public abstract class Npc extends Mob {
 
 	protected float respawnSpeed, respawnTimer;
-
-	@Deprecated
-	public Npc(float x, TextureCollection tc, MobStats ms) {
-		super(x, tc, ms);
-	}
 
 	protected Npc(float x) {
 		super(x);
