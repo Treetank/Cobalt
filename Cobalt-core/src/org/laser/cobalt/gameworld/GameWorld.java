@@ -76,6 +76,10 @@ public class GameWorld {
 			data.getHero().move(INITIAL_POSITION);
 		}
 	}
+	
+	public void addTime(float delta) {
+		data.addTime(delta);
+	}
 
 	public void goOutside() {
 		inside = false;

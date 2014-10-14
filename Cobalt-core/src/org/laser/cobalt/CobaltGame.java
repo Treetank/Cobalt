@@ -134,6 +134,7 @@ public class CobaltGame extends Game {
 		default:
 			break;
 		}
+		gameWorld.addTime(delta);
 		renderer.render(delta);
 	}
 

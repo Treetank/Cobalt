@@ -159,6 +159,7 @@ public class GameWorldRenderer extends CobaltRenderer implements IRenderer {
 		font.draw(batcher, "RED GEMS " + data.getInventory().getRedGems(), 10, VIEWPORT_LOWER_BOUNDS - 95);
 		font.draw(batcher, "BLUE GEMS " + data.getInventory().getBlueGems(), 10, VIEWPORT_LOWER_BOUNDS - 105);
 		font.draw(batcher, "DIAMONDS " + data.getInventory().getDiamonds(), 10, VIEWPORT_LOWER_BOUNDS - 115);
+		font.draw(batcher, "TIME :" + data.getTimePlayed(), 10, VIEWPORT_LOWER_BOUNDS - 125);
 		for (Exit x : level.getExit()) {
 			if (isNear(x.getX(), x.getWidth(), hero.getX(), hero.getWidth())) {
 				font.draw(batcher, "ENTER", SCREEN_WIDTH - 50, SCREEN_HEIGHT - 10);

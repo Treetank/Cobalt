@@ -7,7 +7,7 @@ public class SerializingData {
 
 	public static class WorldData {
 
-		private float levelPosition;
+		private float levelPosition, timePlayed;
 		private LevelIndex level;
 		private String heroJson, inventoryJson;
 
@@ -17,6 +17,14 @@ public class SerializingData {
 
 		public void setLevelPosition(float levelPosition) {
 			this.levelPosition = levelPosition;
+		}
+
+		public float getTimePlayed() {
+			return timePlayed;
+		}
+
+		public void setTimePlayed(float timePlayed) {
+			this.timePlayed = timePlayed;
 		}
 
 		public LevelIndex getLevel() {

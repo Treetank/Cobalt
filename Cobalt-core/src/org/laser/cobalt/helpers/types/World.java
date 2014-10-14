@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.Json;
 public class World {
 
 	private Hero hero;
-	private float levelPosition;
+	private float levelPosition, timePlayed;
 	private LevelIndex level;
 	private Inventory inventory;
 
@@ -23,10 +23,11 @@ public class World {
 
 	public String save() {
 		WorldData data = new WorldData();
-		data.setLevelPosition(getLevelPosition());
-		data.setLevel(getLevel());
+		data.setLevelPosition(levelPosition);
+		data.setLevel(level);
 		data.setHeroJson(getHero().save());
 		data.setInventoryJson(inventory.save());
+		data.setTimePlayed(timePlayed);
 		Json json = new Json();
 		return json.toJson(data);
 	}
@@ -39,6 +40,7 @@ public class World {
 			level = data.getLevel();
 			hero.load(data.getHeroJson());
 			inventory.load(data.getInventoryJson());
+			timePlayed = data.getTimePlayed();
 		} else
 			loadNew();
 	}
@@ -48,6 +50,7 @@ public class World {
 		inventory.load("");
 		levelPosition = LEVEL_POSITION;
 		setLevel(LevelIndex.STARTING_PATH);
+		timePlayed = 0;
 	}
 
 	public void loadSuperHero() {
@@ -64,6 +67,10 @@ public class World {
 		}
 	}
 
+	public void addTime(float delta) {
+		timePlayed += delta;
+	}
+	
 	public Hero getHero() {
 		return hero;
 	}
@@ -72,6 +79,10 @@ public class World {
 		return levelPosition;
 	}
 
+	public float getTimePlayed() {
+		return timePlayed;
+	}
+	
 	public void loadHero(Hero hero) {
 		this.hero = hero;
 	}
