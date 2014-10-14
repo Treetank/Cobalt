@@ -31,6 +31,9 @@ public class GameWorld {
 	public void update(float delta) {
 		data.update(delta);
 		getLevel().update(delta);
+		if (data.getHero().isDead()) {
+			game.HeroHasDied();
+		}
 	}
 
 	@Deprecated

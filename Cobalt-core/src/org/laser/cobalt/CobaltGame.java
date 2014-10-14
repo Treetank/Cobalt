@@ -8,9 +8,11 @@ import org.laser.cobalt.CobaltBasics.LevelIndex;
 import org.laser.cobalt.gameworld.GameWorld;
 import org.laser.cobalt.helpers.AssetLoader;
 import org.laser.cobalt.helpers.GameSaver;
+import org.laser.cobalt.helpers.inputhandlers.GameOverInputHandler;
 import org.laser.cobalt.helpers.inputhandlers.GameSelectInputHandler;
 import org.laser.cobalt.helpers.inputhandlers.IndoorInputHandler;
 import org.laser.cobalt.helpers.inputhandlers.WorldInputHandler;
+import org.laser.cobalt.helpers.renderers.GameOverRenderer;
 import org.laser.cobalt.helpers.renderers.GameSelectRenderer;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
@@ -99,6 +101,16 @@ public class CobaltGame extends Game {
 			renderer = new IndoorWorldRenderer(this);
 			Gdx.input.setInputProcessor(new IndoorInputHandler(this));
 		}
+	}
+
+	public void HeroHasDied() {
+		gameState = GameStateIndex.HERO_DEAD;
+		Gdx.input.setInputProcessor(new GameOverInputHandler(this));
+		renderer = new GameOverRenderer(this);
+	}
+
+	public void Respawn() {
+
 	}
 
 	public void update(float delta) {
