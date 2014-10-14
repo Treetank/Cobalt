@@ -25,7 +25,8 @@ public class GameWorld {
 	public void respawnHero() {
 		data.getHero().getHp().fill();
 		data.getHero().stop();
-		data.setLevelPosition(INITIAL_POSITION);
+		data.getHero().move(INITIAL_POSITION);
+		data.setLevelPosition(LEVEL_POSITION);
 	}
 
 	public void update(float delta) {
@@ -33,13 +34,6 @@ public class GameWorld {
 		getLevel().update(delta);
 		if (data.getHero().isDead()) {
 			game.HeroHasDied();
-		}
-	}
-
-	@Deprecated
-	public void oldUpdate(float delta) {
-		if (data.getHero().isDead()) {
-			respawnHero();
 		}
 	}
 

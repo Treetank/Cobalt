@@ -110,7 +110,11 @@ public class CobaltGame extends Game {
 	}
 
 	public void Respawn() {
-
+		gameState = GameStateIndex.GAME_RUNNING;
+		gameWorld.respawnHero();
+		gameWorld.loadLevel();
+		renderer = new GameWorldRenderer(this);
+		Gdx.input.setInputProcessor(new WorldInputHandler(this));
 	}
 
 	public void update(float delta) {

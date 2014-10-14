@@ -32,14 +32,13 @@ public class GameOverInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
-		return false;
+		game.Respawn();
+		return true;
 	}
 
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		game.Respawn();
-		return true;
+		return false;
 	}
 
 	@Override

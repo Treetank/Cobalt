@@ -189,7 +189,7 @@ public final class CobaltBasics {
 				public static final int NORMAL_INITIAL_INTELLECT = 1;
 				public static final int NORMAL_INITIAL_STAMINA = 1;
 				public static final int NORMAL_INITIAL_VITALITY = 1;
-				public static final int NORMAL_INITIAL_HP = 5;
+				public static final int NORMAL_INITIAL_HP = 50;
 				public static final int NORMAL_INITIAL_MP = 100;
 				public static final int SUPER_INITIAL_STRENGTH = 1000;
 				public static final int SUPER_INITIAL_AGILITY = 1000;
