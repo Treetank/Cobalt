@@ -78,6 +78,8 @@ public final class CobaltBasics {
 		public static final int MOB_START_Y = 16;
 		public static final int STOREFRONT_START_X = 0;
 		public static final int STOREFRONT_START_Y = 48;
+		public static final int SPLASH_START_X = 0;
+		public static final int SPLASH_START_Y = 176;
 	}
 
 	public static final class ImageMetrics {
@@ -94,8 +96,12 @@ public final class CobaltBasics {
 		public static final int WEAPON_HEIGHT = 8;
 		public static final int ARMOR_WIDTH = 8;
 		public static final int ARMOR_HEIGHT = 8;
+
 		// square size of mob sprites
 		public static final int MOB_SQUARE_SIZE = 32;
+
+		public static final int SPLASH_WIDTH = 128;
+		public static final int SPLASH_HEIGHT = 64;
 	}
 
 	public static final class StoreMetrics {
@@ -183,7 +189,7 @@ public final class CobaltBasics {
 				public static final int NORMAL_INITIAL_INTELLECT = 1;
 				public static final int NORMAL_INITIAL_STAMINA = 1;
 				public static final int NORMAL_INITIAL_VITALITY = 1;
-				public static final int NORMAL_INITIAL_HP = 500;
+				public static final int NORMAL_INITIAL_HP = 5;
 				public static final int NORMAL_INITIAL_MP = 100;
 				public static final int SUPER_INITIAL_STRENGTH = 1000;
 				public static final int SUPER_INITIAL_AGILITY = 1000;
@@ -247,6 +253,11 @@ public final class CobaltBasics {
 
 	public static final class InitialValues {
 		public static final int LEVEL_POSITION = 0;
+	}
+
+	public static final class DeathSplashValues {
+		public static final int SPLASH_X = (GameWindowMetrics.SCREEN_WIDTH - ImageMetrics.SPLASH_WIDTH) / 2;
+		public static final int SPLASH_Y = (GameWindowMetrics.SCREEN_HEIGHT - ImageMetrics.SPLASH_HEIGHT) / 2;
 	}
 
 	public static final class CobaltStrings {

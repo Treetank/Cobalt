@@ -1,12 +1,16 @@
 package org.laser.cobalt.helpers;
 
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.MOB_SQUARE_SIZE;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.SPLASH_HEIGHT;
+import static org.laser.cobalt.CobaltBasics.ImageMetrics.SPLASH_WIDTH;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_HEIGHT;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.STOREFRONT_WIDTH;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_HEIGHT;
 import static org.laser.cobalt.CobaltBasics.ImageMetrics.TERRAIN_WIDTH;
 import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.MOB_START_X;
 import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.MOB_START_Y;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.SPLASH_START_X;
+import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.SPLASH_START_Y;
 import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.STOREFRONT_START_X;
 import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.STOREFRONT_START_Y;
 import static org.laser.cobalt.CobaltBasics.TextureMapMetrics.TERRAIN_START_X;
@@ -33,6 +37,8 @@ public class AssetLoader {
 	public static TextureRegion sign, house;
 
 	public static TextureRegion storefront;
+
+	public static TextureRegion deathSplash;
 
 	public static BitmapFont font;
 
@@ -61,6 +67,8 @@ public class AssetLoader {
 
 		storefront = loadStorefront(0, 0);
 
+		deathSplash = loadSplash(0, 0);
+
 		font = new BitmapFont(Gdx.files.internal("textures/aharoni2.fnt"), new TextureRegion(fontTexture), false);
 	}
 
@@ -76,6 +84,10 @@ public class AssetLoader {
 	private static TextureRegion loadStorefront(int xPos, int yPos) {
 		return new TextureRegion(texture, STOREFRONT_START_X + xPos * STOREFRONT_WIDTH, STOREFRONT_START_Y + yPos * STOREFRONT_HEIGHT, STOREFRONT_WIDTH,
 				STOREFRONT_HEIGHT);
+	}
+
+	private static TextureRegion loadSplash(int xPos, int yPos) {
+		return new TextureRegion(texture, SPLASH_START_X + xPos * SPLASH_WIDTH, SPLASH_START_Y + yPos * SPLASH_HEIGHT, SPLASH_WIDTH, SPLASH_HEIGHT);
 	}
 
 	public static void dispose() {
