@@ -267,4 +267,10 @@ public final class CobaltBasics {
 		public static final String SMITHY_BASE_GREETING = "WELCOME TO THE SMITHERY. SELL YOU THIS NICE SWORD 100 GOLD.";
 		public static final String SMITHY_NO_WORK_GREETING = "I CANNOT HELP YOU AT THIS TIME";
 	}
+	
+	public static final class Quests {
+		public static final String[] TITLES = {"FIRST QUEST", "SECOND QUEST"};
+		public static final int GOLD_REWARD = {5, 15};
+		public static final int EXPERIENCE_REWARD = {10, 10};
+	}
 }
