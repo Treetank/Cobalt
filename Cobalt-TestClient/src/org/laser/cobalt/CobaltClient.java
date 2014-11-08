@@ -1,5 +1,9 @@
 package org.laser.cobalt;
 
+import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.SERVER_IP;
+import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.TCP_PORT;
+import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.UDP_PORT;
+
 import java.io.IOException;
 
 import org.laser.cobalt.networking.KryoConfig;
@@ -22,7 +26,7 @@ public class CobaltClient {
 		KryoConfig.RegisterClasses(client.getKryo());
 		client.start();
 		try {
-			client.connect(5000, "127.0.0.1", 5555, 5556);
+			client.connect(5000, SERVER_IP, TCP_PORT, UDP_PORT);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

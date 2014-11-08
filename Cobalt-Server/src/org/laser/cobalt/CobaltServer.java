@@ -1,5 +1,8 @@
 package org.laser.cobalt;
 
+import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.TCP_PORT;
+import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.UDP_PORT;
+
 import java.io.IOException;
 
 import org.laser.cobalt.networking.KryoConfig;
@@ -9,18 +12,16 @@ import org.laser.cobalt.networking.packets.Packet1Connect;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import com.esotericsoftware.minlog.Log;
 
 public class CobaltServer {
 
 	public static void main(String[] args) {
 		System.out.println("Cobalt Server");
-		Log.set(Log.LEVEL_DEBUG);
 		Server server = new Server();
 		KryoConfig.RegisterClasses(server.getKryo());
 		server.start();
 		try {
-			server.bind(5555, 5556);
+			server.bind(TCP_PORT, UDP_PORT);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
