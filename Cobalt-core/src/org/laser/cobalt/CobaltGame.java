@@ -21,12 +21,14 @@ import org.laser.cobalt.screens.GameScreen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.esotericsoftware.kryo.Kryo;
 
 public class CobaltGame extends Game {
 
 	private GameWorld gameWorld;
 	private IRenderer renderer;
 	private GameStateIndex gameState;
+	private Kryo kryo;
 
 	@Override
 	public void create() {
