@@ -5,24 +5,34 @@ import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation
 import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.UDP_PORT;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import org.laser.cobalt.networking.KryoConfig;
 import org.laser.cobalt.networking.packets.Packet1Connect;
+import org.laser.cobalt.networking.packets.Packet2Message;
 
 import com.esotericsoftware.kryonet.Client;
 
-public class CobaltClient {
+public class CobaltTestClient {
+
+	private String message;
+	Client client;
+	Packet1Connect con;
+	Packet2Message messagePacket;
+	Scanner scanner;
 
 	public static void main(String args[]) {
 
-		new CobaltClient();
+		new CobaltTestClient();
 	}
 
-	public CobaltClient() {
-		Packet1Connect con = new Packet1Connect();
-		con.name = "TestClient";
+	public CobaltTestClient() {
 		System.out.println("Cobalt Client");
-		Client client = new Client();
+		message = "";
+		scanner = new Scanner(System.in);
+		con = new Packet1Connect();
+		con.name = "TestClient";
+		client = new Client();
 		KryoConfig.RegisterClasses(client.getKryo());
 		client.start();
 		try {
@@ -32,6 +42,13 @@ public class CobaltClient {
 			e.printStackTrace();
 		}
 		client.sendTCP(con);
+		while (!message.equals("quit")) {
+			System.out.println("message? :");
+			message = scanner.nextLine();
+			messagePacket = new Packet2Message();
+			messagePacket.message = message;
+			client.sendTCP(messagePacket);
+		}
 		client.stop();
 		System.out.println("Client stopped");
 	}
