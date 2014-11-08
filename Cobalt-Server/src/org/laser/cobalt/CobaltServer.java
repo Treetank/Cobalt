@@ -1,11 +1,47 @@
 package org.laser.cobalt;
 
-import com.esotericsoftware.kryo.Kryo;
+import java.io.IOException;
+
+import org.laser.cobalt.networking.KryoConfig;
+import org.laser.cobalt.networking.packets.Packet;
+import org.laser.cobalt.networking.packets.Packet1Connect;
+
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.kryonet.Server;
+import com.esotericsoftware.minlog.Log;
 
 public class CobaltServer {
 
 	public static void main(String[] args) {
-		Kryo kryo;
+		System.out.println("Cobalt Server");
+		Log.set(Log.LEVEL_DEBUG);
+		Server server = new Server();
+		KryoConfig.RegisterClasses(server.getKryo());
+		server.start();
+		try {
+			server.bind(5555, 5556);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		server.addListener(new Listener() {
+			public void received(Connection connection, Object object) {
+				if (object instanceof Packet) {
+					if (object instanceof Packet1Connect) {
+						Packet1Connect con = (Packet1Connect) object;
+						System.out.println("new connection " + con.name);
+					}
+				}
+			}
+		});
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		server.stop();
+		System.out.println("Stopped");
 	}
 
 }
