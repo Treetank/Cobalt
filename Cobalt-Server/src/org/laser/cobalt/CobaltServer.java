@@ -4,6 +4,11 @@ import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation
 import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.UDP_PORT;
 
 import java.io.IOException;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.laser.cobalt.networking.KryoConfig;
 import org.laser.cobalt.networking.packets.Packet;
@@ -18,9 +23,17 @@ public class CobaltServer {
 
 	private static ClientHandler clientHandler;
 	private static Server server;
+	private static Timer clientListTimer;
+
+	private static String dbURL = "jdbc:derby:C:\\Users\\Wayne\\MyDB;create=true";
+	private static String tableName = "COBALT.USERLIST";
+	private static java.sql.Connection dbCon = null;
+	private static Statement stmt = null;
 
 	public static void main(String[] args) {
 		initServer();
+		createDBConnection();
+		// addNewUser();
 		startServer();
 		try {
 			server.bind(TCP_PORT, UDP_PORT);
@@ -44,14 +57,42 @@ public class CobaltServer {
 		System.out.println("Cobalt Server Initialized");
 	}
 
+	private static void createDBConnection() {
+		try {
+			Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+			dbCon = DriverManager.getConnection(dbURL);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void addNewUser() {
+		try {
+			stmt = dbCon.createStatement();
+			stmt.execute("insert into " + tableName + " values (10, 'ddfdds')");
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private static void startServer() {
 		server.start();
+		clientListTimer = new Timer();
+		clientListTimer.scheduleAtFixedRate(clientListTimerTask, 5 * 60 * 1000, 5 * 60 * 1000);
 		System.out.println("Cobalt Server Started");
 	}
 
 	private static void stopServer() {
 		server.stop();
+		clientListTimer.cancel();
 		System.out.println("Cobalt Server Stopped");
+	}
+
+	private static void printClientList() {
+		System.out.println("===BEGIN CLIENT LIST===");
+		clientHandler.showConnected();
+		System.out.println("=== END CLIENT LIST ===");
 	}
 
 	private static Listener serverListener = new Listener() {
@@ -63,13 +104,23 @@ public class CobaltServer {
 			if (object instanceof Packet) {
 				if (object instanceof Packet1Connect) {
 					Packet1Connect con = (Packet1Connect) object;
-					System.out.println("[CONNECTED] " + con.name);
-					clientHandler.addClient(new CobaltClient(con.name, connection));
+					System.out.println("[CONNECTED] " + con.id);
+					clientHandler.addClient(new CobaltClient(con.id, connection));
 				} else if (object instanceof Packet2Message) {
 					Packet2Message mes = (Packet2Message) object;
 					System.out.println("[RECEVIED] [" + clientHandler.getClient(connection).getUsername() + "] " + mes.message);
+					clientHandler.circulateMessage(connection, mes);
 				}
 			}
 		}
+	};
+
+	private static TimerTask clientListTimerTask = new TimerTask() {
+
+		@Override
+		public void run() {
+			printClientList();
+		}
+
 	};
 }

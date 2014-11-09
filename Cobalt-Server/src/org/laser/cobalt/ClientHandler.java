@@ -2,6 +2,8 @@ package org.laser.cobalt;
 
 import java.util.ArrayList;
 
+import org.laser.cobalt.networking.packets.Packet2Message;
+
 import com.esotericsoftware.kryonet.Connection;
 
 public class ClientHandler {
@@ -22,21 +24,47 @@ public class ClientHandler {
 	}
 
 	public void removeClient(Connection con) {
-
+		int index = 0;
+		for (CobaltClient c : clients) {
+			if (c.getId() == con.getID()) {
+				break;
+			} else {
+				index++;
+			}
+		}
+		System.out.println("[INFO] Client removed with connection ID " + con.getID() + ", " + getUsername(con) + ".");
+		clients.remove(index);
 	}
 
 	public CobaltClient getClient(Connection con) {
-		for (CobaltClient cc : clients) {
-			if (cc.getId() == con.getID()) {
-				return cc;
+		for (CobaltClient c : clients) {
+			if (c.getId() == con.getID()) {
+				return c;
 			}
 		}
 		return null;
 	}
 
+	public String getUsername(Connection con) {
+		for (CobaltClient c : clients) {
+			if (c.getId() == con.getID()) {
+				return c.getUsername();
+			}
+		}
+		return "unfound";
+	}
+
+	public void circulateMessage(Connection con, Packet2Message mes) {
+		for (CobaltClient c : clients) {
+			if (c.getId() != con.getID()) {
+				c.getConnection().sendTCP(mes);
+			}
+		}
+	}
+
 	public void showConnected() {
-		for (CobaltClient cc : clients) {
-			System.out.println(cc.getUsername());
+		for (CobaltClient c : clients) {
+			System.out.println(c.getUsername());
 		}
 	}
 }
