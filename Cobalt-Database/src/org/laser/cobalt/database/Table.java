@@ -1,1 +1,1 @@
-public interface Table {}
+package org.laser.cobalt.database;public interface Table {}

@@ -1,1 +1,1 @@
-package org.laser.cobalt.database.tables;public class Userlist implements Table {}
+package org.laser.cobalt.database.tables;import org.laser.cobalt.database.Table;public class Userlist implements Table {}
