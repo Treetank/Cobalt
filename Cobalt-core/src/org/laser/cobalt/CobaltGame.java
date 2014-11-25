@@ -16,6 +16,7 @@ import org.laser.cobalt.helpers.renderers.GameOverRenderer;
 import org.laser.cobalt.helpers.renderers.GameSelectRenderer;
 import org.laser.cobalt.helpers.renderers.GameWorldRenderer;
 import org.laser.cobalt.helpers.renderers.IndoorWorldRenderer;
+import org.laser.cobalt.interfaces.IIdentifier;
 import org.laser.cobalt.interfaces.IRenderer;
 import org.laser.cobalt.screens.GameScreen;
 
@@ -27,6 +28,11 @@ public class CobaltGame extends Game {
 	private GameWorld gameWorld;
 	private IRenderer renderer;
 	private GameStateIndex gameState;
+	private final IIdentifier identifier;
+
+	public CobaltGame(IIdentifier identifier) {
+		this.identifier = identifier;
+	}
 
 	@Override
 	public void create() {

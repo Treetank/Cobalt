@@ -4,9 +4,6 @@ import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation
 import static org.laser.cobalt.networking.KryoBasics.ServerConnectionInformation.UDP_PORT;
 
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,11 +21,6 @@ public class CobaltServer {
 	private static ClientHandler clientHandler;
 	private static Server server;
 	private static Timer clientListTimer;
-
-	private static String dbURL = "jdbc:derby:C:\\Users\\Wayne\\MyDB;create=true";
-	private static String tableName = "COBALT.USERLIST";
-	private static java.sql.Connection dbCon = null;
-	private static Statement stmt = null;
 
 	public static void main(String[] args) {
 		initServer();
@@ -58,22 +50,9 @@ public class CobaltServer {
 	}
 
 	private static void createDBConnection() {
-		try {
-			Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
-			dbCon = DriverManager.getConnection(dbURL);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static void addNewUser() {
-		try {
-			stmt = dbCon.createStatement();
-			stmt.execute("insert into " + tableName + " values (10, 'ddfdds')");
-			stmt.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private static void startServer() {

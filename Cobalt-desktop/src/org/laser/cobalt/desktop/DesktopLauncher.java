@@ -15,6 +15,6 @@ public class DesktopLauncher {
 		config.title = WINDOW_TITLE;
 		config.width = VIEWPORT_WIDTH;
 		config.height = VIEWPORT_HEIGHT;
-		new LwjglApplication(new CobaltGame(), config);
+		new LwjglApplication(new CobaltGame(new DesktopIdentifier()), config);
 	}
 }

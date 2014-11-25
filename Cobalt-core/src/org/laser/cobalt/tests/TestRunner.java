@@ -15,6 +15,7 @@ public class TestRunner {
 		for (BaseTest b : testList) {
 			b.runTests();
 		}
+
 	}
 
 }
