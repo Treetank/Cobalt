@@ -5,8 +5,10 @@ public class DBTester {
 		CobaltDBManager dbm = new CobaltDBManager();
 
 		// dbm.createUserlist();
-		dbm.addNewUser("two one");
-		dbm.addNewUser("two two");
-		dbm.addNewUser("two three");
+		// dbm.addNewUser("six one");
+		// dbm.addNewUser("six two");
+		// dbm.addNewUser("six three");
+
+		System.out.println(dbm.findUser("six two").getId());
 	}
 }

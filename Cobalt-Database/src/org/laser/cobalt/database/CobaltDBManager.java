@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.laser.cobalt.database.tables.Userlist;
+import org.laser.cobalt.database.tables.Userlist.UserlistRow;
 
 public class CobaltDBManager {
 
@@ -36,6 +37,19 @@ public class CobaltDBManager {
 
 	public boolean addNewUser(String deviceId) {
 		return executeStatement(userlist.addUser(deviceId));
+	}
+
+	public UserlistRow findUser(String device) {
+		UserlistRow retVal = null;
+		try {
+			stmt = dbCon.createStatement();
+			retVal = userlist.new UserlistRow(stmt.executeQuery(userlist.findUser(device)));
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retVal;
 	}
 
 	public boolean createUserlist() {
